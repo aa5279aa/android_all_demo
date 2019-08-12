@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xt.client.ProtoActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.xt.client.widget.MainPageItemView
+                android:id="@+id/item1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:item_title="@string/protobuff"
+                app:item_value="done"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="@id/container"
+                app:layout_constraintRight_toLeftOf="@+id/item2"
+                app:layout_constraintTop_toTopOf="@id/container" />
+
+            <com.xt.client.widget.MainPageItemView
+                android:id="@+id/item2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:item_title="@string/instrumentation"
+                app:item_value="nostart"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@id/item1"
+                app:layout_constraintRight_toRightOf="@+id/container"
+                app:layout_constraintTop_toTopOf="@id/container" />
+
+
+            <com.xt.client.widget.MainPageItemView
+                android:id="@+id/item3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:item_title="IPC通信"
+                app:item_value="20190808"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="@id/container"
+                app:layout_constraintRight_toLeftOf="@+id/item4"
+                app:layout_constraintTop_toBottomOf="@+id/item1" />
+
+
+            <com.xt.client.widget.MainPageItemView
+                android:id="@+id/item4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:item_title="@string/jni_use"
+                app:item_value="done"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@id/item3"
+                app:layout_constraintRight_toRightOf="@+id/container"
+                app:layout_constraintTop_toBottomOf="@+id/item1" />
+
+            <com.xt.client.widget.MainPageItemView
+                android:id="@+id/item5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:item_title="性能检测"
+                app:item_value="20190808"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="@id/container"
+                app:layout_constraintRight_toLeftOf="@+id/item6"
+                app:layout_constraintTop_toBottomOf="@+id/item3" />
+
+
+            <com.xt.client.widget.MainPageItemView
+                android:id="@+id/item6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:item_title="@string/catch_crash"
+                app:item_value="done"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@id/item5"
+                app:layout_constraintRight_toRightOf="@+id/container"
+                app:layout_constraintTop_toBottomOf="@+id/item3" />
+
+            <com.xt.client.widget.MainPageItemView
+                android:id="@+id/item7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:item_title="@string/get_last_activity"
+                app:item_value="done"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="@id/container"
+                app:layout_constraintRight_toLeftOf="@+id/item8"
+                app:layout_constraintTop_toBottomOf="@+id/item5" />
+
+
+            <com.xt.client.widget.MainPageItemView
+                android:id="@+id/item8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:item_title="Flutter混合开发"
+                app:item_value="20190808"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@id/item7"
+                app:layout_constraintRight_toRightOf="@+id/container"
+                app:layout_constraintTop_toBottomOf="@+id/item5" />
+
+            <com.xt.client.widget.MainPageItemView
+                android:id="@+id/item9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:item_title="@string/use_aidl"
+                app:item_value="done"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="@id/container"
+                app:layout_constraintRight_toLeftOf="@+id/item10"
+                app:layout_constraintTop_toBottomOf="@+id/item7" />
+
+
+            <com.xt.client.widget.MainPageItemView
+                android:id="@+id/item10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:item_title="空"
+                app:item_value="20190808"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@id/item9"
+                app:layout_constraintRight_toRightOf="@+id/container"
+                app:layout_constraintTop_toBottomOf="@+id/item7" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

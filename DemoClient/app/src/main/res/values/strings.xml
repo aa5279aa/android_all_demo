@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AllDemo</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="protobuff">protobuf序列化</string>
+    <string name="instrumentation">字节码插桩</string>
+    <string name="catch_crash">崩溃捕获</string>
+    <string name="get_last_activity">获取上个界面view</string>
+    <string name="jni_use">JNI使用</string>
+    <string name="use_aidl">aidl使用</string>
+    <string name="performance_check">性能检测</string>
+
+</resources>

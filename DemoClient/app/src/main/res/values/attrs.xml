@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MainPageItemView">
+        <attr name="item_title" format="string" />
+        <attr name="item_value" format="string" />
+    </declare-styleable>
+
+</resources>

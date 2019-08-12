@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xt.client.ProtoActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minHeight="20dp"
+        android:text="MainActivity2" />
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="发送请求"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toLeftOf="@+id/btn_close"
+            app:layout_constraintTop_toTopOf="@id/container" />
+
+        <Button
+            android:id="@+id/btn_close"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="关闭请求"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/btn_send"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toTopOf="@id/container" />
+
+        <Button
+            android:id="@+id/test_btn1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="不同进程2启动service"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toLeftOf="@+id/test_btn2"
+            app:layout_constraintTop_toBottomOf="@id/btn_send" />
+
+        <Button
+            android:id="@+id/test_btn2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AIDL调用"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/test_btn1"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toBottomOf="@id/btn_send" />
+
+        <Button
+            android:id="@+id/test_btn3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="不同进程启动service"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="@+id/container"
+            app:layout_constraintRight_toLeftOf="@+id/test_btn4"
+            app:layout_constraintTop_toBottomOf="@id/test_btn1" />
+
+        <Button
+            android:id="@+id/test_btn4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="发送消息"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/test_btn3"
+            app:layout_constraintRight_toRightOf="@+id/container"
+            app:layout_constraintTop_toBottomOf="@id/test_btn1" />
+
+        <Button
+            android:id="@+id/test_btn5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="JNI调用"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="@id/container"
+            app:layout_constraintRight_toLeftOf="@+id/test_btn6"
+            app:layout_constraintTop_toBottomOf="@id/test_btn3" />
+
+        <Button
+            android:id="@+id/test_btn6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="JNI调用加减"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/test_btn5"
+            app:layout_constraintRight_toRightOf="@id/container"
+            app:layout_constraintTop_toBottomOf="@id/test_btn3" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>
