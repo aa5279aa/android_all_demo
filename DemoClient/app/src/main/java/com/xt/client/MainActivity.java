@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.xt.client.activitys.JNIActivity;
 import com.xt.client.activitys.PerformanceActivity;
+import com.xt.client.activitys.PrepareActivity;
 import com.xt.client.activitys.SaveLastActivity;
 import com.xt.client.aidl.ProcessAidlInter;
 import com.xt.client.fragment.AidlFragment;
@@ -70,11 +71,17 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         Choreographer choreographer = Choreographer.getInstance();
         choreographer.postFrameCallback(frameCallback);
 
-        try {
-            long time = System.currentTimeMillis();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+
+
+        MessageQueue.IdleHandler idelHandler =new  MessageQueue.IdleHandler(){
+
+
+            @Override
+            public boolean queueIdle() {
+                return false;
+            }
+        };
     }
 
 
@@ -126,6 +133,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             intent.setClass(MainActivity.this, JNIActivity.class);
         } else if (getString(R.string.performance_check).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, PerformanceActivity.class);
+        } else if (getString(R.string.prepareloadview).equalsIgnoreCase(title)) {
+            intent.setClass(MainActivity.this, PrepareActivity.class);
         } else {
             return;
         }
@@ -230,7 +239,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         Log.i("lxltest", "MainActivity:onDestroy");
         int i = 0;
         StringBuilder builder = new StringBuilder();
-        Log.i("lxltest", "size:" + list.size());
+//        Log.i("lxltest", "size:" + list.size());
         for (long time : list) {
             if (i == 60) {
                 Log.i("lxltest", builder.toString());

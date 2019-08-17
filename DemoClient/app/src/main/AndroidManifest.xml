@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.xt.client">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,12 +16,14 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
 
     <application
+        android:name=".application.DemoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name="com.xt.client.MainActivity"
             android:label="@string/app_name"
@@ -36,15 +39,17 @@
         <activity android:name="com.xt.client.activitys.SaveLastActivity" />
         <activity android:name="com.xt.client.activitys.JNIActivity" />
         <activity android:name="com.xt.client.activitys.PerformanceActivity" />
-        <activity android:name="com.xt.client.activitys.AnnotationActivity" android:launchMode="singleTask"/>
+        <activity android:name="com.xt.client.activitys.PrepareActivity" />
+        <activity android:name="com.xt.client.activitys.prepare.PrepareMiddleActivity" />
+
+        <activity
+            android:name="com.xt.client.activitys.AnnotationActivity"
+            android:launchMode="singleTask" />
 
         <service
             android:name=".service.OtherProcessService"
-            android:process="com.xt.xt"
-            />
-        <service
-            android:name=".service.Other2ProcessService"
-            />
+            android:process="com.xt.xt" />
+        <service android:name=".service.Other2ProcessService" />
 
 
         <service android:name=".service.OnceProcessService" />
