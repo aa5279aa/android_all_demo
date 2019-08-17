@@ -63,7 +63,10 @@ class PrepareActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        //onResume之后才会把当前view挂载到windowManager，所以在这之后在使用idelHandler生成下一界面缓存
+        /**
+         *  onResume之后才会把当前view挂载到windowManager，所以在这之后在使用idelHandler生成下一界面缓存.
+         *  其实放到线程加载也OK，但是创建一个线程会耗费性能资源，有些浪费
+         */
         val idelHandler = MessageQueue.IdleHandler {
             PageViewCache.instance.addCachePageView(PrepareMiddleActivity::class.java.name, R.layout.prepare_middle_page)
             Log.i("lxltest", "添加缓存ViewPage")
