@@ -27,3 +27,7 @@ allprojects {
 java的服务，可以直接部署到tomcat。用于提供服务给客户端，比如提供protobuf的服务。
 # 3.DemoDependent    
 第三方项目的工程。维护protobuf契约文件的工程。
+
+# 4.各个Demo的详细功能详见
+<a href="https://github.com/aa5279aa/android_all_demo/wiki/Demo%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D">Demo功能介绍</a>
+
