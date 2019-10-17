@@ -58,7 +58,7 @@ public class Main4Activity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.btn_send) {
-            new Test().test();
+//            new Test().test();
             try {
                 startRequest();
             } catch (Exception e) {

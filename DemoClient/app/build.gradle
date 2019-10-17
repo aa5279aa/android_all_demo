@@ -16,17 +16,25 @@ android {
         ndk {
             ldLibs "log"
             moduleName "Java2C"
+//            abiFilters "armeabi-v7a", "arm64-v8a", "x86"
             abiFilters "armeabi-v7a", "x86"
         }
 
         externalNativeBuild {
             cmake {
                 cppFlags "-D_EXAMPLE_CPP_FLAG1", "-D_EXAMPLE_CPP_FLAG2"
-                abiFilters "armeabi-v7a", "x86"
+                abiFilters "armeabi-v7a", "x86", "arm64-v8a"
             }
 
         }
     }
+
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//            jni.srcDirs = ['libs', 'src/main/libs']
+//        }
+//    }
 
     externalNativeBuild {
         cmake {
@@ -37,13 +45,16 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-//        sourceSets {
-//            main {
-//                jni.srcDirs = ['src/main/jni']
-//            }
+//        debug {
+//            multiDexEnabled true
+//            multiDexKeepFile file("maindexlist.txt")
+//        }
+
+//        prd {
+//            multiDexEnabled true
 //        }
         lintOptions {
 
@@ -59,5 +70,7 @@ android {
         androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
         implementation 'com.squareup.okhttp3:okhttp:3.10.0'
         implementation 'com.android.support:appcompat-v7:26.1.0'
+        implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
+        implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     }
 }

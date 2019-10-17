@@ -46,6 +46,10 @@
             android:name="com.xt.client.activitys.AnnotationActivity"
             android:launchMode="singleTask" />
 
+        <activity
+            android:name="com.xt.client.activitys.TestActivity"
+            android:launchMode="singleTask" />
+
         <service
             android:name=".service.OtherProcessService"
             android:process="com.xt.xt" />

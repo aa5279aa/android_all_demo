@@ -10,5 +10,8 @@
     <string name="use_aidl">aidl使用</string>
     <string name="performance_check">性能检测</string>
     <string name="prepareloadview">界面预加载</string>
+    <string name="testtest">测试界面</string>
+    <string name="test_crash">触发crash</string>
+    <string name="breakpoint_download">断点续传</string>
 
 </resources>

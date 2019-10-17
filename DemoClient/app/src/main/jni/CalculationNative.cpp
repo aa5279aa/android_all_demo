@@ -28,6 +28,7 @@ char *ConvertJByteaArrayToChars(JNIEnv *env, jbyteArray bytearray) {
     jbyte *bytes;
     bytes = env->GetByteArrayElements(bytearray, 0);
     int chars_len = env->GetArrayLength(bytearray);
+    LOGI("chars_len:%d", chars_len);
     chars = new char[chars_len + 1];
     memset(chars, 0, chars_len + 1);
     memcpy(chars, bytes, chars_len);
@@ -46,7 +47,7 @@ char *getChar(jint value1,
     char s1[10] = "wayne";
     char s2[10] = "22";
 
-    strcat(s1, s2);
+    strcat(s1, s2);//字符串拼接
     LOGI("s1:%s", s1);
 
     sprintf(buf, "%i", value1);
@@ -83,9 +84,10 @@ Java_com_xt_client_jni_CalculationJNITest_calculationSum(JNIEnv *env, jobject in
     const char *thirdStr = env->GetStringUTFChars(str1, 0);
     LOGI("%s", "ConvertJcharArray2Chars");
     char *charsChar = ConvertJcharArray2Chars(env, chars);
-    LOGI("%s", "ConvertJByteaArrayToChars");
+    LOGI("ConvertJByteaArrayToChars:%s", charsChar);
     char *bytesChar = ConvertJByteaArrayToChars(env, bytes);
-    LOGI("char:%s", charsChar);
+    LOGI("bytesChar:%s", bytesChar);//
+    LOGI("ConvertJByteaArrayToChars2:%s", charsChar);
     char *buf = getChar(value1, value2, thirdStr, double1, charsChar, bytesChar);
     LOGI("%s %s", "buf is:", buf);
     jstring computerName = env->NewStringUTF(buf);

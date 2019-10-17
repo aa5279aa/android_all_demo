@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import com.xt.client.R
 import com.xt.client.util.ReflectionUtils
+import com.xt.client.util.ToastUtil
 
 /**
  * 捕获并显示上一个activity的界面

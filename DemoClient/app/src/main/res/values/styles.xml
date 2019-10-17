@@ -1,6 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
     <style name="AppTheme">
         <!-- Customize your theme here. -->
         <!--<item name="colorPrimary">@color/colorPrimary</item>-->
@@ -8,9 +18,14 @@
         <!--<item name="colorAccent">@color/colorAccent</item>-->
     </style>
 
+    <style name="LuncherTheme" parent="BaseAppTheme">
+        <!--<item name="android:windowBackground">@drawable/launcher_previewwindow</item>-->
+        <item name="android:windowBackground">@mipmap/splash_bg</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
-        <!--<item name="windowActionBar">false</item>-->
-        <!--<item name="windowNoTitle">true</item>-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" />
