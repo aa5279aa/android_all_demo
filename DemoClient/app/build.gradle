@@ -5,14 +5,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.xt.client"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             ldLibs "log"
             moduleName "Java2C"
@@ -60,17 +59,35 @@ android {
 
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
     dependencies {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
         implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
         implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-        testImplementation 'junit:junit:4.12'
-        androidTestImplementation 'com.android.support.test:runner:1.0.2'
-        androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+        implementation 'androidx.appcompat:appcompat:1.1.0'
+        implementation 'androidx.core:core-ktx:1.2.0'
+        implementation 'androidx.core:core-ktx:1.2.0'
+        implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+        implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
         implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-        implementation 'com.android.support:appcompat-v7:26.1.0'
         implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
         implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+        implementation 'com.tencent.wcdb:wcdb-android:1.0.8'
+        implementation ('com.tencent.wcdb:room:1.0.8'){
+            exclude group: 'com.android.support'
+        }
+        annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+        compile 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+        compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1'
     }
+}
+
+dependencies {
+    implementation 'androidx.asynclayoutinflater:asynclayoutinflater:1.0.0'
 }

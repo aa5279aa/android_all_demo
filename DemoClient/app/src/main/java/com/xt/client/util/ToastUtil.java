@@ -2,7 +2,6 @@ package com.xt.client.util;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.annotation.StringRes;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -20,7 +19,7 @@ public class ToastUtil {
         showMessage(tip);
     }
 
-    public static void showMessage(@StringRes int resId) {
+    public static void showMessage(int resId) {
         showMessage(null);
     }
 
@@ -28,7 +27,7 @@ public class ToastUtil {
         showMessage(text, 0);
     }
 
-    public static void showMessage(@StringRes int resId, long delayMillis) {
+    public static void showMessage(int resId, long delayMillis) {
         showMessage(null, delayMillis);
     }
 

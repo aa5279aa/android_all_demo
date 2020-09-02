@@ -26,14 +26,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:clickable="false"
+            android:gravity="center"
             android:text="发送请求" />
 
-        <TextView
+        <Button
             android:id="@+id/btn_close"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="关闭请求" />
 
     </LinearLayout>

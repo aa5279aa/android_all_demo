@@ -25,8 +25,6 @@ class ProtobuffFragment : BaseFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         viewHolder?.button1?.text = "发送请求"
         viewHolder?.button2?.text = "解析请求"
 

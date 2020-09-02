@@ -35,8 +35,13 @@ class JNIActivity : BaseActivity() {
             var calculationJNITest = CalculationJNITest()
             val inputStreamFromUrl = IOHelper.fromStringToIputStream("6")
             val input2byte = IOHelper.input2byte(inputStreamFromUrl)
-            val calculationSum = calculationJNITest.calculationSum(1, 2, "3", 4.0, "5".toCharArray(), input2byte)
-            viewHolder.resultText?.text = calculationSum
+            try {
+                val calculationSum = calculationJNITest.calculationSum(1, 2, "3", 4.0, "5".toCharArray(), input2byte)
+                viewHolder.resultText?.text = calculationSum
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
         } else if (v?.id == R.id.button3) {
 
         } else if (v?.id == R.id.button4) {

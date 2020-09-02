@@ -2,6 +2,7 @@
     <string name="app_name">AllDemo</string>
     <string name="action_settings">Settings</string>
 
+    <string name="test">测试</string>
     <string name="protobuff">protobuf序列化</string>
     <string name="instrumentation">字节码插桩</string>
     <string name="catch_crash">崩溃捕获</string>
@@ -13,5 +14,8 @@
     <string name="testtest">测试界面</string>
     <string name="test_crash">触发crash</string>
     <string name="breakpoint_download">断点续传</string>
+    <string name="wcdb">wcdb数据库</string>
+    <string name="checkfile">检查文件</string>
+    <string name="flutter">Flutter混合开发</string>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.xt.client.cache
 
 import android.view.View
+import androidx.asynclayoutinflater.view.AsyncLayoutInflater
 import com.xt.client.application.DemoApplication
 
 class PageViewCache {
@@ -21,6 +22,7 @@ class PageViewCache {
         }
         val context = DemoApplication.getInstance()
         val inflate = View.inflate(context, layoutId, null)
+        inflate.measure(1,1)
         cacheMap.put(pageClassName, inflate)
     }
 

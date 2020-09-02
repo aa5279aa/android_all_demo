@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.xt.client">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -22,10 +24,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.xt.client.MainActivity"
+            android:name="com.xt.client.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -34,9 +35,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.xt.client.MainActivity" />
         <activity android:name="com.xt.client.ProtoActivity" />
         <activity android:name="com.xt.client.Main4Activity" />
         <activity android:name="com.xt.client.activitys.SaveLastActivity" />
+        <activity android:name="com.xt.client.activitys.WCDBActivity" />
         <activity android:name="com.xt.client.activitys.JNIActivity" />
         <activity android:name="com.xt.client.activitys.PerformanceActivity" />
         <activity android:name="com.xt.client.activitys.PrepareActivity" />
@@ -58,6 +61,7 @@
 
         <service android:name=".service.OnceProcessService" />
         <service android:name=".service.ThreadService" />
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
     </application>
 
 </manifest>

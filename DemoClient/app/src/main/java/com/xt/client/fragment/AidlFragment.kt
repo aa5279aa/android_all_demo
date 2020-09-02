@@ -35,7 +35,7 @@ class AidlFragment : BaseFragment() {
 
             val intent = Intent()
             intent.setClass(context, Other2ProcessService::class.java)
-            context.bindService(intent, object : ServiceConnection {
+            context?.bindService(intent, object : ServiceConnection {
                 override fun onServiceConnected(name: ComponentName, service: IBinder) {
                     processAidlInter = ProcessAidlInter.Stub.asInterface(service)
                     try {

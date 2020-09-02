@@ -2,7 +2,6 @@ package com.xt.client.activitys.prepare;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -10,6 +9,8 @@ import android.widget.TextView;
 import com.xt.client.R;
 import com.xt.client.activitys.PrepareActivity;
 import com.xt.client.cache.PageViewCache;
+
+import androidx.annotation.Nullable;
 
 public class PrepareMiddleActivity extends Activity {
 

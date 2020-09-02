@@ -4,8 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +13,9 @@ import com.xt.client.util.DemoUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -106,7 +107,7 @@ public class SplashActivity extends AppCompatActivity {
 
     public void checkPermission() {
         List<String> checkPermission = new ArrayList<>();
-        checkPermission.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+//        checkPermission.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         checkPermission.add(Manifest.permission.ACCESS_FINE_LOCATION);//
         checkPermission.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);//启动
         checkPermission.add(Manifest.permission.INTERNET);//启动
