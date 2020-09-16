@@ -9,7 +9,7 @@ import android.view.View
 import com.xt.client.R
 
 class PerformanceActivity : BaseActivity() {
-
+    //Choreographer kao ri ao ge fe
     var printerBuilder = StringBuilder()
     var hander = Handler()
     var stopLooperCheck = false

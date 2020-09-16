@@ -28,6 +28,8 @@ public class PrepareMiddleActivity extends Activity {
         TextView descText = findViewById(R.id.desc_text);
         String str = "缓存状态:" + ((PrepareActivity.Companion.isOpenPrepare() ? "开启" : "关闭") + ",useTime:" + useTime);
         descText.setText(str);
-        Log.i("lxltest", str);
+        Log.i("lxltest", "onCreate time:" + System.currentTimeMillis());
     }
+
+
 }

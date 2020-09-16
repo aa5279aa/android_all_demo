@@ -47,10 +47,11 @@ android {
             multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-//        debug {
+        debug {
+            debuggable true
 //            multiDexEnabled true
 //            multiDexKeepFile file("maindexlist.txt")
-//        }
+        }
 
 //        prd {
 //            multiDexEnabled true

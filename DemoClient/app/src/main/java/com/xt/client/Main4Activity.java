@@ -19,7 +19,7 @@ import com.xt.client.aidl.ProcessAidlInter;
 import com.xt.client.model.UserModel;
 import com.xt.client.service.Other2ProcessService;
 import com.xt.client.service.OtherProcessService;
-import com.xt.client.util.ReflectionUtils;
+import com.xt.client.util.ReflectUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,10 +68,10 @@ public class Main4Activity extends Activity implements View.OnClickListener {
             //反射获取activityThread
             try {
                 Activity activity = Main4Activity.this;
-                Object mainThread = ReflectionUtils.getPrivateField(activity, Activity.class, "mMainThread");
+                Object mainThread = ReflectUtil.getPrivateField(activity, Activity.class, "mMainThread");
 
                 Log.i("lxltest", mainThread.toString());
-                Object global = ReflectionUtils.getPrivateField(getWindowManager(), "mGlobal");
+                Object global = ReflectUtil.getPrivateField(getWindowManager(), "mGlobal");
                 Log.i("lxltest", global.toString());
             } catch (Exception e) {
                 e.printStackTrace();

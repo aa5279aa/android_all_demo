@@ -22,8 +22,8 @@ class PageViewCache {
         }
         val context = DemoApplication.getInstance()
         val inflate = View.inflate(context, layoutId, null)
-        inflate.measure(1,1)
-        cacheMap.put(pageClassName, inflate)
+        inflate.measure(1, 1)
+        cacheMap[pageClassName] = inflate
     }
 
 

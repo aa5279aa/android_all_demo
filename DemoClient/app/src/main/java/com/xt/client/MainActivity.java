@@ -15,6 +15,7 @@ import com.xt.client.activitys.JNIActivity;
 import com.xt.client.activitys.PerformanceActivity;
 import com.xt.client.activitys.PrepareActivity;
 import com.xt.client.activitys.SaveLastActivity;
+import com.xt.client.activitys.ShowActivity;
 import com.xt.client.activitys.WCDBActivity;
 import com.xt.client.fragment.AidlFragment;
 import com.xt.client.fragment.ProtobuffFragment;
@@ -92,6 +93,13 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void doAction(String title) {
+        if (getString(R.string.test).equalsIgnoreCase(title)) {
+            Intent intent = new Intent();
+            intent.setClass(this, ShowActivity.class);
+            startActivity(intent);
+            return;
+        }
+
         if (getString(R.string.test_crash).equalsIgnoreCase(title)) {
             TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
@@ -100,7 +108,7 @@ public class MainActivity extends FragmentActivity {
                 // here to request the missing permissions, and then overriding
                 //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
                 //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
+                // to handle the case where the user grants the permission. See the documentationM
                 // for ActivityCompat#requestPermissions for more details.
                 return;
             }

@@ -44,6 +44,8 @@
         <activity android:name="com.xt.client.activitys.PerformanceActivity" />
         <activity android:name="com.xt.client.activitys.PrepareActivity" />
         <activity android:name="com.xt.client.activitys.prepare.PrepareMiddleActivity" />
+        <activity android:name="com.xt.client.activitys.ShowActivity" />
+
 
         <activity
             android:name="com.xt.client.activitys.AnnotationActivity"

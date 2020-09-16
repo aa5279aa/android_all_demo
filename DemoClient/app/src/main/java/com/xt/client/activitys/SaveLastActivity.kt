@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import com.xt.client.R
-import com.xt.client.util.ReflectionUtils
-import com.xt.client.util.ToastUtil
+import com.xt.client.util.ReflectUtil
 
 /**
  * 捕获并显示上一个activity的界面
@@ -46,10 +44,10 @@ class SaveLastActivity : BaseActivity() {
     }
 
     override fun onClick(v: View?) {
-        val global = ReflectionUtils.getPrivateField(windowManager, "mGlobal")
+        val global = ReflectUtil.getPrivateField(windowManager, "mGlobal")
 
-        val mViews = ReflectionUtils.getPrivateField(global, "mViews")
-        val mRoots = ReflectionUtils.getPrivateField(global, "mRoots")
+        val mViews = ReflectUtil.getPrivateField(global, "mViews")
+        val mRoots = ReflectUtil.getPrivateField(global, "mRoots")
 
         (mViews as? List<*>).let {
             if (it!!.size > 1) {
