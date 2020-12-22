@@ -1,10 +1,14 @@
 package com.xt.client;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Looper;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
@@ -16,11 +20,15 @@ import com.xt.client.activitys.PerformanceActivity;
 import com.xt.client.activitys.PrepareActivity;
 import com.xt.client.activitys.SaveLastActivity;
 import com.xt.client.activitys.ShowActivity;
+import com.xt.client.activitys.TestActivity;
 import com.xt.client.activitys.WCDBActivity;
 import com.xt.client.fragment.AidlFragment;
 import com.xt.client.fragment.ProtobuffFragment;
 import com.xt.client.fragment.TryCrashFragment;
 import com.xt.client.inter.RecyclerItemClickListener;
+import com.xt.client.service.MyHttpService;
+import com.xt.client.util.ToastUtil;
+import com.xt.client.widget.QuestionDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +75,10 @@ public class MainActivity extends FragmentActivity {
         dataList.add(new ItemState(getString(R.string.use_aidl), "done"));
         dataList.add(new ItemState(getString(R.string.prepareloadview), "ing"));
         dataList.add(new ItemState(getString(R.string.wcdb), "ing"));
+        dataList.add(new ItemState(getString(R.string.bluetooth), "ing"));
+        dataList.add(new ItemState(getString(R.string.update_location), "ing"));
+        dataList.add(new ItemState(getString(R.string.functiontest), "ing"));
+
 
         GridLayoutManager layout = new GridLayoutManager(this, 2);
         mRecycler.setLayoutManager(layout);
@@ -92,10 +104,44 @@ public class MainActivity extends FragmentActivity {
         }));
     }
 
+    private void requestAQuestion() {
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                // 模拟服务器请求，返回问题
+                String title = "鸿洋帅气吗？";
+                Looper.prepare();
+                QuestionDialog questionDialog = new QuestionDialog(MainActivity.this);
+                questionDialog.show(title);
+                Looper.loop();
+            }
+        }.start();
+    }
+
     private void doAction(String title) {
         if (getString(R.string.test).equalsIgnoreCase(title)) {
             Intent intent = new Intent();
-            intent.setClass(this, ShowActivity.class);
+            intent.setClass(this, MyHttpService.class);
+            startService(intent);
+            ToastUtil.showCenterToast("开启成功！");
+//            requestAQuestion();
+            return;
+        }
+
+        if (getString(R.string.update_location).equalsIgnoreCase(title)) {
+            Intent intent = new Intent();
+            intent.setClass(this, TestActivity.class);
+            startActivity(intent);
+            return;
+        }
+        if (getString(R.string.functiontest).equalsIgnoreCase(title)) {
+            Intent intent = new Intent();
+            intent.setClass(this, TestActivity.class);
             startActivity(intent);
             return;
         }

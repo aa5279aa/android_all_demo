@@ -47,6 +47,7 @@ class PrepareActivity : BaseActivity() {
 
 
     override fun onDestroy() {
+        Log.i("lxltest", this.javaClass.simpleName + ",onDestroy()")
         super.onDestroy()
         //当前界面返回时界面关闭，则没可能直接跳转到下一界面，所以缓存ViewPage也不需要了，需要删除
         PageViewCache.instance.clearCachePageView(PrepareMiddleActivity::class.java.name)
@@ -54,6 +55,7 @@ class PrepareActivity : BaseActivity() {
 
     override fun onStop() {
         super.onStop()
+        Log.i("lxltest", this.javaClass.simpleName + ",onStop()")
         if (!isOpenPrepare) {
             return
         }
@@ -64,6 +66,7 @@ class PrepareActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
+        Log.i("lxltest", this.javaClass.simpleName + ",onResume()")
         /**
          *  onResume之后才会把当前view挂载到windowManager，所以在这之后在使用idelHandler生成下一界面缓存.
          *  其实放到线程加载也OK，但是创建一个线程会耗费性能资源，有些浪费
@@ -81,7 +84,16 @@ class PrepareActivity : BaseActivity() {
         } else {
 
         }
+    }
 
+    override fun onPause() {
+        super.onPause()
+        Log.i("lxltest", this.javaClass.simpleName + ",onPause()")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("lxltest", this.javaClass.simpleName + ",onStart()")
     }
 
 }

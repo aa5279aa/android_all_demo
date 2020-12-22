@@ -31,5 +31,28 @@ public class PrepareMiddleActivity extends Activity {
         Log.i("lxltest", "onCreate time:" + System.currentTimeMillis());
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("lxltest", this.getClass().getSimpleName() + ",onResume()");
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("lxltest", this.getClass().getSimpleName() + ",onPause()");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("lxltest", this.getClass().getSimpleName() + ",onStart()");
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("lxltest", this.getClass().getSimpleName() + ",onStop()");
+    }
 }

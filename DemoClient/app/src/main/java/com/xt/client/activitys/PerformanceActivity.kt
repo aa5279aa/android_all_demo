@@ -69,8 +69,8 @@ class PerformanceActivity : BaseActivity() {
         //每3秒刷新一次结果
         viewHolder.resultText?.text = printerBuilder
         printerBuilder.setLength(0)
-        hander.postDelayed({
-            run {
+        hander.postDelayed(object : Runnable {
+            override fun run() {
                 showPrinterResult()
             }
         }, 3000)

@@ -54,6 +54,9 @@
         <activity
             android:name="com.xt.client.activitys.TestActivity"
             android:launchMode="singleTask" />
+        <activity
+            android:name="com.xt.client.activitys.LocationActivity"
+            android:launchMode="singleTask" />
 
         <service
             android:name=".service.OtherProcessService"
@@ -62,8 +65,10 @@
 
 
         <service android:name=".service.OnceProcessService" />
-        <service android:name=".service.ThreadService" />
+        <service android:name=".service.MyHttpService" />
         <service android:name="org.eclipse.paho.android.service.MqttService" />
+        <!--        <service android:name="com.xt.client.service.HttpService" />-->
+
     </application>
 
 </manifest>

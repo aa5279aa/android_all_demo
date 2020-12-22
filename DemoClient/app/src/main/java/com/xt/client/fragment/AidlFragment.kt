@@ -34,7 +34,7 @@ class AidlFragment : BaseFragment() {
         if (id == R.id.button1) {
 
             val intent = Intent()
-            intent.setClass(context, Other2ProcessService::class.java)
+            intent.setClass(context!!, Other2ProcessService::class.java)
             context?.bindService(intent, object : ServiceConnection {
                 override fun onServiceConnected(name: ComponentName, service: IBinder) {
                     processAidlInter = ProcessAidlInter.Stub.asInterface(service)
@@ -45,7 +45,6 @@ class AidlFragment : BaseFragment() {
                                 return service
                             }
 
-                            @Throws(RemoteException::class)
                             override fun callback(time: Int) {
                                 Log.i("lxltest", "time:" + time)
                             }

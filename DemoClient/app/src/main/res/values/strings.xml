@@ -17,5 +17,8 @@
     <string name="wcdb">wcdb数据库</string>
     <string name="checkfile">检查文件</string>
     <string name="flutter">Flutter混合开发</string>
+    <string name="bluetooth">蓝牙连接</string>
+    <string name="functiontest">界面测试</string>
+    <string name="update_location">定位修改</string>
 
 </resources>

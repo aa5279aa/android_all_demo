@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +39,8 @@ public class BlueToothActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.leftmenu_btreceiver);
         initPairingInfo();
+//        Class[] classes = {Integer.TYPE};
+//        Method createRfcommSocket = BluetoothDevice.class.getMethod("createRfcommSocket", new Class[]{Integer.TYPE});
     }
 
     /**

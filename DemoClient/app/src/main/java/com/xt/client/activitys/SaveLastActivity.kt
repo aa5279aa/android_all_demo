@@ -52,11 +52,11 @@ class SaveLastActivity : BaseActivity() {
         (mViews as? List<*>).let {
             if (it!!.size > 1) {
                 val view = it.get(0)
-                (view as? View).let {
-                    it?.setDrawingCacheEnabled(true)
-                    it?.buildDrawingCache()  //启用DrawingCache并创建位图
-                    val bitmap = Bitmap.createBitmap(it?.getDrawingCache()) //创建一个DrawingCache的拷贝，因为DrawingCache得到的位图在禁用后会被回收
-                    it?.setDrawingCacheEnabled(false)
+                (view as? View)?.let {
+                    it.setDrawingCacheEnabled(true)
+                    it.buildDrawingCache()  //启用DrawingCache并创建位图
+                    val bitmap = Bitmap.createBitmap(it.getDrawingCache()) //创建一个DrawingCache的拷贝，因为DrawingCache得到的位图在禁用后会被回收
+                    it.setDrawingCacheEnabled(false)
                     img?.setImageBitmap(bitmap)
                 }
             }

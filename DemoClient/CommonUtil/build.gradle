@@ -1,0 +1,112 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+repositories {
+    google()
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+
+apply plugin: 'maven-publish'
+
+project.version = "1.0.3"
+
+//打包main目录下代码和资源的 task
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+task jarMyLib(type: Jar, dependsOn: ['build']) {
+    archiveName = 'common-util.jar'
+    System.out.println("file:" + new File('build/intermediates/classes/release').getAbsolutePath())
+    from('build/intermediates/javac/release/compileReleaseJavaWithJavac/classes/')
+    destinationDir = file('build/libs')
+    exclude('android')//去掉android这个文件夹
+    exclude('androidx')//去掉android这个文件夹
+    exclude('io')//去掉io这个文件夹
+    exclude('com/commonrail/mft/http/BuildConfig.class')
+    exclude('com/commonrail/mft/http/BuildConfig\$*.class')
+    exclude('**/R.class')
+    exclude('**/R\$*.class')
+    manifest {
+        attributes(
+                'Implementation-Title': "${project.name}",
+                'Implementation-Version': "${version}",
+                'Built-Date': new Date().getDateTimeString(),
+                'Built-With': "gradle-${project.getGradle().getGradleVersion()},groovy-${GroovySystem.getVersion()}",
+                'Created-By': 'Java ' + System.getProperty('java.version') + ' (' + System.getProperty('java.vendor') + ')'
+        )
+    }
+}
+
+publishing {
+    publications {
+        mavenCustom(MavenPublication) {
+            groupId "com.common.util"
+            artifactId "common-util"
+            version project.version
+            //请使用 patch中的pushlishLibToRepository进行发布
+            artifact androidSourcesJar
+            artifact("build/libs/common-util.jar")
+//            artifact("build/intermediates/packaged-classes/release/classes.jar")
+        }
+    }
+    repositories {
+        maven {
+            if (project.version.endsWith('-SNAPSHOT')) {
+                url = "http://maven.51gonggui.com:81/nexus/content/repositories/snapshots/"
+            } else {
+                url = "http://maven.51gonggui.com:81/nexus/content/repositories/releases/"
+            }
+            credentials {
+                username 'deployment'
+                password 'gongGui_666'
+            }
+        }
+    }
+}
+
+task pushlishLibToRepository(dependsOn: ['jarMyLib', 'publishMavenCustomPublicationToMavenRepository']) {
+    group = 'patch'
+}
+
+configurations.all {
+    // check for updates every build
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
