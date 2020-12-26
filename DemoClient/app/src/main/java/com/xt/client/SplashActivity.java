@@ -101,7 +101,7 @@ public class SplashActivity extends AppCompatActivity {
         if (!isHaveAllPermission) {
             return;
         }
-        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        startActivity(new Intent(SplashActivity.this, MainActivity2.class));
         finish();
     }
 

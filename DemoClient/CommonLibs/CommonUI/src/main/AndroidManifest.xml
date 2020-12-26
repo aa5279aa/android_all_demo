@@ -1,0 +1,20 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.common.ui">
+
+    <application>
+
+        <activity android:name=".demoshow.CommonUIActivity" />
+        <activity
+            android:name=".activity.TestActivity"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".activity.GuideActivity"
+            android:screenOrientation="landscape" />
+
+
+    </application>
+
+
+</manifest>
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="confirm_no_blank">确认</string>
+    <string name="confirm_no_space">确定</string>
+    <string name="back">返回</string>
+    <string name="read_after">我已阅读</string>
+    <string name="notification_crs">共轨之家重要通知</string>
+</resources>

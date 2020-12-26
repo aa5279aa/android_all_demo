@@ -1,0 +1,94 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#00ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <RadioGroup
+            android:id="@+id/radio_group_switch"
+            android:layout_width="fill_parent"
+            android:layout_height="41dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp">
+
+            <RadioButton
+                android:id="@+id/radioButton0"
+                style="@style/text_15_666666"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:padding="0dp" />
+
+            <RadioButton
+                android:id="@+id/radioButton1"
+                style="@style/text_15_666666"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:padding="0dp" />
+
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                style="@style/text_15_666666"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                android:padding="0dp"
+                android:visibility="gone" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/anim_view0"
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="@color/color_blue" />
+
+        <View
+            android:id="@+id/anim_view1"
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="@color/color_blue"
+            android:visibility="invisible" />
+
+        <View
+            android:id="@+id/anim_view2"
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="@color/color_blue"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>

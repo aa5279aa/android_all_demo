@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CommonInfoBar">
+        <attr name="common_infobar_title_text" format="string" localization="suggested" />
+        <attr name="common_infobar_title_appearance" format="integer" />
+        <attr name="common_infobar_title_label_width" format="dimension" />
+        <attr name="common_infobar_title_gravity">
+            <enum name="center" value="0" />
+            <enum name="top" value="1" />
+            <enum name="bottom" value="2" />
+        </attr>
+
+        <attr name="common_infobar_value_text" format="string" localization="suggested" />
+        <attr name="common_infobar_value_appearance" format="integer" />
+        <attr name="common_infobar_value_gravity">
+            <enum name="center" value="0" />
+            <enum name="top" value="1" />
+            <enum name="bottom" value="2" />
+            <enum name="right" value="3" />
+            <enum name="left" value="4" />
+        </attr>
+
+        <attr name="common_infobar_hint_text" format="string" localization="suggested" />
+        <attr name="common_infobar_hint_appearance" format="integer" />
+
+        <attr name="common_infobar_hasArrow" format="boolean" />
+        <attr name="common_infobar_arrow_drawable" format="reference" />
+        <attr name="common_infobar_arrow_width" format="dimension" />
+        <attr name="common_infobar_arrow_height" format="dimension" />
+
+        <attr name="common_infobar_icon_drawable" format="reference" />
+        <attr name="common_infobar_icon_width" format="dimension" />
+        <attr name="common_infobar_icon_height" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CommonTabGroupButton">
+        <attr name="common_tabbutton_is_match_font" format="boolean" />
+        <attr name="common_tabbutton_size" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="CommonTitleBar">
+        <attr name="common_title" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="CommonHorizontalProgressBar">
+        <attr name="progress_unreached_color" format="color" />
+        <attr name="progress_reached_color" format="color" />
+        <attr name="progress_reached_bar_height" format="dimension" />
+        <attr name="progress_unreached_bar_height" format="dimension" />
+        <attr name="progress_text_size" format="dimension" />
+        <attr name="progress_text_color" format="color" />
+        <attr name="progress_text_offset" format="dimension" />
+        <attr name="progress_text_visibility" format="enum">
+            <enum name="visible" value="0" />
+            <enum name="invisible" value="1" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CommonRoundProgressBar">
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="RectProgressBar">
+        <attr name="progress_current" format="integer"/>
+        <attr name="progress_max" format="integer"/>
+
+        <attr name="rect_progress_unreached_color" format="color"/>
+        <attr name="rect_progress_reached_color" format="color"/>
+
+        <attr name="rect_progress_reached_bar_height" format="dimension"/>
+        <attr name="rect_progress_unreached_bar_height" format="dimension"/>
+
+        <attr name="rect_progress_text_size" format="dimension"/>
+        <attr name="rect_progress_text_color" format="color"/>
+
+        <attr name="rect_progress_text_offset" format="dimension"/>
+
+        <attr name="rect_progress_text_visibility" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CommonSettingSwitchBar">
+        <attr name="common_drawable_src" format="reference" />
+        <attr name="common_title_color" format="reference" />
+        <attr name="common_title_size" format="reference|dimension" />
+        <attr name="common_drawable_width" format="dimension" />
+        <attr name="common_drawable_height" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CommonTextView">
+        <attr name="common_text_drawable_src" format="reference" />
+        <attr name="common_text_drawable_direction">
+            <enum name="common_left" value="0" />
+            <enum name="common_top" value="1" />
+            <enum name="common_right" value="2" />
+            <enum name="common_bottom" value="3" />
+        </attr>
+        <attr name="common_text_drawable_width" format="dimension" />
+        <attr name="common_text_drawable_height" format="dimension" />
+        <attr name="common_text_drawable_padding" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CommonDrawableTextView">
+        <attr name="common_text" format="string" />
+        <attr name="common_text_color" format="color"/>
+        <attr name="common_text_size" format="dimension"/>
+        <attr name="common_text_style" format="integer"/>
+        <attr name="common_drawable_src_c" format="reference" />
+        <attr name="common_drawable_width_c" format="dimension" />
+        <attr name="common_drawable_height_c" format="dimension" />
+        <attr name="common_drawable_margin_right" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CommonStateButton">
+        <attr name="text_color_normal" format="color"/>
+        <attr name="text_color_unable" format="color"/>
+        <attr name="text_color_pressed" format="color"/>
+
+        <attr name="bg_normal" format="reference"/>
+        <attr name="bg_unable" format="reference"/>
+        <attr name="bg_pressed" format="reference"/>
+
+        <attr format="dimension" name="btn_round_radius"/>
+
+        <attr name="state">
+            <enum name="normal" value="0" />
+            <enum name="unable" value="1" />
+            <enum name="pressed" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="TagFlowLayout"><attr format="integer" name="max_select"/><attr name="tag_gravity">
+        <enum name="left" value="-1"/>
+        <enum name="center" value="0"/>
+        <enum name="right" value="1"/>
+    </attr></declare-styleable>
+    <string name="app_name">flowlayout-lib</string>
+    <string name="gravity_center">center</string>
+    <string name="gravity_left">left</string>
+    <string name="gravity_right">right</string>
+
+    <declare-styleable name="CommonTextProgressbar">
+        <attr name="progress_color" format="color" />
+    </declare-styleable>
+
+</resources>

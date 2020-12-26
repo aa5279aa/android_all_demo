@@ -2,6 +2,8 @@
 
 buildscript {
     ext.kotlin_version = '1.2.61'
+    //升级到1.4.0有问题
+//    ext.kotlin_version = '1.4.0'
     repositories {
 //        google()
         maven { url 'https://maven.aliyun.com/repository/google' }
@@ -23,12 +25,13 @@ buildscript {
 
 allprojects {
     repositories {
-//        jcenter()
+        jcenter()
 //        google()
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
         maven { url "https://jitpack.io" }
+//        maven { url "https://google.bintray.com/TensorFlow" }
     }
 }
 

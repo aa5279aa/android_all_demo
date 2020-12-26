@@ -36,6 +36,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.xt.client.MainActivity" />
+        <activity android:name="com.xt.client.MainActivity2" />
         <activity android:name="com.xt.client.ProtoActivity" />
         <activity android:name="com.xt.client.Main4Activity" />
         <activity android:name="com.xt.client.activitys.SaveLastActivity" />

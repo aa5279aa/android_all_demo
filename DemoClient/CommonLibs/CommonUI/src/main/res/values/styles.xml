@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="NativeInsertDialog" parent="@android:style/Theme.Holo.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@color/color_transparent</item>
+        <item name="android:windowBackground">@color/color_transparent</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimAmount">0.55</item>
+    </style>
+
+    <style name="text_15_ff0000">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#ff0000</item>
+    </style>
+
+    <!--字体样式库-->
+    <style name="text_16_666666">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#666666</item>
+    </style>
+
+    <style name="text_26_ffffff_b">
+        <item name="android:textSize">@dimen/sp20</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_24_ffffff_b">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_28_ffffff_b">
+        <item name="android:textSize">@dimen/sp24</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_40_3e59d2">
+        <item name="android:textSize">@dimen/sp30</item>
+        <item name="android:textColor">#3e59d2</item>
+    </style>
+
+    <style name="text_19_2152c6">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">#2152c6</item>
+    </style>
+
+    <style name="text_12_999999">
+        <item name="android:textColor">#999999</item>
+        <item name="android:textSize">@dimen/sp12</item>
+    </style>
+
+    <style name="text_12_333333">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/dip12</item>
+    </style>
+
+    <style name="text_7_333333">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/sp7</item>
+    </style>
+
+    <style name="text_14_333333">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/sp14</item>
+    </style>
+
+    <style name="text_15_333333">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="text_18_f16b57">
+        <item name="android:textColor">#f16b57</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="text_17_e6242d">
+        <item name="android:textColor">#e6242d</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="text_15_333333_b">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="text_16_333333">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="text_17_333333">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="text_34_333333">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">34sp</item>
+    </style>
+
+    <style name="text_17_333333_b">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_19_333333">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">19dp</item>
+    </style>
+
+    <style name="text_21_333333">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">21dp</item>
+    </style>
+
+    <style name="text_19_333333_b">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">19dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_21_333333_b">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">21dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="text_18_999999">
+        <item name="android:textColor">#999999</item>
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
+
+
+    <style name="text_16_999999">
+        <item name="android:textColor">#999999</item>
+        <item name="android:textSize">@dimen/sp16</item>
+    </style>
+
+    <style name="text_18_333333">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
+
+    <style name="text_15_666666">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#666666</item>
+    </style>
+
+    <style name="text_17_017afe">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">#017afe</item>
+    </style>
+
+    <style name="text_15_000000">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="text_18_000000">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="text_16_151a30">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#151a30</item>
+    </style>
+
+    <style name="text_22_151a30">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">#151a30</item>
+    </style>
+
+    <style name="text_12_ffffff">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+
+    <style name="text_14_ffffff">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="text_16_ffffff">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="text_17_ffffff">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="text_19_ffffff">
+        <item name="android:textSize">19dp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="text_19_ffffff_b">
+        <item name="android:textSize">19dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_20_ffffff">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="text_20_ffffff_b">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_22_ffffff_b">
+        <item name="android:textSize">22dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="text_21_ffffff">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="text_24_ffffff">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="text_16_30354d">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#30354d</item>
+    </style>
+
+    <style name="text_18_3e59d2">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#3e59d2</item>
+    </style>
+
+    <style name="text_20_3e59d2">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">#3e59d2</item>
+    </style>
+
+    <style name="text_22_3e59d2_b">
+        <item name="android:textSize">22dp</item>
+        <item name="android:textColor">#3e59d2</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_23_3e59d2_b">
+        <item name="android:textSize">36px</item>
+        <item name="android:textColor">#3e59d2</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- new Common style start -->
+    <style name="common_btn_style_back">
+        <item name="android:layout_width">@dimen/dip80</item>
+        <item name="android:layout_height">@dimen/dip26</item>
+        <item name="android:layout_marginEnd">@dimen/dip8</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/common_button_selector_back</item>
+    </style>
+
+    <style name="common_btn_style_exit">
+        <item name="android:layout_width">@dimen/dip80</item>
+        <item name="android:layout_height">@dimen/dip26</item>
+        <item name="android:layout_marginStart">@dimen/dip8</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/dip12</item>
+        <item name="android:textColor">@color/color_ffffff</item>
+        <item name="android:background">@drawable/common_button_selector_red</item>
+    </style>
+
+    <style name="common_btn_style_blue">
+        <item name="android:layout_width">@dimen/dip80</item>
+        <item name="android:layout_height">@dimen/dip26</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/dip12</item>
+        <item name="android:textColor">@color/color_ffffff</item>
+        <item name="android:background">@drawable/common_button_selector_blue</item>
+    </style>
+
+    <style name="common_btn_style_blue_hollow">
+        <item name="android:layout_width">@dimen/dip80</item>
+        <item name="android:layout_height">@dimen/dip26</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/dip12</item>
+        <item name="android:textColor">@color/color_blue</item>
+        <item name="android:background">@drawable/common_button_selector_blue_hollow</item>
+    </style>
+
+    <style name="common_btn_style_blue_hollow_pc">
+        <item name="android:layout_width">@dimen/dip40</item>
+        <item name="android:layout_height">@dimen/dip12</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/sp7</item>
+        <item name="android:textColor">@color/color_blue</item>
+        <item name="android:background">@drawable/common_button_selector_blue_hollow</item>
+    </style>
+
+    <style name="common_checkbox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/common_checkbox_selector</item>
+
+    </style>
+
+    <style name="common_tag_blue_style">
+        <item name="android:layout_width">@dimen/dip2</item>
+        <item name="android:layout_height">@dimen/dip14</item>
+        <item name="android:background">@color/color_blue</item>
+    </style>
+
+    <style name="common_tag_blue_style_pc">
+        <item name="android:layout_width">@dimen/dip2</item>
+        <item name="android:layout_height">@dimen/dip8</item>
+        <item name="android:background">@color/color_3382ff</item>
+    </style>
+    <!-- new Common style end -->
+
+</resources>

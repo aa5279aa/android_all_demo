@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <item android:drawable="@drawable/original_common_corner_272845_a68_r50" android:state_selected="true" />
+    <item android:drawable="@drawable/original_common_corner_ffffff_r50" />
+</selector>
