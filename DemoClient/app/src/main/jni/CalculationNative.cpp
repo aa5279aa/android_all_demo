@@ -8,12 +8,12 @@
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 
 
-//如何转换问题，后续再查
 char *ConvertJcharArray2Chars(JNIEnv *env, jcharArray chars) {
     jchar *array = (env)->GetCharArrayElements(chars, NULL);
     jsize arraysize = (env)->GetArrayLength(chars);
 
-    char buf[arraysize + 1];
+    char *buf = new char[arraysize + 1];
+//    char buf[arraysize + 1];
     LOGI("arraysize:%i", arraysize);
     int i = 0;
     for (i = 0; i < arraysize; i++) {
@@ -23,17 +23,23 @@ char *ConvertJcharArray2Chars(JNIEnv *env, jcharArray chars) {
     return buf;
 }
 
-char *ConvertJByteaArrayToChars(JNIEnv *env, jbyteArray bytearray) {
+char *ConvertJByteaArrayToChars(JNIEnv *env, jbyteArray bytearray, char *charsChar) {
     char *chars = NULL;
     jbyte *bytes;
     bytes = env->GetByteArrayElements(bytearray, 0);
+    LOGI("ConvertJByteaArrayToChars3:%s", charsChar);
     int chars_len = env->GetArrayLength(bytearray);
     LOGI("chars_len:%d", chars_len);
+    LOGI("ConvertJByteaArrayToChars3.1:%s", charsChar);
     chars = new char[chars_len + 1];
+    LOGI("ConvertJByteaArrayToChars3.2:%s,%s", charsChar, chars);
     memset(chars, 0, chars_len + 1);
+    LOGI("ConvertJByteaArrayToChars3.3:%s,%s", charsChar, chars);
     memcpy(chars, bytes, chars_len);
+    LOGI("ConvertJByteaArrayToChars3.4:%s", charsChar);
     chars[chars_len] = 0;
     env->ReleaseByteArrayElements(bytearray, bytes, 0);
+    LOGI("ConvertJByteaArrayToChars3.5:%s", charsChar);
     return chars;
 }
 
@@ -41,7 +47,7 @@ char *getChar(jint value1,
               jint value2, const char *str1, jdouble double1,
               char *chars, char *bytes) {
 
-    char buf[10];
+    char *buf = new char[10];
 
 
     char s1[10] = "wayne";
@@ -66,6 +72,8 @@ char *getChar(jint value1,
     strcat(buf, local);
     LOGI("buff:%s local:%s", buf, local);//1234
 
+    LOGI("chars:%s", chars);//12345
+
     strcat(buf, chars);//这个转换有问题
     LOGI("buff:%s chars:%s", buf, chars);//12345
 
@@ -79,19 +87,43 @@ jstring JNICALL
 Java_com_xt_client_jni_CalculationJNITest_calculationSum(JNIEnv *env, jobject instance, jint value1,
                                                          jint value2, jstring str1, jdouble double1,
                                                          jcharArray chars, jbyteArray bytes) {
-
+    //std::string 
     //两个数字相加，转换为string类型，然后拼接后面的所有字符串
     const char *thirdStr = env->GetStringUTFChars(str1, 0);
     LOGI("%s", "ConvertJcharArray2Chars");
     char *charsChar = ConvertJcharArray2Chars(env, chars);
     LOGI("ConvertJByteaArrayToChars:%s", charsChar);
-    char *bytesChar = ConvertJByteaArrayToChars(env, bytes);
-    LOGI("bytesChar:%s", bytesChar);//
     LOGI("ConvertJByteaArrayToChars2:%s", charsChar);
+    char *bytesChar = ConvertJByteaArrayToChars(env, bytes, charsChar);
+    LOGI("ConvertJByteaArrayToChars4:%s", charsChar);
+    LOGI("bytesChar:%s", bytesChar);//
     char *buf = getChar(value1, value2, thirdStr, double1, charsChar, bytesChar);
     LOGI("%s %s", "buf is:", buf);
     jstring computerName = env->NewStringUTF(buf);
+    delete[] buf;
     return computerName;
+}
+
+JNICALL jobject
+Java_com_xt_client_jni_CalculationJNITest_updateObjectValue(JNIEnv *env, jobject instance,
+                                                            jobject model) {
+
+    jclass cls = env->GetObjectClass(model);
+    jfieldID fid = env->GetFieldID(cls, "name", "Ljava/lang/String;");
+    jstring jstr = static_cast<jstring>(env->GetObjectField(model, fid));
+    const char *str = env->GetStringUTFChars(jstr, NULL);
+    env->ReleaseStringUTFChars(jstr, str);
+    jstr = env->NewStringUTF("lll");
+    env->SetObjectField(model, fid, jstr);
+    jmethodID id = env->GetMethodID(cls, "printJavaLog", "()V");
+    env->CallVoidMethod(model, id);
+    id = env->GetMethodID(cls, "setMoblie", "(Ljava/lang/String;)V");
+    jstring mobile = env->NewStringUTF("187000000");
+    env->CallVoidMethod(model, id, mobile);
+    id = env->GetMethodID(cls, "getMoblie", "()Ljava/lang/String;");
+    jstring moblie2 = static_cast<jstring>(env->CallObjectMethod(model, id));
+    LOGI("getMoblie:%s", env->GetStringUTFChars(moblie2, 0));//
+    return model;
 }
 
 

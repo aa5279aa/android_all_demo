@@ -15,6 +15,9 @@ extern "C" {
 JNIEXPORT jstring JNICALL Java_com_xt_client_jni_CalculationJNITest_calculationSum
   (JNIEnv *, jobject, jint, jint, jstring, jdouble, jcharArray, jbyteArray);
 
+JNIEXPORT jobject JNICALL Java_com_xt_client_jni_CalculationJNITest_updateObjectValue
+        (JNIEnv *, jobject, jobject);
+
 #ifdef __cplusplus
 }
 #endif

@@ -23,6 +23,11 @@ add_library(
         SHARED
         src/main/jni/CalculationNative.cpp)
 
+add_library(
+        DynamicRegister
+        SHARED
+        src/main/jni/DynamicNaitveRegister.cpp)
+
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
 # default, you only need to specify the name of the public NDK library

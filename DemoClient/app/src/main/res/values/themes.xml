@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="transparent.Theme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowNoDisplay">false</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>
