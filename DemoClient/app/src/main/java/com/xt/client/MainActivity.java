@@ -19,6 +19,7 @@ import com.xt.client.activitys.ShowActivity;
 import com.xt.client.activitys.WCDBActivity;
 import com.xt.client.fragment.AidlFragment;
 import com.xt.client.fragment.ProtobuffFragment;
+import com.xt.client.activitys.ThreadRefreshActivity;
 import com.xt.client.fragment.TryCrashFragment;
 import com.xt.client.inter.RecyclerItemClickListener;
 
@@ -67,6 +68,7 @@ public class MainActivity extends FragmentActivity {
         dataList.add(new ItemState(getString(R.string.use_aidl), "done"));
         dataList.add(new ItemState(getString(R.string.prepareloadview), "ing"));
         dataList.add(new ItemState(getString(R.string.wcdb), "ing"));
+        dataList.add(new ItemState(getString(R.string.threadrefresh), "ing"));
 
         GridLayoutManager layout = new GridLayoutManager(this, 2);
         mRecycler.setLayoutManager(layout);
@@ -150,6 +152,8 @@ public class MainActivity extends FragmentActivity {
             intent.setClass(MainActivity.this, PrepareActivity.class);
         } else if (getString(R.string.wcdb).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, WCDBActivity.class);
+        } else if (getString(R.string.threadrefresh).equalsIgnoreCase(title)) {
+            intent.setClass(MainActivity.this, ThreadRefreshActivity.class);
         } else {
             return;
         }

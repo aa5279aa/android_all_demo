@@ -15,6 +15,7 @@
     <string name="test_crash">触发crash</string>
     <string name="breakpoint_download">断点续传</string>
     <string name="wcdb">wcdb数据库</string>
+    <string name="threadrefresh">子线程刷新UI</string>
     <string name="checkfile">检查文件</string>
     <string name="flutter">Flutter混合开发</string>
 

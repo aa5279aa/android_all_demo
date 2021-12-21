@@ -12,10 +12,8 @@ cmake_minimum_required(VERSION 3.4.1)
 
 add_library( # Sets the name of the library.  设置生成so文件名
         Java2C
-
         # Sets the library as a shared library.
         SHARED
-
         # Provides a relative path to your source file(s).  要编译的C/C++文件
         src/main/jni/Java2C.cpp)
 add_library(
@@ -52,6 +50,11 @@ target_link_libraries( # Specifies the target library. 指定连接的目标库
         ${log-lib})
 target_link_libraries( # Specifies the target library. 指定连接的目标库
         Calculation
+        # Links the target library to the log library
+        # included in the NDK.
+        ${log-lib})
+target_link_libraries( # Specifies the target library. 指定连接的目标库
+        DynamicRegister
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})

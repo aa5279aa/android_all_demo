@@ -55,7 +55,8 @@ class SaveLastActivity : BaseActivity() {
                 (view as? View).let {
                     it?.setDrawingCacheEnabled(true)
                     it?.buildDrawingCache()  //启用DrawingCache并创建位图
-                    val bitmap = Bitmap.createBitmap(it?.getDrawingCache()) //创建一个DrawingCache的拷贝，因为DrawingCache得到的位图在禁用后会被回收
+                    val bitmap =
+                        it?.getDrawingCache()?.let { it1 -> Bitmap.createBitmap(it1) } //创建一个DrawingCache的拷贝，因为DrawingCache得到的位图在禁用后会被回收
                     it?.setDrawingCacheEnabled(false)
                     img?.setImageBitmap(bitmap)
                 }

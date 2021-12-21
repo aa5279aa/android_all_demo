@@ -1,71 +1,108 @@
 package com.xt.client.activitys
 
-import android.os.Bundle
-import android.view.View
-import com.xt.client.R
 import com.xt.client.jni.CalculationJNITest
 import com.xt.client.jni.DynamicRegister
 import com.xt.client.jni.Java2CJNI
 import com.xt.client.model.JavaModel
 import com.xt.client.util.IOHelper
+import com.xt.client.util.LogUtil
+import java.io.File
 
+//改成recyclerView，一行两个。底部输出值
+class JNIActivity : Base2Activity() {
 
-class JNIActivity : BaseActivity() {
-
-    var num1: Int = 0
-    var num2: Int = 0
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewHolder.button1?.text = "JNI输出"
-        viewHolder.button2?.text = "JNI加法"
-        viewHolder.button3?.text = "JNI更改属性值"
-        viewHolder.button4?.text = "动态注册"
-        num1 = Math.random().toInt()
-        num2 = Math.random().toInt()
-        viewHolder.line2?.visibility = View.VISIBLE
+    override fun getShowData(): List<String> {
+        return mutableListOf<String>().apply {
+            this.add("JNI基础调用")//0 课程1等等
+            this.add("JNI多类型输入加法")//1
+            this.add("JNI更改属性值")//2
+            this.add("动态注册")//3
+            this.add("读取文件")//4
+            this.add("JNI线程通知安卓")//5
+            this.add("加密解密")//6
+        }
     }
 
-
-    override fun onClick(v: View?) {
-
-        if (v?.id == R.id.button1) {
+    override fun clickItem(position: Int) {
+        if (position == 0) {
             var java2CJNI = Java2CJNI()
             val result = java2CJNI.java2C()
-            viewHolder.resultText?.text = result
-        } else if (v?.id == R.id.button2) {
+            mResult.text = result
+            return
+        }
+        if (position == 1) {
             var calculationJNITest = CalculationJNITest()
             val inputStreamFromUrl = IOHelper.fromStringToIputStream("6")
             val input2byte = IOHelper.input2byte(inputStreamFromUrl)
             try {
                 val calculationSum =
                     calculationJNITest.calculationSum(1, 2, "3", 4.0, "5".toCharArray(), input2byte)
-                viewHolder.resultText?.text = calculationSum
+                mResult.text = calculationSum
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
-        } else if (v?.id == R.id.button3) {
+            return
+        }
+        if (position == 2) {
             try {
                 var calculationJNITest = CalculationJNITest()
                 val javaModel = JavaModel()
                 javaModel.age = 10
-                javaModel.moblie = "17863333330"
+                javaModel.moblie = "17863333333"
                 javaModel.name = "lxl"
                 val calculationSum = calculationJNITest.updateObjectValue(javaModel)
-                viewHolder.resultText?.text = javaModel.moblie
+                mResult.text = javaModel.moblie
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-        } else if (v?.id == R.id.button4) {
-            //动态注册
+            return
+        }
+        if (position == 3) {
             var dynamicRegister = DynamicRegister()
             val result = dynamicRegister.encryptionStr("aaa")
             val result2 = DynamicRegister.staticencryptionStr("bbb")
-            viewHolder.resultText?.text = "$result,$result2"
-
+            mResult.text = "$result,$result2"
+            return
         }
+        var dynamicRegister = DynamicRegister()
+        if (position == 4) {
+            val file = File(filesDir.absolutePath + File.separator + "a.txt")
+            IOHelper.writerStrByCodeToFile(file, "utf-8", false, "hello world")
+            //动态注册
+            val readStrByPath = dynamicRegister.readStrByPath(file.absolutePath)
+            mResult.text = "$readStrByPath"
+            return
+        }
+        if (position == 5) {
+            //C层启动一个线程，主动通知java层的刷新界面。
+            dynamicRegister.refresh("ttA", this)
+            return
+        }
+        if (position == 6) {
 
+            /**
+             * 字符串加密，输出加密后的字符串。
+             * 简单把字符串的assic码*2-1，生成一串int数组
+             */
+            val encryption = dynamicRegister.encryption("12345abcde")
+            LogUtil.logI(encryption)
+            mResult.text = encryption
+            /**
+             * 字符串解密，输出解密后的字符串
+             */
+            val decrypt = dynamicRegister.decrypt(encryption)
+            LogUtil.logI(decrypt)
+            return
+        }
     }
 
+
+    /**
+     * 供native方法调用通知安卓刷新
+     * 这里是子线程刷新UI哦，并且可以正常运行不会报错，原因可以参考TextView源码中checkForRelayout方法
+     */
+    fun showMessage(str: String) {
+        LogUtil.logI("showMessage:$str")
+        mResult.text = str
+    }
 }

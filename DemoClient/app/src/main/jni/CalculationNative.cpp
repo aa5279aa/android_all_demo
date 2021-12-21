@@ -2,6 +2,7 @@
 #include <complex.h>
 #include "com_xt_client_jni_CalculationJNITest.h"
 #include <android/log.h>
+
 #include <stdlib.h>
 
 #define LOG_TAG "lxltestjni"
@@ -27,6 +28,7 @@ char *ConvertJByteaArrayToChars(JNIEnv *env, jbyteArray bytearray, char *charsCh
     char *chars = NULL;
     jbyte *bytes;
     bytes = env->GetByteArrayElements(bytearray, 0);
+    __android_log_print(0,"111%s","111");
     LOGI("ConvertJByteaArrayToChars3:%s", charsChar);
     int chars_len = env->GetArrayLength(bytearray);
     LOGI("chars_len:%d", chars_len);
@@ -121,8 +123,8 @@ Java_com_xt_client_jni_CalculationJNITest_updateObjectValue(JNIEnv *env, jobject
     jstring mobile = env->NewStringUTF("187000000");
     env->CallVoidMethod(model, id, mobile);
     id = env->GetMethodID(cls, "getMoblie", "()Ljava/lang/String;");
-    jstring moblie2 = static_cast<jstring>(env->CallObjectMethod(model, id));
-    LOGI("getMoblie:%s", env->GetStringUTFChars(moblie2, 0));//
+    auto moblie2 = (env->CallObjectMethod(model, id));
+    LOGI("getMoblie:%s", env->GetStringUTFChars(static_cast<jstring>(moblie2), 0));//
     return model;
 }
 

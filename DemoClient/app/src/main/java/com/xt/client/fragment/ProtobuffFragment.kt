@@ -16,7 +16,7 @@ import java.util.concurrent.Executors
 /**
  * baseUrl:http://127.0.0.1:5389/ProtobufWeb/test/serviceCode=10001&uid=S001
  */
-class ProtobuffFragment : BaseFragment(){
+class ProtobuffFragment : BaseFragment() {
 
     //如果真做服务，后续其实服务号和uid也应该加入序列化的内容
     var baseUrl = "http://127.0.0.1:5389/ProtobufWeb/test/serviceCode=10001&uid=S001"
@@ -34,12 +34,16 @@ class ProtobuffFragment : BaseFragment(){
 
     }
 
+    var i = 0;
     override fun onClick(v: View?) {
         val id = v?.id
         if (id == R.id.button1) {
             startDemoRequest()
         } else if (id == R.id.button2) {
-            throw NullPointerException("null point")
+//            throw NullPointerException("null point")
+            Thread(Runnable {
+                viewHolder?.resultText?.text = "haha" + (i++)
+            }).start()
         }
 
     }
@@ -57,7 +61,8 @@ class ProtobuffFragment : BaseFragment(){
         threadPool.execute {
             try {
                 var rulConnection: URLConnection? = null// 此处的urlConnection对象实际上是根据URL的
-                val url = URL("http://10.32.151.155:5389/ProtobufWeb/test/serviceCode=10001&uid=S001")//不同的接口返回不同的数据
+                val url =
+                    URL("http://10.32.151.155:5389/ProtobufWeb/test/serviceCode=10001&uid=S001")//不同的接口返回不同的数据
                 rulConnection = url.openConnection()
                 val httpUrlConnection = rulConnection as HttpURLConnection?
                 httpUrlConnection!!.requestMethod = "POST"
@@ -71,7 +76,10 @@ class ProtobuffFragment : BaseFragment(){
                 val demoResponse = DemoResponse()
                 ProtoSerialize.unSerialize(demoResponse, input2byte)
 
-                Log.i("lxltest", "result:" + demoResponse.result + ",resultCode:" + demoResponse.resultCode + ",resultMessage:" + demoResponse.resultMessage)
+                Log.i(
+                    "lxltest",
+                    "result:" + demoResponse.result + ",resultCode:" + demoResponse.resultCode + ",resultMessage:" + demoResponse.resultMessage
+                )
             } catch (e: Exception) {
                 e.printStackTrace()
             }
