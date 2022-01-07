@@ -37,6 +37,19 @@ jstring nativeStaticEncryptionStr(JNIEnv *env, jclass clazz, jstring value) {
     return env->NewStringUTF(result.c_str());;
 }
 
+//传入类型，
+jclass nativeGetSuperClassName(JNIEnv *env, jobject object, jstring clazz) {
+    LOGI("clazz1");
+    const char *className = env->GetStringUTFChars(clazz, JNI_FALSE);
+    LOGI("clazz2:%s", className);
+    jclass aClass = env->FindClass(className);
+    LOGI("clazz3");
+    jclass pJclass = env->GetSuperclass(aClass);
+    LOGI("clazz4");
+    return pJclass;
+}
+
+
 int file_read(int fd, unsigned char *buf, int size) {
     return read(fd, buf, size);
 }
@@ -121,18 +134,17 @@ jstring nativeReadStrByPath(JNIEnv *env, jobject object, jstring path) {
 }
 
 jstring nativeDecrypt(JNIEnv *env, jobject object, jstring ciphertext) {
-    const char *charCiphertext= env->GetStringUTFChars(ciphertext, JNI_FALSE);
+    const char *charCiphertext = env->GetStringUTFChars(ciphertext, JNI_FALSE);
     const char split[] = ",";
     char outText[100];
     strcpy(outText, charCiphertext);
-    char* res = strtok(outText, split);//203转为int
+    char *res = strtok(outText, split);//203转为int
     std::string result;
-    while (res != NULL)
-    {
+    while (res != NULL) {
         //res转为int，-1之后除以2。
         int i = atoi(res);
-        char u = (char)((i-1)/2);
-        string str(1,u);
+        char u = (char) ((i - 1) / 2);
+        string str(1, u);
         result.append(str);
         res = strtok(NULL, split);
     }
@@ -142,20 +154,19 @@ jstring nativeDecrypt(JNIEnv *env, jobject object, jstring ciphertext) {
 //简单把字符串的assic码*2-1，生成一串int数组,转换为字符串返回
 jstring nativeEncryption(JNIEnv *env, jobject object, jstring plaintext) {
     const char *charPlain = env->GetStringUTFChars(plaintext, JNI_FALSE);
-    int i=0;
+    int i = 0;
     // int pos[] = new int[10];
-    int pos[] = {0, 0, 0, 0, 0, 0, 0, 0,0,0};
-    while (i<strlen(charPlain))
-    {
+    int pos[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    while (i < strlen(charPlain)) {
         // cout<<i<<","<< content[i]<<endl;
         // pos[i]=atoi(content[i]);
-        pos[i] = (int)(charPlain[i])*2+1;
+        pos[i] = (int) (charPlain[i]) * 2 + 1;
         i++;
     }
     //转为string
     std::string str;
-    for(i=0;i<sizeof(pos)/sizeof(int);i++){
-        str.append(std::to_string(pos[i])+",");
+    for (i = 0; i < sizeof(pos) / sizeof(int); i++) {
+        str.append(std::to_string(pos[i]) + ",");
     }
     jstring pJstring = env->NewStringUTF(str.c_str());
     return pJstring;
@@ -180,6 +191,7 @@ static JNINativeMethod method_table[] = {
         {"refresh",             "(Ljava/lang/String;Landroid/app/Activity;)V", (jstring *) nativeRefresh},
         {"decrypt",             "(Ljava/lang/String;)Ljava/lang/String;",      (jstring *) nativeDecrypt},
         {"encryption",          "(Ljava/lang/String;)Ljava/lang/String;",      (jstring *) nativeEncryption},
+        {"getSuperClassName",   "(Ljava/lang/String;)Ljava/lang/Class;",       (jclass *) nativeGetSuperClassName},
 
 
 };

@@ -60,7 +60,7 @@ public class ReflectUtil {
      * @throws InvocationTargetException
      * @throws IllegalAccessException
      */
-    public static Object invokePrivateMethod(Object instance, String methodName, Class[] classes, String objects) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public static Object invokePrivateMethod(Object instance, String methodName, Class[] classes, Object objects) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = instance.getClass().getDeclaredMethod(methodName, classes);
         method.setAccessible(true);
         return method.invoke(instance, objects);

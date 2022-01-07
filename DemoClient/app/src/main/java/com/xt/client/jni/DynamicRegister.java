@@ -37,6 +37,13 @@ public class DynamicRegister {
      * @return
      */
     public native String encryption(String plaintext);
+
+    /**
+     * 根据类名查找父类名
+     * @param class
+     * @return
+     */
+    public native Class getSuperClassName(String className);
 }
 
 

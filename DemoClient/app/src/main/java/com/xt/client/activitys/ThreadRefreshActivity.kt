@@ -4,16 +4,22 @@ import android.app.Dialog
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.Message
+import android.view.View
 
 class ThreadRefreshActivity : Base2Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Thread {
-            mResult.text = "子线程刷新的内容-场景1"
+            mResult.visibility = View.GONE
         }.start()
-        return
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Thread {
+            mResult.visibility = View.GONE
+        }.start()
     }
 
     override fun clickItem(position: Int) {

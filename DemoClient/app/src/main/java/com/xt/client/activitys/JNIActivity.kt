@@ -6,6 +6,7 @@ import com.xt.client.jni.Java2CJNI
 import com.xt.client.model.JavaModel
 import com.xt.client.util.IOHelper
 import com.xt.client.util.LogUtil
+import com.xt.client.viewmodel.DemoRequest
 import java.io.File
 
 //改成recyclerView，一行两个。底部输出值
@@ -20,6 +21,7 @@ class JNIActivity : Base2Activity() {
             this.add("读取文件")//4
             this.add("JNI线程通知安卓")//5
             this.add("加密解密")//6
+            this.add("查找父类名")//6
         }
     }
 
@@ -92,6 +94,14 @@ class JNIActivity : Base2Activity() {
              */
             val decrypt = dynamicRegister.decrypt(encryption)
             LogUtil.logI(decrypt)
+            return
+        }
+        if (position == 7) {
+            val superClassName = dynamicRegister.getSuperClassName("com/xt/client/viewmodel/DemoRequest")
+            (superClassName as? Class)?.let {
+                LogUtil.logI(it.name)
+            }
+
             return
         }
     }

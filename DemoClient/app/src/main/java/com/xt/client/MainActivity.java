@@ -153,7 +153,7 @@ public class MainActivity extends FragmentActivity {
         } else if (getString(R.string.wcdb).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, WCDBActivity.class);
         } else if (getString(R.string.threadrefresh).equalsIgnoreCase(title)) {
-            intent.setClass(MainActivity.this, ThreadRefreshActivity.class);
+            intent.setClass(MainActivity.this, TestActivity.class);
         } else {
             return;
         }
