@@ -22,6 +22,14 @@ using namespace std::chrono;
 //    return env->NewStringUTF(hello.c_str());
 //}
 
+jstring nativeSpliceString(JNIEnv *env, jobject object, jstring str1,jstring str2){
+    const char *chars1 = env->GetStringUTFChars(str1, JNI_FALSE);
+    const char *chars2 = env->GetStringUTFChars(str2, JNI_FALSE);
+    std::string result1 = chars1;
+    std::string result2 = chars2;
+    result1 = result1 + result2;
+    return env->NewStringUTF(result1.c_str());;
+}
 
 jstring nativeEncryptionStr(JNIEnv *env, jclass clazz, jstring value) {
     const char *str = env->GetStringUTFChars(value, JNI_FALSE);
@@ -185,6 +193,7 @@ static JNINativeMethod method_table[] = {
         // 第一个参数a 是java native方法名，
         // 第二个参数 是native方法参数,括号里面是传入参的类型，外边的是返回值类型，
         // 第三个参数 是c/c++方法参数,括号里面是返回值类型，
+        {"spliceString",        "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;",      (jstring *) nativeSpliceString},
         {"encryptionStr",       "(Ljava/lang/String;)Ljava/lang/String;",      (jstring *) nativeEncryptionStr},
         {"staticencryptionStr", "(Ljava/lang/String;)Ljava/lang/String;",      (jstring *) nativeStaticEncryptionStr},
         {"readStrByPath",       "(Ljava/lang/String;)Ljava/lang/String;",      (jstring *) nativeReadStrByPath},
@@ -192,8 +201,6 @@ static JNINativeMethod method_table[] = {
         {"decrypt",             "(Ljava/lang/String;)Ljava/lang/String;",      (jstring *) nativeDecrypt},
         {"encryption",          "(Ljava/lang/String;)Ljava/lang/String;",      (jstring *) nativeEncryption},
         {"getSuperClassName",   "(Ljava/lang/String;)Ljava/lang/Class;",       (jclass *) nativeGetSuperClassName},
-
-
 };
 
 static int registerMethods(JNIEnv *env, const char *className,

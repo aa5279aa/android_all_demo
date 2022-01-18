@@ -19,7 +19,11 @@ public class CalculationJNITest {
      */
     public native String calculationSum(int value1, int value2, String str1, double double1, char[] chars, byte[] bytes);
 
-
+    /**
+     * JNI修改属性值
+     * @param javaModel
+     * @return
+     */
     public native Object updateObjectValue(JavaModel javaModel);
 
 }

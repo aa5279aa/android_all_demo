@@ -15,13 +15,13 @@ class JNIActivity : Base2Activity() {
     override fun getShowData(): List<String> {
         return mutableListOf<String>().apply {
             this.add("JNI基础调用")//0 课程1等等
-            this.add("JNI多类型输入加法")//1
+            this.add("JNI多类型字符串拼接")//1
             this.add("JNI更改属性值")//2
-            this.add("动态注册")//3
-            this.add("读取文件")//4
-            this.add("JNI线程通知安卓")//5
-            this.add("加密解密")//6
-            this.add("查找父类名")//6
+            this.add("JNI动态注册")//3
+            this.add("JNI读取文件")//6
+            this.add("JNI线程通知安卓刷新")//position=5 第七章
+            this.add("JNI加密解密")//第八章
+            this.add("JNI查找父类名")//第九章
         }
     }
 
@@ -60,17 +60,16 @@ class JNIActivity : Base2Activity() {
             return
         }
         if (position == 3) {
+            //动态注册
             var dynamicRegister = DynamicRegister()
-            val result = dynamicRegister.encryptionStr("aaa")
-            val result2 = DynamicRegister.staticencryptionStr("bbb")
-            mResult.text = "$result,$result2"
+            val result = dynamicRegister.spliceString("Hello","World")
+            mResult.text = "$result"
             return
         }
         var dynamicRegister = DynamicRegister()
         if (position == 4) {
             val file = File(filesDir.absolutePath + File.separator + "a.txt")
             IOHelper.writerStrByCodeToFile(file, "utf-8", false, "hello world")
-            //动态注册
             val readStrByPath = dynamicRegister.readStrByPath(file.absolutePath)
             mResult.text = "$readStrByPath"
             return

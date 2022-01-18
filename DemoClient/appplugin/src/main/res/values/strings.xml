@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AppPlugin</string>
+    <string name="plugin_str1">这是plugin中资源文件中的字符串</string>
+</resources>

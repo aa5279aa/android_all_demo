@@ -28,7 +28,7 @@ char *ConvertJByteaArrayToChars(JNIEnv *env, jbyteArray bytearray, char *charsCh
     char *chars = NULL;
     jbyte *bytes;
     bytes = env->GetByteArrayElements(bytearray, 0);
-    __android_log_print(0,"111%s","111");
+    __android_log_print(0, "111%s", "111");
     LOGI("ConvertJByteaArrayToChars3:%s", charsChar);
     int chars_len = env->GetArrayLength(bytearray);
     LOGI("chars_len:%d", chars_len);
@@ -89,19 +89,22 @@ jstring JNICALL
 Java_com_xt_client_jni_CalculationJNITest_calculationSum(JNIEnv *env, jobject instance, jint value1,
                                                          jint value2, jstring str1, jdouble double1,
                                                          jcharArray chars, jbyteArray bytes) {
-    //std::string 
-    //两个数字相加，转换为string类型，然后拼接后面的所有字符串
+    //因为jni中的字符串是char类型，所以先把第三个参数jstring转换为char类型
     const char *thirdStr = env->GetStringUTFChars(str1, 0);
     LOGI("%s", "ConvertJcharArray2Chars");
+    //java中的char类型在JNI中为jcharArray，同样转换为jni中的char类型
     char *charsChar = ConvertJcharArray2Chars(env, chars);
-    LOGI("ConvertJByteaArrayToChars:%s", charsChar);
     LOGI("ConvertJByteaArrayToChars2:%s", charsChar);
+    //java中的byte类型在JNI中为jbyteArray，同样转换为jni中的char类型
     char *bytesChar = ConvertJByteaArrayToChars(env, bytes, charsChar);
     LOGI("ConvertJByteaArrayToChars4:%s", charsChar);
-    LOGI("bytesChar:%s", bytesChar);//
+    LOGI("bytesChar:%s", bytesChar);
+    //字符串拼接
     char *buf = getChar(value1, value2, thirdStr, double1, charsChar, bytesChar);
     LOGI("%s %s", "buf is:", buf);
+    //转换完成中生成jstring类型
     jstring computerName = env->NewStringUTF(buf);
+    //buf已经使用完没用了，进行内存地址的删除
     delete[] buf;
     return computerName;
 }
@@ -109,20 +112,32 @@ Java_com_xt_client_jni_CalculationJNITest_calculationSum(JNIEnv *env, jobject in
 JNICALL jobject
 Java_com_xt_client_jni_CalculationJNITest_updateObjectValue(JNIEnv *env, jobject instance,
                                                             jobject model) {
-
+    //1
     jclass cls = env->GetObjectClass(model);
+    //2
     jfieldID fid = env->GetFieldID(cls, "name", "Ljava/lang/String;");
+    //3.
     jstring jstr = static_cast<jstring>(env->GetObjectField(model, fid));
+    //4
     const char *str = env->GetStringUTFChars(jstr, NULL);
     env->ReleaseStringUTFChars(jstr, str);
+    //5
     jstr = env->NewStringUTF("lll");
+    //6
     env->SetObjectField(model, fid, jstr);
+    //7
     jmethodID id = env->GetMethodID(cls, "printJavaLog", "()V");
+    //8
     env->CallVoidMethod(model, id);
+    //9
     id = env->GetMethodID(cls, "setMoblie", "(Ljava/lang/String;)V");
+    //10
     jstring mobile = env->NewStringUTF("187000000");
+    //11
     env->CallVoidMethod(model, id, mobile);
+    //12
     id = env->GetMethodID(cls, "getMoblie", "()Ljava/lang/String;");
+    //13
     auto moblie2 = (env->CallObjectMethod(model, id));
     LOGI("getMoblie:%s", env->GetStringUTFChars(static_cast<jstring>(moblie2), 0));//
     return model;

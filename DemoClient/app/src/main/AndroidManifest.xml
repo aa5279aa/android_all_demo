@@ -60,6 +60,10 @@
             android:name="com.xt.client.TestActivity"
             android:launchMode="singleTask" />
 
+        <activity android:name="com.xt.appplugin.Plugin1Activity" />
+
+        <activity android:name="com.xt.client.HostActivity" />
+
         <service
             android:name=".service.OtherProcessService"
             android:process="com.xt.xt" />

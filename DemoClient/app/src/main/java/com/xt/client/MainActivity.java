@@ -18,11 +18,14 @@ import com.xt.client.activitys.SaveLastActivity;
 import com.xt.client.activitys.ShowActivity;
 import com.xt.client.activitys.WCDBActivity;
 import com.xt.client.fragment.AidlFragment;
+import com.xt.client.fragment.BaseFragment;
+import com.xt.client.fragment.DynamicFragment;
 import com.xt.client.fragment.ProtobuffFragment;
 import com.xt.client.activitys.ThreadRefreshActivity;
 import com.xt.client.fragment.TryCrashFragment;
 import com.xt.client.inter.RecyclerItemClickListener;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +71,9 @@ public class MainActivity extends FragmentActivity {
         dataList.add(new ItemState(getString(R.string.use_aidl), "done"));
         dataList.add(new ItemState(getString(R.string.prepareloadview), "ing"));
         dataList.add(new ItemState(getString(R.string.wcdb), "ing"));
-        dataList.add(new ItemState(getString(R.string.threadrefresh), "ing"));
+        dataList.add(new ItemState(getString(R.string.threadrefresh), "done"));
+        dataList.add(new ItemState(getString(R.string.dynamicload), "ing"));
+
 
         GridLayoutManager layout = new GridLayoutManager(this, 2);
         mRecycler.setLayoutManager(layout);
@@ -131,9 +136,14 @@ public class MainActivity extends FragmentActivity {
             fragment = new AidlFragment();
         } else if (getString(R.string.breakpoint_download).equalsIgnoreCase(title)) {
 //            fragment = new DownLoadFragment();
+        } else if (getString(R.string.dynamicload).equalsIgnoreCase(title)) {
+            fragment = new DynamicFragment();
         }
 
         if (fragment != null) {
+            Bundle bundle = new Bundle();
+            bundle.putString(BaseFragment.TITLE, title);
+            fragment.setArguments(bundle);
             FragmentTransaction fragmentTransaction = manager.beginTransaction();
             fragmentTransaction.add(android.R.id.content, fragment);
             fragmentTransaction.addToBackStack(null);
