@@ -1,5 +1,7 @@
 package com.xt.client.util;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
@@ -8,19 +10,24 @@ import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 
 /**
  * 针对文件的操作，比如移动文件，移动文件夹，复制文件等等
@@ -30,6 +37,7 @@ public class FileUtil {
     private FileUtil() {
 
     }
+
 
     public static List<String> readListByFile(File file) {
         return readListByFile(file, Charset.defaultCharset().name());
@@ -64,7 +72,90 @@ public class FileUtil {
         return builder.toString();
     }
 
-    public static boolean copyfile(File fromFile, File toFile, Boolean rewrite) throws IOException {
+    public static boolean unzipPack(String zipPath, String outFolder, String suffix) {
+        FileOutputStream out;
+        byte buf[] = new byte[16384];
+        try {
+            ZipInputStream zis = new ZipInputStream(new FileInputStream(zipPath));
+            ZipEntry entry = zis.getNextEntry();
+            while (entry != null) {
+                String name = entry.getName();
+                if (entry.isDirectory()) {
+                    File newDir = new File(outFolder + entry.getName());
+                    newDir.mkdir();
+                } else if (name.endsWith(suffix)) {
+                    File outputFile = new File(outFolder + File.separator + name);
+                    String outputPath = outputFile.getCanonicalPath();
+                    name = outputPath
+                            .substring(outputPath.lastIndexOf("/") + 1);
+                    outputPath = outputPath.substring(0, outputPath
+                            .lastIndexOf("/"));
+                    File outputDir = new File(outputPath);
+                    outputDir.mkdirs();
+                    outputFile = new File(outputPath, name);
+                    outputFile.createNewFile();
+                    out = new FileOutputStream(outputFile);
+
+                    int numread = 0;
+                    do {
+                        numread = zis.read(buf);
+                        if (numread <= 0) {
+                            break;
+                        } else {
+                            out.write(buf, 0, numread);
+                        }
+                    } while (true);
+                    out.close();
+                }
+                entry = zis.getNextEntry();
+            }
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public static boolean copyFolder(File fromFolder, File toFolder, Boolean rewrite) throws Exception {
+        if (!fromFolder.exists()) {
+            throw new Exception("源目标路径：[" + fromFolder.getAbsolutePath() + "] 不存在...");
+        }
+        if (!toFolder.exists()) {
+            toFolder.mkdirs();
+        }
+// 获取源文件夹下的文件夹或文件
+        File[] resourceFiles = fromFolder.listFiles();
+        if (resourceFiles == null) {
+            return false;
+        }
+        for (File file : resourceFiles) {
+            File file1 = new File(toFolder.getAbsolutePath() + File.separator + fromFolder.getName());
+            // 复制文件
+            if (file.isFile()) {
+                System.out.println("文件" + file.getName());
+                // 在 目标文件夹（B） 中 新建 源文件夹（A），然后将文件复制到 A 中
+                // 这样 在 B 中 就存在 A
+                if (!file1.exists()) {
+                    file1.mkdirs();
+                }
+                File targetFile1 = new File(file1.getAbsolutePath() + File.separator + file.getName());
+                copyFile(file, targetFile1);
+                continue;
+            }
+            // 复制文件夹
+            if (file.isDirectory()) {// 复制源文件夹
+                copyFolder(file, file1, rewrite);
+            }
+        }
+        return true;
+    }
+
+    public static boolean copyFile(File fromFile, File toFile) throws IOException {
+        return copyFile(fromFile, toFile, true);
+    }
+
+    public static boolean copyFile(File fromFile, File toFile, Boolean rewrite) throws IOException {
         if (!fromFile.exists()) {
             return false;
         }
@@ -74,10 +165,10 @@ public class FileUtil {
         if (!fromFile.canRead()) {
             return false;
         }
-        return copyfile(new FileInputStream(fromFile), toFile, rewrite);
+        return copyFile(new FileInputStream(fromFile), toFile, rewrite);
     }
 
-    public static boolean copyfile(InputStream is, File toFile, Boolean rewrite) throws IOException {
+    public static boolean copyFile(InputStream is, File toFile, Boolean rewrite) throws IOException {
         if (!toFile.getParentFile().exists()) {
             toFile.getParentFile().mkdirs();
         }

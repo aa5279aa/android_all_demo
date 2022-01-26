@@ -4,9 +4,10 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 
-import androidx.annotation.StringRes;
+import androidx.annotation.DrawableRes;
 
 import com.xt.client.function.dynamic.manager.DynamicResourceManager;
 
@@ -27,14 +28,16 @@ public class MyResources extends Resources {
         super(assets, metrics, config);
     }
 
-    @Override
-    public String getString(@StringRes int id) throws NotFoundException {
-        Resources plugin = DynamicResourceManager.getInstance().resourcesMap.get("plugin");
-        if (plugin != null) {
-            return plugin.getString(id);
-        }
-        return getText(id).toString();
-    }
 
+    @Override
+    public Drawable getDrawable(@DrawableRes int id, Theme theme)
+            throws NotFoundException {
+        try {
+            return getDrawableForDensity(id, 0, theme);
+        } catch (Exception e) {
+
+        }
+        return DynamicResourceManager.getInstance().resourcesMap.get("host").getDrawable(id, theme);
+    }
 
 }

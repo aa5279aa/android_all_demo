@@ -10,4 +10,10 @@
         <item name="android:windowNoDisplay">false</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+
+    <style name="HostTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>

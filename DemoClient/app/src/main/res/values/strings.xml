@@ -19,5 +19,6 @@
     <string name="dynamicload">插件化加载</string>
     <string name="checkfile">检查文件</string>
     <string name="flutter">Flutter混合开发</string>
+    <string name="permission">权限申请</string>
 
 </resources>

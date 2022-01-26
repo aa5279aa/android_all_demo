@@ -3,13 +3,16 @@ package com.xt.client.function.dynamic.hook;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.ContextThemeWrapper;
 
+import com.xt.client.R;
 import com.xt.client.cache.ObjectCache;
 import com.xt.client.function.dynamic.manager.DynamicResourceManager;
+import com.xt.client.util.StringUtil;
 
 import java.lang.reflect.Field;
 
@@ -25,6 +28,9 @@ public class MyInstrumentation extends Instrumentation {
             return super.newActivity(cl, className, intent);
         }
         String pluginClassName = intent.getStringExtra(ClassName);
+        if (StringUtil.emptyOrNull(pluginClassName)) {
+            return super.newActivity(cl, className, intent);
+        }
         //插件的classLoader
         Object classLoader = ObjectCache.getInstance().getParams(ClassLoader);
         if (classLoader instanceof ClassLoader) {
@@ -58,7 +64,12 @@ public class MyInstrumentation extends Instrumentation {
             }
         }
         super.callActivityOnCreate(activity, icicle);
+    }
 
-
+    static class AA{
+        boolean isLoadApk = false;
+        boolean isHookClassLoader = false;
+        boolean isHookInstrumentation = false;
+        boolean isHook = false;
     }
 }

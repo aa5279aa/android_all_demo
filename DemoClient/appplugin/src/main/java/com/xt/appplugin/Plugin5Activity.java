@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 /**
- * 插件activity中使用插件中的资源
+ * plugin4为插件中正常使用的。
  */
-public class Plugin3Activity extends Activity {
+public class Plugin4Activity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
