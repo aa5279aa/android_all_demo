@@ -19,6 +19,7 @@
         </activity>
 
         <activity android:name=".Plugin3Activity"/>
+        <activity android:name=".Plugin4Activity"/>
     </application>
 
 </manifest>

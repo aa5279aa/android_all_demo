@@ -1,15 +1,21 @@
 package com.xt.client;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xt.client.activitys.JNIActivity;
 import com.xt.client.activitys.PerformanceActivity;
@@ -24,19 +30,28 @@ import com.xt.client.fragment.ProtobuffFragment;
 import com.xt.client.activitys.ThreadRefreshActivity;
 import com.xt.client.fragment.TryCrashFragment;
 import com.xt.client.inter.RecyclerItemClickListener;
+import com.xt.client.util.FileUtil;
+import com.xt.client.util.ToastUtil;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.security.Permissions;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import javax.sql.DataSource;
 
 /**
  * @author xiatian
@@ -73,6 +88,7 @@ public class MainActivity extends FragmentActivity {
         dataList.add(new ItemState(getString(R.string.wcdb), "ing"));
         dataList.add(new ItemState(getString(R.string.threadrefresh), "done"));
         dataList.add(new ItemState(getString(R.string.dynamicload), "ing"));
+        dataList.add(new ItemState(getString(R.string.permission), "done"));
 
 
         GridLayoutManager layout = new GridLayoutManager(this, 2);
@@ -99,14 +115,23 @@ public class MainActivity extends FragmentActivity {
         }));
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+
+        }
+    }
+
     private void doAction(String title) {
         if (getString(R.string.test).equalsIgnoreCase(title)) {
-            Intent intent = new Intent();
-            intent.setClass(this, ShowActivity.class);
-            startActivity(intent);
+            try {
+                writeFile();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return;
         }
-
         if (getString(R.string.test_crash).equalsIgnoreCase(title)) {
             TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
@@ -164,7 +189,12 @@ public class MainActivity extends FragmentActivity {
             intent.setClass(MainActivity.this, WCDBActivity.class);
         } else if (getString(R.string.threadrefresh).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, TestActivity.class);
+        } else if (getString(R.string.permission).equalsIgnoreCase(title)) {
+            managerPermission();
         } else {
+            return;
+        }
+        if (intent.getComponent() == null) {
             return;
         }
         startActivity(intent);
@@ -190,6 +220,62 @@ public class MainActivity extends FragmentActivity {
         @Override
         public int getItemCount() {
             return dataList.size();
+        }
+    }
+
+    private void managerPermission() {
+
+        int sdkInt = Build.VERSION.SDK_INT;
+        //判断版本
+        //6.0以下
+        try {
+            if (sdkInt < 23) {
+                writeFile();
+                return;
+            }
+            //6.0到10.0以下
+            if (sdkInt < 29) {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                    return;
+                }
+                writeFile();
+                return;
+            }
+            //10.0
+            if (sdkInt < 30) {
+                //同上，另外额外设置requestLegacyExternalStorage=true
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                    return;
+                }
+                writeFile();
+                return;
+            }
+            //11.0-12.0
+            if (sdkInt >= 30) {
+                if (!Environment.isExternalStorageManager()) {
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                    startActivity(intent);
+                    return;
+                }
+                writeFile();
+                return;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeFile() throws IOException {
+        String absolutePath = Environment.getExternalStorageDirectory().getAbsolutePath();
+        File file = new File(absolutePath + File.separator + "a.txt");
+        if (file.exists()) {
+            file.delete();
+            ToastUtil.showCenterToast("文件存在，删除成功");
+        } else {
+            file.createNewFile();
+            ToastUtil.showCenterToast("文件不存在，创建成功");
         }
     }
 
