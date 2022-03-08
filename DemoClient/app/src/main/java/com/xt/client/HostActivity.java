@@ -21,7 +21,6 @@ public class HostActivity extends Activity {
         setContentView(R.layout.content_main);
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();

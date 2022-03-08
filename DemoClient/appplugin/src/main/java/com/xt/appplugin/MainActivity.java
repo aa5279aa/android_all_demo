@@ -1,7 +1,9 @@
 package com.xt.appplugin;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,6 +19,10 @@ public class MainActivity extends Activity {
             PluginJni pluginJni = new PluginJni();
             String s = pluginJni.pluginSpliceString("hello", "world");
             ((TextView) findViewById(R.id.result)).setText(s);
+        });
+        findViewById(R.id.text2).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Plugin6Activity.class);
+            startActivity(intent);
         });
     }
 }

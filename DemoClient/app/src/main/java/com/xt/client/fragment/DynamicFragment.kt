@@ -27,15 +27,16 @@ class DynamicFragment : Base2Fragment() {
 
     companion object {
         const val APK_NAME_DEBUG = "appplugin-debug.apk"
-        const val APK_NAME_MEITUAN = "meituan.apk"
         const val APK_ODEX = "app-odex"
         const val TEXT_PATH = "dynamic.txt"
+        var i = 0;
     }
 
     var selfClassLoader: DexClassLoader? = null
     val state = State()
 
     override fun getShowData(): List<String> {
+        val random = Math.random()
         return mutableListOf<String>().apply {
             this.add("加载插件")//0
             this.add("调用插件apk中方法")//1
@@ -44,7 +45,10 @@ class DynamicFragment : Base2Fragment() {
             this.add("宿主使用插件中的资源")//4
             this.add("启动插件activity(使用插件的资源)")//5
             this.add("使用插件中的so")//6
-            this.add("插件化加载美团APP")
+            this.add("启动插件APP并正常使用")
+            if (i++ % 2 == 0) {
+                this.add("是否需要点击")
+            }
         }
     }
 
@@ -57,9 +61,6 @@ class DynamicFragment : Base2Fragment() {
                 val open = context?.assets?.open(APK_NAME_DEBUG) ?: return@let
                 FileUtil.copyFile(open, file, true)
 
-                val file2 = File(it.filesDir.absolutePath + File.separator + APK_NAME_MEITUAN)
-                val open2 = context?.assets?.open(APK_NAME_MEITUAN) ?: return@let
-                FileUtil.copyFile(open2, file2, true)
                 state.isCopyApk = true
             }
         }.start()
@@ -157,14 +158,14 @@ class DynamicFragment : Base2Fragment() {
         }
         if (position == 7) {
             //加载美团APP
-            checkLoadApk(context, APK_NAME_MEITUAN)
+            checkLoadApk(context, APK_NAME_DEBUG)
             checkHookClassLoader(context)
             checkInstrumentation(context)
             checkLoadResource(context)
             val intent = Intent(context, HostActivity::class.java)
             intent.putExtra(
                 MyInstrumentation.ClassName,
-                "com.meituan.android.pt.homepage.activity.MainActivity"
+                "com.xt.appplugin.MainActivity"
             )
             startActivity(intent)
             return
@@ -265,7 +266,6 @@ class DynamicFragment : Base2Fragment() {
             val resources = MyResources(
                 newInstance,
                 context.resources.displayMetrics,
-
                 context.resources.configuration
             )
             val string1 = resources.getString(0x7f060001)

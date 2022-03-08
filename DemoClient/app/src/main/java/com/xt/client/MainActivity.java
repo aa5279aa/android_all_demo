@@ -9,16 +9,21 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Looper;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.FrameMetrics;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xt.client.activitys.JNIActivity;
 import com.xt.client.activitys.PerformanceActivity;
+import com.xt.client.activitys.PerformanceCaseActivity;
 import com.xt.client.activitys.PrepareActivity;
 import com.xt.client.activitys.SaveLastActivity;
 import com.xt.client.activitys.ShowActivity;
@@ -30,6 +35,7 @@ import com.xt.client.fragment.ProtobuffFragment;
 import com.xt.client.activitys.ThreadRefreshActivity;
 import com.xt.client.fragment.TryCrashFragment;
 import com.xt.client.inter.RecyclerItemClickListener;
+import com.xt.client.service.ThreadService;
 import com.xt.client.util.FileUtil;
 import com.xt.client.util.ToastUtil;
 
@@ -40,6 +46,8 @@ import java.security.Permissions;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -72,6 +80,7 @@ public class MainActivity extends FragmentActivity {
         mRecycler = findViewById(R.id.recycler);
         manager = getSupportFragmentManager();
         initData();
+        sendBroadcast(new Intent());
     }
 
     private void initData() {
@@ -89,6 +98,7 @@ public class MainActivity extends FragmentActivity {
         dataList.add(new ItemState(getString(R.string.threadrefresh), "done"));
         dataList.add(new ItemState(getString(R.string.dynamicload), "ing"));
         dataList.add(new ItemState(getString(R.string.permission), "done"));
+        dataList.add(new ItemState(getString(R.string.performance_optimization), "done"));
 
 
         GridLayoutManager layout = new GridLayoutManager(this, 2);
@@ -126,7 +136,7 @@ public class MainActivity extends FragmentActivity {
     private void doAction(String title) {
         if (getString(R.string.test).equalsIgnoreCase(title)) {
             try {
-                writeFile();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -191,6 +201,8 @@ public class MainActivity extends FragmentActivity {
             intent.setClass(MainActivity.this, TestActivity.class);
         } else if (getString(R.string.permission).equalsIgnoreCase(title)) {
             managerPermission();
+        } else if (getString(R.string.performance_optimization).equalsIgnoreCase(title)) {
+            intent.setClass(MainActivity.this, PerformanceCaseActivity.class);
         } else {
             return;
         }

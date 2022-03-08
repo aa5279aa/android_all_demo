@@ -20,5 +20,7 @@
     <string name="checkfile">检查文件</string>
     <string name="flutter">Flutter混合开发</string>
     <string name="permission">权限申请</string>
+    <string name="performance_optimization">性能优化</string>
+    <string name="memorysharing">内存共享传输</string>
 
 </resources>

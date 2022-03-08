@@ -173,6 +173,7 @@ public class Main4Activity extends Activity implements View.OnClickListener {
                     .get()//默认就是GET请求，可以不写
                     .build();
             Call call = okHttpClient.newCall(request);
+            //1.异步的方式发请求
             call.enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
@@ -184,7 +185,9 @@ public class Main4Activity extends Activity implements View.OnClickListener {
                     Log.d(TAG, "onResponse: " + response.body().string());
                 }
             });
-//                    call.execute();
+
+            //2.同步的方式发请求
+            call.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -50,6 +50,8 @@
         <activity android:name="com.xt.client.activitys.prepare.PrepareMiddleActivity" />
         <activity android:name="com.xt.client.activitys.ShowActivity" />
         <activity android:name="com.xt.client.activitys.ThreadRefreshActivity" />
+        <activity android:name="com.xt.client.activitys.PerformanceCaseActivity" />
+
 
         <activity
             android:name="com.xt.client.activitys.AnnotationActivity"
