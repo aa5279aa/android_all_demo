@@ -3,6 +3,7 @@ package com.xt.client.activitys
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.Window
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
@@ -15,6 +16,7 @@ class TestActivity : BaseActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.requestFeature(Window.FEATURE_OPTIONS_PANEL)
         super.onCreate(savedInstanceState)
         getLifecycle().addObserver(MyObserver())
     }

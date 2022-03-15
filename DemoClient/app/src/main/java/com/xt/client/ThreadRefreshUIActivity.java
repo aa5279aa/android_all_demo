@@ -13,16 +13,14 @@ import android.widget.Toast;
 
 import com.xt.client.util.ReflectUtil;
 
-import java.lang.reflect.InvocationTargetException;
 
-
-public class TestActivity extends Activity {
+public class ThreadRefreshUIActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.base_layout);
-        AddShortCut(getApplicationContext(), TestActivity.class
-                , TestActivity.class, 112, R.mipmap.ic_launcher);
+        AddShortCut(getApplicationContext(), ThreadRefreshUIActivity.class
+                , ThreadRefreshUIActivity.class, 112, R.mipmap.ic_launcher);
     }
 
     public void AddShortCut(Context context, Class targetClass, Class backClass, int shortCutId, int shortCutIcon) {

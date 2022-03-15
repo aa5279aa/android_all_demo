@@ -1,53 +1,39 @@
 package com.xt.client;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Looper;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.view.FrameMetrics;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xt.client.activitys.JNIActivity;
 import com.xt.client.activitys.PerformanceActivity;
 import com.xt.client.activitys.PerformanceCaseActivity;
 import com.xt.client.activitys.PrepareActivity;
 import com.xt.client.activitys.SaveLastActivity;
-import com.xt.client.activitys.ShowActivity;
+import com.xt.client.activitys.TestActivity;
 import com.xt.client.activitys.WCDBActivity;
 import com.xt.client.fragment.AidlFragment;
 import com.xt.client.fragment.BaseFragment;
 import com.xt.client.fragment.DynamicFragment;
 import com.xt.client.fragment.ProtobuffFragment;
-import com.xt.client.activitys.ThreadRefreshActivity;
+import com.xt.client.fragment.TestFragment;
 import com.xt.client.fragment.TryCrashFragment;
 import com.xt.client.inter.RecyclerItemClickListener;
-import com.xt.client.service.ThreadService;
-import com.xt.client.util.FileUtil;
 import com.xt.client.util.ToastUtil;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.security.Permissions;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -58,8 +44,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import javax.sql.DataSource;
 
 /**
  * @author xiatian
@@ -85,6 +69,7 @@ public class MainActivity extends FragmentActivity {
 
     private void initData() {
         dataList.add(new ItemState(getString(R.string.test), "ing"));
+        dataList.add(new ItemState(getString(R.string.testtest), "ing"));
         dataList.add(new ItemState(getString(R.string.protobuff), "done"));
         dataList.add(new ItemState(getString(R.string.instrumentation), "no start"));
         dataList.add(new ItemState(getString(R.string.jni_use), "done"));
@@ -136,7 +121,9 @@ public class MainActivity extends FragmentActivity {
     private void doAction(String title) {
         if (getString(R.string.test).equalsIgnoreCase(title)) {
             try {
-
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, TestActivity.class);
+                startActivity(intent);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -173,6 +160,8 @@ public class MainActivity extends FragmentActivity {
 //            fragment = new DownLoadFragment();
         } else if (getString(R.string.dynamicload).equalsIgnoreCase(title)) {
             fragment = new DynamicFragment();
+        } else if (getString(R.string.testtest).equalsIgnoreCase(title)) {
+            fragment = new TestFragment();
         }
 
         if (fragment != null) {
@@ -198,7 +187,7 @@ public class MainActivity extends FragmentActivity {
         } else if (getString(R.string.wcdb).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, WCDBActivity.class);
         } else if (getString(R.string.threadrefresh).equalsIgnoreCase(title)) {
-            intent.setClass(MainActivity.this, TestActivity.class);
+            intent.setClass(MainActivity.this, ThreadRefreshUIActivity.class);
         } else if (getString(R.string.permission).equalsIgnoreCase(title)) {
             managerPermission();
         } else if (getString(R.string.performance_optimization).equalsIgnoreCase(title)) {

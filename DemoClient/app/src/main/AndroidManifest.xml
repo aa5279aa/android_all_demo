@@ -59,10 +59,11 @@
 
         <activity
             android:name="com.xt.client.activitys.TestActivity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
-            android:name="com.xt.client.TestActivity"
+            android:name="com.xt.client.ThreadRefreshUIActivity"
             android:launchMode="singleTask" />
 
         <activity android:name="com.xt.appplugin.Plugin1Activity" />

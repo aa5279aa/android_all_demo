@@ -117,15 +117,6 @@ public class PerformanceCaseActivity extends Activity {
             String show = s;
             handler.post(() -> title.setText(show));
         }).start();
-
-        getWindow().addOnFrameMetricsAvailableListener(new Window.OnFrameMetricsAvailableListener() {
-            @Override
-            public void onFrameMetricsAvailable(Window window, FrameMetrics frameMetrics, int dropCountSinceLastInvocation) {
-                Log.i("lxltest", "window:" + window.toString());
-            }
-        });
-
-
     }
 
     private void bindView() {
