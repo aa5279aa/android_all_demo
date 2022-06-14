@@ -1,5 +1,6 @@
 package com.xt.client.activitys
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -9,7 +10,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xt.client.R
-import kotlinx.android.synthetic.main.base2_item.view.*
 
 abstract class Base2Activity : FragmentActivity() {
 
@@ -17,6 +17,7 @@ abstract class Base2Activity : FragmentActivity() {
     lateinit var mContent: RecyclerView;
     lateinit var mResult: TextView;
     private var mAdapter = GridAdapter()
+    private var context:Context? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,8 @@ abstract class Base2Activity : FragmentActivity() {
             GridLayoutManager(baseContext, 2, GridLayoutManager.VERTICAL, false)
         mContent.adapter = mAdapter
         mAdapter.dataList = getShowData()
+
+        context!!.externalCacheDir
     }
 
 
@@ -46,8 +49,8 @@ abstract class Base2Activity : FragmentActivity() {
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            holder.itemView.text.text = dataList?.get(position)
-            holder.itemView.text.setOnClickListener {
+            holder.itemView.findViewById<TextView>(R.id.text).text = dataList?.get(position)
+            holder.itemView.findViewById<TextView>(R.id.text).setOnClickListener {
                 clickItem(position)
             }
         }

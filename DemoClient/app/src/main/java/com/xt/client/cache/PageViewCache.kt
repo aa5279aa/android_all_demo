@@ -1,7 +1,6 @@
 package com.xt.client.cache
 
 import android.view.View
-import androidx.asynclayoutinflater.view.AsyncLayoutInflater
 import com.xt.client.application.DemoApplication
 
 class PageViewCache {

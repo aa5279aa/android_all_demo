@@ -30,6 +30,11 @@ class AidlFragment : BaseFragment() {
     }
 
     override fun onClick(v: View?) {
+
+        val arrayList = ArrayList<String>()
+        val arrayList2 = ArrayList<String>()
+        arrayList2.addAll(arrayList)
+
         val id = v?.id
         if (id == R.id.button1) {
 

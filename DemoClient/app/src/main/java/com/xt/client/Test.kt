@@ -5,6 +5,9 @@ class Test {
 
     fun main(args: Array<String>) {
         println("Hello, world!")
+        var t: Test? = null
+        t!!.test()
+
     }
 
 

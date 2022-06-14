@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xt.client.R
-import com.xt.client.viewholder.ViewHolder
-import kotlinx.android.synthetic.main.base2_item.view.*
 
 abstract class Base2Fragment : Fragment() {
 
@@ -57,8 +55,8 @@ abstract class Base2Fragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            holder.itemView.text.text = dataList?.get(position)
-            holder.itemView.text.setOnClickListener {
+            holder.itemView.findViewById<TextView>(R.id.text).text = dataList?.get(position)
+            holder.itemView.findViewById<TextView>(R.id.text).setOnClickListener {
                 clickItem(position)
             }
         }

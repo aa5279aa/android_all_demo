@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.xt.client">
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -27,60 +28,70 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:theme="@style/AppFullTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity
-            android:name="com.xt.client.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppFullTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.xt.client.MainActivity" />
-        <activity android:name="com.xt.client.ProtoActivity" />
-        <activity android:name="com.xt.client.Main4Activity" />
-        <activity android:name="com.xt.client.activitys.SaveLastActivity" />
-        <activity android:name="com.xt.client.activitys.WCDBActivity" />
-        <activity android:name="com.xt.client.activitys.JNIActivity" />
-        <activity android:name="com.xt.client.activitys.PerformanceActivity" />
-        <activity android:name="com.xt.client.activitys.PrepareActivity" />
-        <activity android:name="com.xt.client.activitys.prepare.PrepareMiddleActivity" />
-        <activity android:name="com.xt.client.activitys.ShowActivity" />
-        <activity android:name="com.xt.client.activitys.ThreadRefreshActivity" />
-        <activity android:name="com.xt.client.activitys.PerformanceCaseActivity" />
-
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ProtoActivity" />
+        <activity android:name=".Main4Activity" />
+        <activity android:name=".activitys.SaveLastActivity" />
+        <activity android:name=".activitys.WCDBActivity" />
+        <activity android:name=".activitys.JNIActivity" />
+        <activity android:name=".activitys.PerformanceActivity" />
+        <activity android:name=".activitys.PrepareActivity" />
+        <activity android:name=".activitys.prepare.PrepareMiddleActivity" />
+        <activity android:name=".activitys.ShowActivity" />
+        <activity android:name=".activitys.ThreadRefreshActivity" />
+        <activity android:name=".activitys.PerformanceCaseActivity" />
+        <activity
+            android:name=".activitys.compose.ComposeActivity"
+            android:theme="@style/AppFullTheme" />
 
         <activity
-            android:name="com.xt.client.activitys.AnnotationActivity"
+            android:name=".activitys.AnnotationActivity"
             android:launchMode="singleTask" />
-
         <activity
-            android:name="com.xt.client.activitys.TestActivity"
+            android:name=".activitys.TestActivity"
             android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
-            android:name="com.xt.client.ThreadRefreshUIActivity"
+            android:name=".ThreadRefreshUIActivity"
             android:launchMode="singleTask" />
-
         <activity android:name="com.xt.appplugin.Plugin1Activity" />
-
         <activity
-            android:name="com.xt.client.HostActivity"
+            android:name=".HostActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service
             android:name=".service.OtherProcessService"
             android:process="com.xt.xt" />
         <service android:name=".service.Other2ProcessService" />
-
-
         <service android:name=".service.OnceProcessService" />
         <service android:name=".service.ThreadService" />
         <service android:name="org.eclipse.paho.android.service.MqttService" />
+
+        <provider
+            android:name=".provider.StartupProvider"
+            android:authorities="${applicationId}.android_startup.multiple"
+            android:exported="false">
+            <meta-data
+                android:name="com.rousetime.sample.startup.SampleStartupProviderConfig"
+                android:value="android.startup.provider.config" />
+            <meta-data
+                android:name="com.rousetime.sample.startup.multiple.SampleMultipleSecondStartup"
+                android:value="android.startup" />
+        </provider>
     </application>
 
 </manifest>

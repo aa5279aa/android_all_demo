@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="left|bottom"
+    android:layout_marginLeft="@dimen/dp_24"
+    android:layout_marginBottom="@dimen/dp_33"
+    android:orientation="horizontal">
+
+    <com.xt.client.widget.MyLinearLayout
+        android:id="@+id/showcar_logout_container"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_72"
+        android:layout_gravity="center"
+        android:longClickable="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/showcar_logout"
+            android:layout_width="@dimen/dp_240"
+            android:layout_height="@dimen/dp_72"
+            android:background="@drawable/shape_yellow_btn"
+            android:text="退出登陆"
+            android:textColor="#F5F5FF"
+            android:textSize="@dimen/dp_28" />
+
+        <ImageView
+            android:id="@+id/bt_video"
+            android:layout_width="@dimen/dp_72"
+            android:layout_height="@dimen/dp_72"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:background="@mipmap/show_list_btn_normal" />
+    </com.xt.client.widget.MyLinearLayout>
+
+
+</LinearLayout>

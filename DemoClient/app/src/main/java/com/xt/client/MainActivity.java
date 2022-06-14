@@ -1,17 +1,26 @@
 package com.xt.client;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xt.client.activitys.JNIActivity;
@@ -21,6 +30,8 @@ import com.xt.client.activitys.PrepareActivity;
 import com.xt.client.activitys.SaveLastActivity;
 import com.xt.client.activitys.TestActivity;
 import com.xt.client.activitys.WCDBActivity;
+import com.xt.client.activitys.compose.ComposeActivity;
+import com.xt.client.application.DemoApplication;
 import com.xt.client.fragment.AidlFragment;
 import com.xt.client.fragment.BaseFragment;
 import com.xt.client.fragment.DynamicFragment;
@@ -65,6 +76,19 @@ public class MainActivity extends FragmentActivity {
         manager = getSupportFragmentManager();
         initData();
         sendBroadcast(new Intent());
+        Log.i("lxltest", "MainActivity_onCreate");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i("lxltest", "MainActivity_onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("lxltest", "MainActivity_onResume");
     }
 
     private void initData() {
@@ -84,6 +108,7 @@ public class MainActivity extends FragmentActivity {
         dataList.add(new ItemState(getString(R.string.dynamicload), "ing"));
         dataList.add(new ItemState(getString(R.string.permission), "done"));
         dataList.add(new ItemState(getString(R.string.performance_optimization), "done"));
+        dataList.add(new ItemState(getString(R.string.compose), "done"));
 
 
         GridLayoutManager layout = new GridLayoutManager(this, 2);
@@ -120,10 +145,16 @@ public class MainActivity extends FragmentActivity {
 
     private void doAction(String title) {
         if (getString(R.string.test).equalsIgnoreCase(title)) {
+
             try {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, TestActivity.class);
-                startActivity(intent);
+                if (!Settings.canDrawOverlays(this)) {
+                    startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName())));
+                    return;
+                }
+                dotest();
+//                Intent intent = new Intent();
+//                intent.setClass(MainActivity.this, TestActivity.class);
+//                startActivity(intent);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -192,6 +223,8 @@ public class MainActivity extends FragmentActivity {
             managerPermission();
         } else if (getString(R.string.performance_optimization).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, PerformanceCaseActivity.class);
+        }else if (getString(R.string.compose).equalsIgnoreCase(title)) {
+            intent.setClass(MainActivity.this, ComposeActivity.class);
         } else {
             return;
         }
@@ -288,5 +321,143 @@ public class MainActivity extends FragmentActivity {
             this.name = name;
             this.state = state;
         }
+    }
+
+    private Context mContext;
+    private static boolean isMove;
+    private static View logoutBtn;
+    private static ImageView mShowVideoList;
+    private static Button mShowLogout;
+    private static WindowManager.LayoutParams mShowLogoutLayoutParams;
+    WindowManager mShowLogoutManager;
+
+    void dotest() {
+        mContext = DemoApplication.getInstance();
+        logoutBtn = LayoutInflater.from(mContext).inflate(R.layout.showcar_logout_btn, null);
+        View touchView = logoutBtn.findViewById(R.id.showcar_logout_container);
+        mShowVideoList = logoutBtn.findViewById(R.id.bt_video);
+        mShowLogout = logoutBtn.findViewById(R.id.showcar_logout);
+        mShowVideoList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtil.showCenterToast("图标");
+            }
+        });
+        mShowLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtil.showCenterToast("退出");
+            }
+        });
+        mShowLogoutManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        mShowLogoutLayoutParams = new WindowManager.LayoutParams();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            mShowLogoutLayoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+        }
+
+        mShowLogoutLayoutParams.width = 332;
+        mShowLogoutLayoutParams.height = 72;
+        mShowLogoutLayoutParams.x = 30;
+//        mShowLogoutLayoutParams.x = (int) ServiceApplication.getContext().getResources().getDimension(R.dimen.logout_btn_margin_left);
+//        mShowLogoutLayoutParams.y = 15;
+        mShowLogoutLayoutParams.y = 200;
+
+        mShowLogoutLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+        //设置背景透明
+//        mShowLogoutLayoutParams.format = PixelFormat.TRANSLUCENT;
+        mShowLogoutLayoutParams.format = PixelFormat.RGBA_8888;
+        mShowLogoutLayoutParams.gravity = Gravity.END | Gravity.BOTTOM;
+//        mShowVideoList.setVisibility(View.INVISIBLE);
+        try {
+            setViewTouchGrag(touchView, logoutBtn, mShowLogoutLayoutParams, mShowLogoutManager, true);
+            mShowLogoutManager.addView(logoutBtn, mShowLogoutLayoutParams);
+//            logoutBtn.setAccessibilityPaneTitle(getContext().getResources().getString(R.string.logout_showcar_btn));
+//            BeanAccessibilityManager.getInstance().registerListener(logoutBtn);
+//            logoutBtnIsShowing = true;
+        } catch (Exception e) {
+            Log.e(TAG, "showLogoutBtn: addview Error", e);
+        }
+    }
+
+    private static void setViewTouchGrag(final View touchView, final View floatView, final WindowManager.LayoutParams layoutParams, final WindowManager windowManager, final boolean isWelt) {
+        touchView.setLongClickable(true);
+        final int width = windowManager.getDefaultDisplay().getWidth();
+        final int height = windowManager.getDefaultDisplay().getHeight();
+        //吸附效果OK了，但是沿吸附边移动未实现
+        touchView.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int rawX = (int) event.getRawX();
+                int rawY = (int) event.getRawY();
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_UP:
+                        if (isMove && isWelt) {
+                            int[] minValue = getMinValue(rawX, rawY, width, height, floatView.getWidth(), floatView.getHeight());
+                            layoutParams.x = minValue[0];
+                            layoutParams.y = minValue[1];
+                            Log.i(TAG, "贴边，x=" + layoutParams.x + ",y=" + layoutParams.y);
+                            updateXY();
+                        }
+                        break;
+                    case MotionEvent.ACTION_DOWN:
+                        //贴边显示
+                        isMove = false;
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        isMove = true;
+                        layoutParams.x = width - rawX;
+                        layoutParams.y = height - rawY - floatView.getMeasuredHeight() / 2;
+                        layoutParams.y = Math.min(layoutParams.y, height - floatView.getMeasuredHeight() - 60);
+                        layoutParams.x = Math.max(layoutParams.x, 30);
+                        layoutParams.x = Math.min(layoutParams.x, width - 30 - floatView.getMeasuredWidth());
+                        Log.i(TAG, "onTouch:ACTION_MOVE,x=" + layoutParams.x + ",y=" + layoutParams.y);
+                        updateXY();
+                        break;
+                }
+                return isMove;
+            }
+
+            private void updateXY() {
+                try {
+                    Log.i(TAG, "updateViewLayout,x=" + layoutParams.x + ",y=" + layoutParams.y);
+                    windowManager.updateViewLayout(floatView, layoutParams);
+                } catch (Exception e) {
+                    Log.e(TAG, "onTouch: ");
+                }
+            }
+        });
+    }
+
+    private static int[] getMinValue(int rawX, int rawY, int screenWidth, int screenHeight, int viewWidth, int viewHeight) {
+        int x1 = screenWidth - rawX;//靠右距离
+        int x2 = rawX - viewWidth;//靠左距离
+//        int y1 = height - rawY;
+        int y2 = screenHeight - rawY;
+        //确定是贴近X还是Y
+        int[] result = new int[]{rawX, rawY};
+        int absX = Math.min(x1, x2);
+        int absY = y2;
+        if (absX > absY) {
+            //Y改0
+//            if (y1 > y2) {
+            result[1] = 30;
+            result[0] = screenWidth - result[0];
+//            } else {
+//                result[1] = height;
+//            }
+        } else {
+            //X改g
+            if (x1 > x2) {
+                result[0] = screenWidth - 30 - viewWidth;
+            } else {
+                result[0] = 30;
+            }
+            result[1] = screenHeight - result[1];
+        }
+        if (result[1] > screenHeight - 120) {
+            result[1] = screenHeight - 120;
+        }
+        return result;
     }
 }
