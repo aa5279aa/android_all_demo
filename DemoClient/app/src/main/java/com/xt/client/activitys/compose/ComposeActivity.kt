@@ -29,6 +29,9 @@ import com.xt.client.activitys.compose.theme.DemoClientTheme
 class ComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//        mvi的方式写Compose
+
         setContent {
             DemoClientTheme {
                 // A surface container using the 'background' color from the theme

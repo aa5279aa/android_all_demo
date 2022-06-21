@@ -31,11 +31,13 @@ import com.xt.client.activitys.SaveLastActivity;
 import com.xt.client.activitys.TestActivity;
 import com.xt.client.activitys.WCDBActivity;
 import com.xt.client.activitys.compose.ComposeActivity;
+import com.xt.client.activitys.compose.MVIComposeActivity;
 import com.xt.client.application.DemoApplication;
 import com.xt.client.fragment.AidlFragment;
 import com.xt.client.fragment.BaseFragment;
 import com.xt.client.fragment.DynamicFragment;
 import com.xt.client.fragment.ProtobuffFragment;
+import com.xt.client.fragment.RetrofitFragment;
 import com.xt.client.fragment.TestFragment;
 import com.xt.client.fragment.TryCrashFragment;
 import com.xt.client.inter.RecyclerItemClickListener;
@@ -109,6 +111,9 @@ public class MainActivity extends FragmentActivity {
         dataList.add(new ItemState(getString(R.string.permission), "done"));
         dataList.add(new ItemState(getString(R.string.performance_optimization), "done"));
         dataList.add(new ItemState(getString(R.string.compose), "done"));
+        dataList.add(new ItemState(getString(R.string.composemvi), "done"));
+        dataList.add(new ItemState(getString(R.string.retrofit), "done"));
+
 
 
         GridLayoutManager layout = new GridLayoutManager(this, 2);
@@ -193,7 +198,11 @@ public class MainActivity extends FragmentActivity {
             fragment = new DynamicFragment();
         } else if (getString(R.string.testtest).equalsIgnoreCase(title)) {
             fragment = new TestFragment();
+        } else if (getString(R.string.retrofit).equalsIgnoreCase(title)) {
+            fragment = new RetrofitFragment();
         }
+
+
 
         if (fragment != null) {
             Bundle bundle = new Bundle();
@@ -225,6 +234,8 @@ public class MainActivity extends FragmentActivity {
             intent.setClass(MainActivity.this, PerformanceCaseActivity.class);
         }else if (getString(R.string.compose).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, ComposeActivity.class);
+        }else if (getString(R.string.composemvi).equalsIgnoreCase(title)) {
+            intent.setClass(MainActivity.this, MVIComposeActivity.class);
         } else {
             return;
         }

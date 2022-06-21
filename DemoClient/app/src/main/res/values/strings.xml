@@ -24,6 +24,8 @@
     <string name="compose">compose</string>
     <string name="memorysharing">内存共享传输</string>
     <string name="title_activity_compose">ComposeActivity</string>
+    <string name="retrofit">Retrofit</string>
+    <string name="composemvi">compose+MVI</string>
 
 
 </resources>

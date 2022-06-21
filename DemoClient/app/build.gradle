@@ -6,7 +6,7 @@ plugins {
 android {
     compileSdkVersion 32
     defaultConfig {
-        applicationId 'com.example.jetnews'
+        applicationId 'com.xt.client'
         minSdkVersion 26
         targetSdkVersion 32
         versionCode 1
@@ -120,11 +120,20 @@ dependencies {
     implementation 'androidx.navigation:navigation-compose:2.4.2'
 
     implementation "androidx.window:window:1.0.0"
+
+    // OkHttp3
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
+
+    api "com.squareup.retrofit2:retrofit:2.3.0"
+    api "com.squareup.retrofit2:converter-gson:2.3.0"
+    api "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+
     implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+
     implementation 'com.tencent.wcdb:wcdb-android:1.0.8'
-    implementation ('com.tencent.wcdb:room:1.0.8'){
+    implementation('com.tencent.wcdb:room:1.0.8') {
         exclude group: 'com.android.support'
     }
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
