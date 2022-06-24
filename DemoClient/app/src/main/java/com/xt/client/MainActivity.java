@@ -42,6 +42,7 @@ import com.xt.client.fragment.TestFragment;
 import com.xt.client.fragment.TryCrashFragment;
 import com.xt.client.inter.RecyclerItemClickListener;
 import com.xt.client.util.ToastUtil;
+import com.xt.router_api.BindSelfView;
 
 import java.io.File;
 import java.io.IOException;
@@ -62,7 +63,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * @author xiatian
  * @date 2019/6/11
  */
-
+@BindSelfView(1)
 public class MainActivity extends FragmentActivity {
 
     static final String TAG = "lxltest";
