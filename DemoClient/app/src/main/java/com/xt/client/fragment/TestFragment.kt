@@ -4,15 +4,19 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
+import com.xt.client.application.DemoApplication
 import com.xt.client.util.IOHelper
+import com.xt.client.util.ToastUtil
+import kotlinx.coroutines.*
 import okhttp3.*
 import java.io.*
-import java.lang.StringBuilder
 import java.net.Socket
 import java.net.UnknownHostException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import javax.net.ssl.SSLSocketFactory
+import kotlin.math.log
 
 class TestFragment : Base2Fragment() {
 
@@ -23,7 +27,10 @@ class TestFragment : Base2Fragment() {
         return mutableListOf<String>().apply {
             this.add("发送请求")//0
             this.add("发送post请求")//1
-            this.add("CSDN访问")//1
+            this.add("CSDN访问")//2
+            this.add("测试协程")//3
+            this.add("测试请求")//4
+            this.add("ViewModel")//5
         }
     }
 
@@ -113,13 +120,45 @@ class TestFragment : Base2Fragment() {
             })
             return
         }
-
         if (position == 2) {
             service.execute {
                 request()
             }
+            return
+        }
+        if (position == 3) {
+            logI("before test4")
+            test4()
+            logI("after test4")
+            return
         }
 
+
+        if (position == 4) {
+            GlobalScope.launch(Dispatchers.Main) {
+                logI("click 4")
+                var reqeustTest: String
+                val job = withContext(Dispatchers.IO) {
+                    delay(1000)
+                    reqeustTest = reqeustTest()
+                }
+                logI("主线程防水:$reqeustTest")
+            }
+            return
+        }
+        if (position == 5) {
+
+            Thread(Runnable {
+                Toast.makeText(DemoApplication.getInstance(), "Toast", Toast.LENGTH_SHORT).show()
+            }).start()
+            return
+        }
+    }
+
+    private fun reqeustTest(): String {
+        Thread.sleep(1000)
+        throw Exception("error")
+        return "1111";
     }
 
     private fun request() {
@@ -153,6 +192,56 @@ class TestFragment : Base2Fragment() {
         } catch (e: IOException) {
             e.printStackTrace()
         }
+    }
+
+    fun test2() {
+        logI("test2," + Thread.currentThread().name)
+        GlobalScope.launch(Dispatchers.Main) {
+            delay(1000)
+            logI("world2," + Thread.currentThread().name)
+        }
+        logI("hello," + Thread.currentThread().name)
+        Thread.sleep(2000)
+        logI("test3," + Thread.currentThread().name)
+    }
+
+    private fun test4() = runBlocking {
+//        logI("test4," + Thread.currentThread().name)
+//        val launch = launch {
+//            delay(5_000)
+//            logI("world," + Thread.currentThread().name)
+//        }
+//
+//        logI("先刮起")
+////        launch.join()
+//        println("hello")
+//        delay(2000L)
+
+        val createNames = createNames()
+        showNames(createNames)
+
+    }
+
+    fun showNames(sequence: Sequence<String>) {
+        val iterator = sequence.iterator()
+        var next = iterator.next()
+        logI("showNames_$next")
+        next = iterator.next()
+        logI("showNames_$next")
+        next = iterator.next()
+        logI("showNames_$next")
+    }
+
+    /**
+     * 协作式
+     */
+    fun createNames() = sequence<String> {
+        yield("AAA")
+        logI("AAA")
+        yield("BBB")
+        logI("BBB")
+        yield("CCC")
+        logI("CCC")
     }
 
 

@@ -26,6 +26,7 @@
     <string name="title_activity_compose">ComposeActivity</string>
     <string name="retrofit">Retrofit</string>
     <string name="composemvi">compose+MVI</string>
+    <string name="mmkv">MMKV</string>
 
 
 </resources>

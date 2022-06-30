@@ -23,6 +23,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.xt.client.activitys.JNIActivity;
 import com.xt.client.activitys.PerformanceActivity;
 import com.xt.client.activitys.PerformanceCaseActivity;
@@ -36,6 +38,7 @@ import com.xt.client.application.DemoApplication;
 import com.xt.client.fragment.AidlFragment;
 import com.xt.client.fragment.BaseFragment;
 import com.xt.client.fragment.DynamicFragment;
+import com.xt.client.fragment.MMKVFragment;
 import com.xt.client.fragment.ProtobuffFragment;
 import com.xt.client.fragment.RetrofitFragment;
 import com.xt.client.fragment.TestFragment;
@@ -79,13 +82,11 @@ public class MainActivity extends FragmentActivity {
         manager = getSupportFragmentManager();
         initData();
         sendBroadcast(new Intent());
-        Log.i("lxltest", "MainActivity_onCreate");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.i("lxltest", "MainActivity_onStart");
     }
 
     @Override
@@ -114,7 +115,7 @@ public class MainActivity extends FragmentActivity {
         dataList.add(new ItemState(getString(R.string.compose), "done"));
         dataList.add(new ItemState(getString(R.string.composemvi), "done"));
         dataList.add(new ItemState(getString(R.string.retrofit), "done"));
-
+        dataList.add(new ItemState(getString(R.string.mmkv), "done"));
 
 
         GridLayoutManager layout = new GridLayoutManager(this, 2);
@@ -201,9 +202,9 @@ public class MainActivity extends FragmentActivity {
             fragment = new TestFragment();
         } else if (getString(R.string.retrofit).equalsIgnoreCase(title)) {
             fragment = new RetrofitFragment();
+        } else if (getString(R.string.mmkv).equalsIgnoreCase(title)) {
+            fragment = new MMKVFragment();
         }
-
-
 
         if (fragment != null) {
             Bundle bundle = new Bundle();

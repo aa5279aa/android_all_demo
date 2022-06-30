@@ -121,6 +121,7 @@ dependencies {
 
     implementation "androidx.window:window:1.0.0"
 
+    implementation "com.alibaba:fastjson:1.2.34"
     // OkHttp3
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
@@ -140,6 +141,8 @@ dependencies {
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1'
     annotationProcessor project(':router_processor')
     implementation project(':routerapi')
+
+    implementation 'com.tencent:mmkv:1.2.13'
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {

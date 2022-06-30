@@ -43,9 +43,9 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "SplashActivity onCreate");
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
-        getWindow().setAttributes(lp);
+//        WindowManager.LayoutParams lp = getWindow().getAttributes();
+//        lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+//        getWindow().setAttributes(lp);
         View decorView = getWindow().getDecorView();
         int systemUiVisibility = decorView.getSystemUiVisibility();
         systemUiVisibility |= View.SYSTEM_UI_FLAG_FULLSCREEN;

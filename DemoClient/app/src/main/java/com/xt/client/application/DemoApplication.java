@@ -3,6 +3,7 @@ package com.xt.client.application;
 import android.app.Application;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.util.Log;
 
@@ -11,8 +12,8 @@ public class DemoApplication extends Application {
     private static DemoApplication instance;
     Handler handler = new Handler();
 
-    public DemoApplication(){
-        Log.i("lxltest","DemoApplication init");
+    public DemoApplication() {
+        Log.i("lxltest", "DemoApplication init");
     }
 
 
@@ -30,6 +31,10 @@ public class DemoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        SharedPreferences sp = getSharedPreferences("name", 0);
+        String key = sp.getString("key", "");
+
+
     }
 
     public static DemoApplication getInstance() {
