@@ -55,6 +55,8 @@ class AidlFragment : BaseFragment() {
                                 Log.i("lxltest", "time:" + time)
                             }
                         })
+
+
                     } catch (e: RemoteException) {
                         e.printStackTrace()
                     }

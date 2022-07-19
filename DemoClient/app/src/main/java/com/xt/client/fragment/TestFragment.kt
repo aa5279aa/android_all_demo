@@ -1,13 +1,19 @@
 package com.xt.client.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.LocalSocket
+import android.net.LocalSocketAddress
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.Toast
-import com.xt.client.application.DemoApplication
+import android.widget.ImageView
+import com.google.gson.Gson
+import com.xt.client.model.UserModel
+import com.xt.client.service.ThreadService
 import com.xt.client.util.IOHelper
-import com.xt.client.util.ToastUtil
+import com.xt.client.util.LogUtil
 import kotlinx.coroutines.*
 import okhttp3.*
 import java.io.*
@@ -16,7 +22,7 @@ import java.net.UnknownHostException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import javax.net.ssl.SSLSocketFactory
-import kotlin.math.log
+import kotlin.system.measureTimeMillis
 
 class TestFragment : Base2Fragment() {
 
@@ -38,6 +44,11 @@ class TestFragment : Base2Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val builder = OkHttpClient.Builder()
         builder.cache(Cache(File(context?.filesDir?.absolutePath + File.separator + "ok"), 100))
+//        val glide = Glide.get(requireContext())
+//
+//        val imageView = ImageView(requireContext())
+//        Glide.with(requireContext()).load("http://www.baidu.com").into(imageView)
+
 //        builder.addInterceptor(object : Interceptor {
 //            override fun intercept(chain: Interceptor.Chain): Response {
 //                val response = chain.proceed(chain.request())
@@ -83,6 +94,23 @@ class TestFragment : Base2Fragment() {
 //        })
         client = builder.build()
         service = Executors.newSingleThreadExecutor()
+
+
+        val handler = Handler()
+        handler.postDelayed(Runnable {
+            val intent = Intent(context, ThreadService::class.java)
+            context!!.startService(intent)
+        },5000)
+    }
+
+    //查询数据库并返回
+    private fun requestUserInfo(): String {
+        return "";
+    }
+
+    private fun show(requestUserInfo: String): UserModel? {
+        val gson = Gson()
+        return gson.fromJson(requestUserInfo, UserModel::class.java);
     }
 
     private fun decrypt(bytes: ByteArray): ByteArray {
@@ -95,7 +123,8 @@ class TestFragment : Base2Fragment() {
         val cacheBuilder = CacheControl.Builder()
         cacheBuilder.noStore()
         builder.cacheControl(cacheBuilder.build())
-        val request = builder.url("https://www.baidu.com").build()
+        val request =
+            builder.url("https://blog.csdn.net/rzleilei/article/details/125672880").build()
         val newCall = client.newCall(request)
         if (position == 0) {
             service.execute {
@@ -133,24 +162,34 @@ class TestFragment : Base2Fragment() {
             return
         }
 
-
         if (position == 4) {
             GlobalScope.launch(Dispatchers.Main) {
                 logI("click 4")
                 var reqeustTest: String
-                val job = withContext(Dispatchers.IO) {
+                var reqeustTest2: String
+                withContext(Dispatchers.IO) {
                     delay(1000)
+                    //子线程1执行
                     reqeustTest = reqeustTest()
                 }
-                logI("主线程防水:$reqeustTest")
+                withContext(Dispatchers.Default) {
+                    delay(1000)
+                    //子线程2执行
+                    reqeustTest2 = reqeustTest()
+                }
+                logI("主线程执行:${reqeustTest}+${reqeustTest2}")
             }
             return
         }
         if (position == 5) {
-
-            Thread(Runnable {
-                Toast.makeText(DemoApplication.getInstance(), "Toast", Toast.LENGTH_SHORT).show()
-            }).start()
+            test3();
+            val localSocket = LocalSocket()
+            val localSocketAddress =
+                LocalSocketAddress("zygote", LocalSocketAddress.Namespace.RESERVED)
+            localSocket.connect(localSocketAddress)
+            val outputStream = localSocket.outputStream
+            outputStream.write(1)
+            outputStream.flush()
             return
         }
     }
@@ -203,6 +242,21 @@ class TestFragment : Base2Fragment() {
         logI("hello," + Thread.currentThread().name)
         Thread.sleep(2000)
         logI("test3," + Thread.currentThread().name)
+    }
+
+    private fun test3() {
+
+//        val first = System.currentTimeMillis()
+//        val end = System.currentTimeMillis() - first
+//        Log.i("lxltest", "$end")
+        var timeCost = measureTimeMillis {
+            var a = System.currentTimeMillis()
+            var b = System.currentTimeMillis() - a
+            LogUtil.logI("lxltest", "耗时1:$b")
+        }
+        LogUtil.logI("lxltest", "耗时2:$timeCost")
+
+
     }
 
     private fun test4() = runBlocking {

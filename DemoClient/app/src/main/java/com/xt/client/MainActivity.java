@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -51,6 +52,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -93,6 +96,24 @@ public class MainActivity extends FragmentActivity {
     protected void onResume() {
         super.onResume();
         Log.i("lxltest", "MainActivity_onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i("lxltest", "MainActivity_onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i("lxltest", "MainActivity_onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("lxltest", "MainActivity_onDestroy");
     }
 
     private void initData() {
@@ -234,9 +255,10 @@ public class MainActivity extends FragmentActivity {
             managerPermission();
         } else if (getString(R.string.performance_optimization).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, PerformanceCaseActivity.class);
-        }else if (getString(R.string.compose).equalsIgnoreCase(title)) {
+            finish();
+        } else if (getString(R.string.compose).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, ComposeActivity.class);
-        }else if (getString(R.string.composemvi).equalsIgnoreCase(title)) {
+        } else if (getString(R.string.composemvi).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, MVIComposeActivity.class);
         } else {
             return;
@@ -246,6 +268,7 @@ public class MainActivity extends FragmentActivity {
         }
         startActivity(intent);
     }
+
 
     class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -262,7 +285,10 @@ public class MainActivity extends FragmentActivity {
             ItemState itemState = dataList.get(position);
             ((TextView) holder.itemView.findViewById(R.id.text_name)).setText(itemState.name);
             ((TextView) holder.itemView.findViewById(R.id.text_state)).setText(itemState.state);
+            Lock locl = new ReentrantLock();
+            locl.lock();
         }
+
 
         @Override
         public int getItemCount() {
@@ -474,3 +500,5 @@ public class MainActivity extends FragmentActivity {
         return result;
     }
 }
+
+

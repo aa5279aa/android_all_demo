@@ -1,6 +1,7 @@
 package com.xt.client.activitys
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -11,6 +12,7 @@ import androidx.lifecycle.OnLifecycleEvent
 class TestActivity : BaseActivity() {
 
     override fun onClick(v: View?) {
+        Handler().postDelayed(Runnable {  },2000)
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

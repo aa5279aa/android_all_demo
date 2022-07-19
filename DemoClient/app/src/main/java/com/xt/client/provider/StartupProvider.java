@@ -9,8 +9,6 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.xt.client.util.LogUtil;
-
 
 /**
  * Created by lxl.
@@ -20,14 +18,12 @@ public class StartupProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         Context context = getContext();
-        LogUtil.logI("onCreate");
         return true;
     }
 
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-        LogUtil.logI("query");
         return null;
     }
 

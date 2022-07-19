@@ -79,9 +79,11 @@
         <service
             android:name=".service.OtherProcessService"
             android:process="com.xt.xt" />
-        <service android:name=".service.Other2ProcessService" />
+        <service
+            android:name=".service.Other2ProcessService"
+            android:process="com.xt.xt2" />
         <service android:name=".service.OnceProcessService" />
-        <service android:name=".service.ThreadService" />
+        <service android:name="com.xt.client.service.ThreadService" />
         <service android:name="org.eclipse.paho.android.service.MqttService" />
 
         <provider

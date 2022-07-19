@@ -34,12 +34,13 @@ class Other2ProcessService : IntentService("YourUploadService") {
             }
 
         }
-
     }
+
 
     override fun onCreate() {
         super.onCreate()
-        Log.i("lxltest", "onCreate()")
+        val currentThread = Thread.currentThread()
+        Log.i("lxltest", "onCreate():" + currentThread.name)
     }
 
     override fun onStart(intent: Intent?, startId: Int) {
@@ -65,6 +66,7 @@ class Other2ProcessService : IntentService("YourUploadService") {
         }
 
         override fun getProcessName(): String {
+            Log.i("lxltest", "getProcessName():" + Thread.currentThread().name)
             return getCurProcessName(baseContext)
         }
 

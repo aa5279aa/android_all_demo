@@ -1,6 +1,7 @@
 package com.xt.appplugin;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -23,7 +24,8 @@ public class Plugin6Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_plugin6);
         WebView webView = findViewById(R.id.webview);
-        webView.loadUrl("https://www.baidu.com");
+        webView.setBackgroundColor(Color.BLUE);
+        webView.loadUrl("https://blog.csdn.net/rzleilei/article/details/125657645?spm=1001.2014.3001.5501");
 
     }
 }
