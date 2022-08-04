@@ -1,4 +1,4 @@
-package com.xt.client.activitys.compose
+package com.xt.composeapp.compose.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,7 +11,7 @@ import com.xt.client.activitys.compose.news.ContentViewModel
  * @author lxl
  * mvi的方式写Compose
  */
-class MVIComposeActivity : ComponentActivity() {
+class ComposeMVIActivity : ComponentActivity() {
     private val viewModel by viewModels<ContentViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

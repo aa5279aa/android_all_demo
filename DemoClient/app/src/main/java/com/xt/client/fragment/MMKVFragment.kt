@@ -17,7 +17,6 @@ import com.xt.client.R
 import com.xt.client.aidl.IClientCallBack
 import com.xt.client.aidl.ProcessAidlInter
 import com.xt.client.function.retrofit.Api
-import com.xt.client.function.retrofit.RetrofitManager
 import com.xt.client.service.Other2ProcessService
 import okhttp3.Cache
 import okhttp3.OkHttpClient

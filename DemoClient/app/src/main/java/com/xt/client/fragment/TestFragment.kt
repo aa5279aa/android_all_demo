@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
+import com.alibaba.fastjson.JSON
 import com.google.gson.Gson
 import com.xt.client.model.UserModel
 import com.xt.client.service.ThreadService
@@ -23,6 +23,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import javax.net.ssl.SSLSocketFactory
 import kotlin.system.measureTimeMillis
+
 
 class TestFragment : Base2Fragment() {
 
@@ -96,11 +97,11 @@ class TestFragment : Base2Fragment() {
         service = Executors.newSingleThreadExecutor()
 
 
-        val handler = Handler()
-        handler.postDelayed(Runnable {
-            val intent = Intent(context, ThreadService::class.java)
-            context!!.startService(intent)
-        },5000)
+//        val handler = Handler()
+//        handler.postDelayed(Runnable {
+//            val intent = Intent(context, ThreadService::class.java)
+//            context!!.startService(intent)
+//        },5000)
     }
 
     //查询数据库并返回
@@ -191,6 +192,17 @@ class TestFragment : Base2Fragment() {
             outputStream.write(1)
             outputStream.flush()
             return
+        }
+        if(position == 6){
+//            WorkManager保活
+//            val requestC = PeriodicWorkRequest.Builder(TestWorker::class.java, Duration.ZERO)
+//                .build()
+//            val build = Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED)
+//                .setRequiresCharging(true).setRequiresDeviceIdle(true).build()
+//
+//            val requestO = OneTimeWorkRequest.Builder(TestWorker::class.java).setConstraints(build).build()
+//            val beginWith = WorkManager.getInstance(requireContext()).beginWith(requestO)
+//            beginWith.enqueue()
         }
     }
 

@@ -21,11 +21,8 @@
     <string name="flutter">Flutter混合开发</string>
     <string name="permission">权限申请</string>
     <string name="performance_optimization">性能优化</string>
-    <string name="compose">compose</string>
     <string name="memorysharing">内存共享传输</string>
-    <string name="title_activity_compose">ComposeActivity</string>
     <string name="retrofit">Retrofit</string>
-    <string name="composemvi">compose+MVI</string>
     <string name="mmkv">MMKV</string>
 
 

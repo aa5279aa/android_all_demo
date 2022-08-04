@@ -17,10 +17,11 @@ abstract class Base2Activity : FragmentActivity() {
     lateinit var mContent: RecyclerView;
     lateinit var mResult: TextView;
     private var mAdapter = GridAdapter()
-    private var context:Context? = null
+    private var context: Context? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        context = this
         val inflate = View.inflate(this, R.layout.jni_layout, null)
         setContentView(inflate)
         mContent = findViewById(R.id.content)
@@ -30,8 +31,6 @@ abstract class Base2Activity : FragmentActivity() {
             GridLayoutManager(baseContext, 2, GridLayoutManager.VERTICAL, false)
         mContent.adapter = mAdapter
         mAdapter.dataList = getShowData()
-
-        context!!.externalCacheDir
     }
 
 

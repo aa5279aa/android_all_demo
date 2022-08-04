@@ -2,6 +2,7 @@ package com.xt.client.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Message
 import android.util.Log
 import android.view.View
 import com.xt.client.function.retrofit.Api
@@ -54,7 +55,7 @@ class RetrofitFragment : Base2Fragment() {
         val cacheBuilder = CacheControl.Builder()
         cacheBuilder.noStore()
         builder.cacheControl(cacheBuilder.build())
-        val request = builder.url("https://www.baidu.com").build()
+        val request = builder.url("https://www.baidu.com").get().build()
         val newCall = client.newCall(request)
         if (position == 0) {
             service.execute {
@@ -105,7 +106,7 @@ class RetrofitFragment : Base2Fragment() {
 
         if (position == 3) {
             Log.i("lxltest", "Retrofit请求")
-            val androidResult = api.androidResult
+            val androidResult =  api.androidResult
             androidResult.enqueue(object : retrofit2.Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     Log.i("lxltest", "onFailure")

@@ -1,6 +1,7 @@
 package com.xt.client;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -23,6 +25,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -31,10 +34,8 @@ import com.xt.client.activitys.PerformanceActivity;
 import com.xt.client.activitys.PerformanceCaseActivity;
 import com.xt.client.activitys.PrepareActivity;
 import com.xt.client.activitys.SaveLastActivity;
-import com.xt.client.activitys.TestActivity;
+import com.xt.client.activitys.ThreadRefreshActivity;
 import com.xt.client.activitys.WCDBActivity;
-import com.xt.client.activitys.compose.ComposeActivity;
-import com.xt.client.activitys.compose.MVIComposeActivity;
 import com.xt.client.application.DemoApplication;
 import com.xt.client.fragment.AidlFragment;
 import com.xt.client.fragment.BaseFragment;
@@ -51,6 +52,7 @@ import com.xt.router_api.BindSelfView;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -64,6 +66,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import dalvik.system.DexFile;
 
 /**
  * @author xiatian
@@ -133,8 +137,6 @@ public class MainActivity extends FragmentActivity {
         dataList.add(new ItemState(getString(R.string.dynamicload), "ing"));
         dataList.add(new ItemState(getString(R.string.permission), "done"));
         dataList.add(new ItemState(getString(R.string.performance_optimization), "done"));
-        dataList.add(new ItemState(getString(R.string.compose), "done"));
-        dataList.add(new ItemState(getString(R.string.composemvi), "done"));
         dataList.add(new ItemState(getString(R.string.retrofit), "done"));
         dataList.add(new ItemState(getString(R.string.mmkv), "done"));
 
@@ -174,18 +176,29 @@ public class MainActivity extends FragmentActivity {
     private void doAction(String title) {
         if (getString(R.string.test).equalsIgnoreCase(title)) {
 
-            try {
-                if (!Settings.canDrawOverlays(this)) {
-                    startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName())));
-                    return;
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Looper.prepare();
+                    Toast xxx = Toast.makeText(getBaseContext(), "xxx", Toast.LENGTH_LONG);
+                    xxx.show();
+
                 }
-                dotest();
-//                Intent intent = new Intent();
-//                intent.setClass(MainActivity.this, TestActivity.class);
-//                startActivity(intent);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            }).start();
+//            try {
+//                LibraryTest libraryTest = new LibraryTest();
+//                libraryTest.test();
+////                if (!Settings.canDrawOverlays(this)) {
+////                    startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName())));
+////                    return;
+////                }
+////                dotest();
+////                Intent intent = new Intent();
+////                intent.setClass(MainActivity.this, TestActivity.class);
+////                startActivity(intent);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
             return;
         }
         if (getString(R.string.test_crash).equalsIgnoreCase(title)) {
@@ -250,16 +263,12 @@ public class MainActivity extends FragmentActivity {
         } else if (getString(R.string.wcdb).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, WCDBActivity.class);
         } else if (getString(R.string.threadrefresh).equalsIgnoreCase(title)) {
-            intent.setClass(MainActivity.this, ThreadRefreshUIActivity.class);
+            intent.setClass(MainActivity.this, ThreadRefreshActivity.class);
         } else if (getString(R.string.permission).equalsIgnoreCase(title)) {
             managerPermission();
         } else if (getString(R.string.performance_optimization).equalsIgnoreCase(title)) {
             intent.setClass(MainActivity.this, PerformanceCaseActivity.class);
             finish();
-        } else if (getString(R.string.compose).equalsIgnoreCase(title)) {
-            intent.setClass(MainActivity.this, ComposeActivity.class);
-        } else if (getString(R.string.composemvi).equalsIgnoreCase(title)) {
-            intent.setClass(MainActivity.this, MVIComposeActivity.class);
         } else {
             return;
         }
@@ -416,6 +425,13 @@ public class MainActivity extends FragmentActivity {
         } catch (Exception e) {
             Log.e(TAG, "showLogoutBtn: addview Error", e);
         }
+
+
+        tt(MainActivity.class);
+    }
+
+    private void tt(Class<? extends Activity> a){
+
     }
 
     private static void setViewTouchGrag(final View touchView, final View floatView, final WindowManager.LayoutParams layoutParams, final WindowManager windowManager, final boolean isWelt) {

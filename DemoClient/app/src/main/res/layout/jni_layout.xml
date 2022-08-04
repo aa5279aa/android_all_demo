@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:clickable="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="10dp">
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -16,7 +17,6 @@
 
 
     <TextView
-
         android:id="@+id/result_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

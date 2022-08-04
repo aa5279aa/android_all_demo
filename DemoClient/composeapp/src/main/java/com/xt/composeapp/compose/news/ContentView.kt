@@ -1,5 +1,6 @@
 package com.xt.client.activitys.compose.news
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -12,7 +13,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewModelScope
-import com.xt.client.util.ToastUtil
 import kotlinx.coroutines.launch
 
 @Composable
@@ -32,9 +32,6 @@ fun ContentView(viewModel: ContentViewModel) {
         viewState.dataList!!.forEachIndexed { index, it ->
             NewsItem(viewModel, position = index, news = it)
         }
-    }
-    viewState.detailContent?.let {
-        ToastUtil.showCenterToast(it)
     }
 }
 

@@ -54,12 +54,6 @@
         <activity android:name=".activitys.ShowActivity" />
         <activity android:name=".activitys.ThreadRefreshActivity" />
         <activity android:name=".activitys.PerformanceCaseActivity" />
-        <activity
-            android:name=".activitys.compose.ComposeActivity"
-            android:theme="@style/AppFullTheme" />
-        <activity
-            android:name=".activitys.compose.MVIComposeActivity"
-            android:theme="@style/AppFullTheme" />
 
         <activity
             android:name=".activitys.AnnotationActivity"
@@ -68,9 +62,6 @@
             android:name=".activitys.TestActivity"
             android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".ThreadRefreshUIActivity"
-            android:launchMode="singleTask" />
         <activity android:name="com.xt.appplugin.Plugin1Activity" />
         <activity
             android:name=".HostActivity"
