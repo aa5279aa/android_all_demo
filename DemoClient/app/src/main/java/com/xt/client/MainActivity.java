@@ -12,7 +12,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Looper;
+import android.os.Message;
+import android.os.RemoteException;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -40,12 +43,14 @@ import com.xt.client.application.DemoApplication;
 import com.xt.client.fragment.AidlFragment;
 import com.xt.client.fragment.BaseFragment;
 import com.xt.client.fragment.DynamicFragment;
+import com.xt.client.fragment.KOOMFragment;
 import com.xt.client.fragment.MMKVFragment;
 import com.xt.client.fragment.ProtobuffFragment;
 import com.xt.client.fragment.RetrofitFragment;
 import com.xt.client.fragment.TestFragment;
 import com.xt.client.fragment.TryCrashFragment;
 import com.xt.client.inter.RecyclerItemClickListener;
+import com.xt.client.service.Other3ProcessService;
 import com.xt.client.util.ToastUtil;
 import com.xt.router_api.BindSelfView;
 
@@ -89,6 +94,19 @@ public class MainActivity extends FragmentActivity {
         manager = getSupportFragmentManager();
         initData();
         sendBroadcast(new Intent());
+        TextView text = findViewById(R.id.test);
+        text.onPreDraw();
+        int lineCount = text.getLineCount();
+        Log.i("lxltest", "lineCount1:" + lineCount);
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                int lineCount = text.getLineCount();
+                Log.i("lxltest", "lineCount2:" + lineCount);
+            }
+        });
+
+
     }
 
     @Override
@@ -139,6 +157,7 @@ public class MainActivity extends FragmentActivity {
         dataList.add(new ItemState(getString(R.string.performance_optimization), "done"));
         dataList.add(new ItemState(getString(R.string.retrofit), "done"));
         dataList.add(new ItemState(getString(R.string.mmkv), "done"));
+        dataList.add(new ItemState(getString(R.string.mmkv), "ing"));
 
 
         GridLayoutManager layout = new GridLayoutManager(this, 2);
@@ -175,48 +194,13 @@ public class MainActivity extends FragmentActivity {
 
     private void doAction(String title) {
         if (getString(R.string.test).equalsIgnoreCase(title)) {
+            //A线程
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Looper.prepare();
-                    Toast xxx = Toast.makeText(getBaseContext(), "xxx", Toast.LENGTH_LONG);
-                    xxx.show();
-
-                }
-            }).start();
-//            try {
-//                LibraryTest libraryTest = new LibraryTest();
-//                libraryTest.test();
-////                if (!Settings.canDrawOverlays(this)) {
-////                    startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName())));
-////                    return;
-////                }
-////                dotest();
-////                Intent intent = new Intent();
-////                intent.setClass(MainActivity.this, TestActivity.class);
-////                startActivity(intent);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
             return;
         }
         if (getString(R.string.test_crash).equalsIgnoreCase(title)) {
-            TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentationM
-                // for ActivityCompat#requestPermissions for more details.
-                return;
-            }
-            String simSer = tm.getSimSerialNumber();
-            int simState = tm.getSimState();
-            int dataNetworkType = tm.getDataNetworkType();
-            Log.i("lxltest", "simSer:" + simSer + ",simState:" + simState + ",dataNetworkType:" + dataNetworkType);
+            String str = null;
+            System.out.println(str.length());
             return;
         }
         Fragment fragment = null;
@@ -238,6 +222,8 @@ public class MainActivity extends FragmentActivity {
             fragment = new RetrofitFragment();
         } else if (getString(R.string.mmkv).equalsIgnoreCase(title)) {
             fragment = new MMKVFragment();
+        }else if (getString(R.string.koom).equalsIgnoreCase(title)) {
+            fragment = new KOOMFragment();
         }
 
         if (fragment != null) {
@@ -430,7 +416,7 @@ public class MainActivity extends FragmentActivity {
         tt(MainActivity.class);
     }
 
-    private void tt(Class<? extends Activity> a){
+    private void tt(Class<? extends Activity> a) {
 
     }
 
@@ -514,6 +500,33 @@ public class MainActivity extends FragmentActivity {
             result[1] = screenHeight - 120;
         }
         return result;
+    }
+
+    private void test() {
+        Handler oldHandler = null;//反射拿到的原来的handler
+        Handler mHandler = new Handler(oldHandler.getLooper(), null) {
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what) {
+                    case 0: {
+                        oldHandler.obtainMessage(0, msg.obj).sendToTarget();
+                        break;
+                    }
+                    case 1: {
+                        try {
+                            //反射调用handleHide();方法
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        //反射把mNextView = null;
+                        break;
+                    }
+                    case 2: {
+                        //和1的流程类似
+                    }
+                }
+            }
+        };
     }
 }
 

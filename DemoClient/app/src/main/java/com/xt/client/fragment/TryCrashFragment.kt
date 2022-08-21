@@ -28,19 +28,13 @@ class TryCrashFragment : BaseFragment() {
                         Looper.loop()
                     } catch (e: Exception) {
                         e.printStackTrace()
-                        Log.i("lxltest", "catch crash")
-                        DemoUtils.showToast("崩溃原因：" + e.message)
-                        //因为触发崩溃会导致loop中的messageQueue退出当前队列，所以直接直接不会生效，需要post重新添加到队列才可以
-                        viewHolder?.resultText?.text = ("崩溃原因：" + e.message)
-                        Handler().post {
-                            viewHolder?.resultText?.text = ("崩溃原因2：" + e.message)
-                        }
                     }
                 }
             }
         } else if (id == R.id.button2) {
             throw NullPointerException("null point")
         }
+
 
     }
 

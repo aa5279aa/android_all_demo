@@ -11,6 +11,6 @@ dependencies {
     implementation 'com.squareup:javapoet:1.11.1'
     api 'com.google.auto.service:auto-service:1.0-rc5'
     annotationProcessor 'com.google.auto.service:auto-service:1.0-rc5'
-    implementation project(path: ':routerapi')
+    implementation project(path: ':annotationLibrary')
 
 }

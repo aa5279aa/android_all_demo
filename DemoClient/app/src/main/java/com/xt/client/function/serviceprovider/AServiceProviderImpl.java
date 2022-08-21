@@ -16,6 +16,6 @@ public class AServiceProviderImpl implements ServiceProviderInterface {
 
     @Override
     public void onSelfThread(Context context) {
-        Log.i("lxltest", "onMainThread A");
+        Log.i("lxltest", "onSelfThread A");
     }
 }

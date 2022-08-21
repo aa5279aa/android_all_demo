@@ -51,6 +51,11 @@ android {
         androidTest {
             java.srcDir sharedTestDir
         }
+        main {
+            resources {
+                srcDirs 'src/main/resources'
+            }
+        }
     }
 
     compileOptions {
@@ -119,7 +124,7 @@ dependencies {
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1'
     annotationProcessor project(':router_processor')
-    implementation project(':routerapi')
+    implementation project(':annotationLibrary')
 
     implementation 'com.tencent:mmkv:1.2.13'
 //    implementation project(':applibrary')

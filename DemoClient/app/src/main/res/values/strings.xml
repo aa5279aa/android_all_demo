@@ -24,6 +24,7 @@
     <string name="memorysharing">内存共享传输</string>
     <string name="retrofit">Retrofit</string>
     <string name="mmkv">MMKV</string>
+    <string name="koom">KOOM</string>
 
 
 </resources>

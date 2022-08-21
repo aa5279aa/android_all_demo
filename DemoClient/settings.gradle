@@ -1,4 +1,4 @@
 include ':app'
 
 rootProject.name = 'DemoClient'
-include ':appplugin', 'router_processor', 'routerapi'
+include ':appplugin', 'router_processor', 'annotationLibrary'

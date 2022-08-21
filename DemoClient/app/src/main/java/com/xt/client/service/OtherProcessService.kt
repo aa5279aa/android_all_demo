@@ -59,6 +59,11 @@ class OtherProcessService : IntentService("YourUploadService") {
         Log.i("lxltest", "----->onRebind")
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("lxltest", "----->onRebind")
+    }
+
     fun getCount(): Int {
         return (Math.random() * 10).toInt()
     }
