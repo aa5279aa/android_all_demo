@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -59,22 +60,48 @@ public class RouterProcessor extends AbstractProcessor {
         processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, "TAG");
         //所有带Route注解的类
         Set<? extends Element> elementsAnnotatedWith = roundEnvironment.getElementsAnnotatedWith(Route.class);
+        Map<String, String> map = new HashMap<>();
         for (Element e : elementsAnnotatedWith) {
             Route annotation = e.getAnnotation(Route.class);
-            System.out.println(TAG + ",moduleName:" + annotation.moduleName());
-            generatedClass("RegisterRouter", annotation.moduleName());
+            Element enclosingElement = e.getEnclosingElement();
+            String aPackage = ProcessorUtils.getPackage(enclosingElement);
+            System.out.println(TAG + ",moduleName:" + annotation.moduleName() + ",SimpleName:" + e.getSimpleName());
+            map.put(annotation.moduleName(), aPackage + "." + e.getSimpleName().toString());
         }
+        generatedClass("RegisterRouter", map);
         return true;
     }
 
-    //针对注解中的内容生成类
-    private void generatedClass(String name, String moduleName) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("package com.xt.client;\n");
-        builder.append("public class " + name + " {");
-        builder.append("}");
-
+    /**
+     * 针对注解中的内容生成类
+     * 注册key，类名
+     */
+    private void generatedClass(String name, Map<String, String> moduleMap) {
         System.out.println(TAG + ":createJAVAFile:" + name);
+        StringBuilder builder = new StringBuilder();
+        addLine(builder, "package com.xt.client;");
+
+        addLine(builder, "import java.util.HashMap;");
+        addLine(builder, "import java.util.Map;");
+        addLine(builder, "import java.util.Map;");
+        addLine(builder, "import com.xt.client.function.route.RouterBase;");
+        addLine(builder, " import com.xt.client.function.route.RegisterRouterInter;");
+
+        for (String value : moduleMap.values()) {
+            addLine(builder, "import " + value + ";");
+        }
+
+
+        addLine(builder, "public class " + name + " extends RegisterRouterInter {");
+        addLine(builder, "  @Override");
+        addLine(builder, "  public void init() {");
+
+        for (String key : moduleMap.keySet()) {
+            addLine(builder, "  map.put(\"" + key + "\", new " + moduleMap.get(key) + "());");
+        }
+
+        addLine(builder, "  }");
+        builder.append("}");
 
         try {
             writer.append(builder.toString());
@@ -85,4 +112,10 @@ public class RouterProcessor extends AbstractProcessor {
         }
         System.out.println(TAG + ":createJAVAFile.end:" + name);
     }
+
+    private void addLine(StringBuilder builder, String line) {
+        builder.append(line);
+        builder.append("\n");
+    }
+
 }

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
 
+import com.xt.client.function.route.RouterHandle;
 import com.xt.client.function.serviceprovider.AServiceProviderImpl;
 import com.xt.client.function.serviceprovider.BServiceProviderImpl;
 import com.xt.client.inter.ServiceProviderInterface;
@@ -53,6 +54,13 @@ public class DemoApplication extends Application {
                 serviceProviderInterface.onSelfThread(instance);
             }
         }).start();
+
+        RouterHandle routerHandle = new RouterHandle();
+        try {
+            routerHandle.jump("a_router", "a_sayhello", "hello everyone");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void normalLaunch() {

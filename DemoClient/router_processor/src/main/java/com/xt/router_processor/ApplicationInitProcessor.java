@@ -55,12 +55,7 @@ public class ApplicationInitProcessor extends AbstractProcessor {
         for (Element e : set) {
             String name = e.getSimpleName().toString();
             Element enclosingElement = e.getEnclosingElement();
-            String packageName;
-            if (enclosingElement instanceof PackageElement) {
-                packageName = ((PackageElement) enclosingElement).getQualifiedName().toString();
-            } else {
-                packageName = ((TypeElement) enclosingElement).getQualifiedName().toString();
-            }
+            String packageName = ProcessorUtils.getPackage(enclosingElement);
             addToList(packageName + "." + name);
         }
         return true;
