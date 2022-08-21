@@ -6,10 +6,10 @@
 android工程，包含了应用于android的所有技术的集合。
 
 为了避免各种异常的问题，建议如下配置：
-## 1.project.build.gradle中使用tool的版本为3.2.0 
-classpath 'com.android.tools.build:gradle:3.2.0'
-## 2.gradle-wrapper.properties中配置为：4.6
-distributionUrl=https\://services.gradle.org/distributions/gradle-4.6-all.zip
+## 1.project.build.gradle中使用tool的版本为7.2.0
+classpath 'com.android.tools.build:gradle:7.2.0'
+## 2.gradle-wrapper.properties中配置为：7.3.3
+distributionUrl=https\://services.gradle.org/distributions/gradle-7.3.3-bin.zip
 ## 3.由于国内网络问题，建议jcenter,gooole等镜像地址改为阿里云的。可以实现科学上网的请忽略此条。
 project.build.gradle做如下配置：
 allprojects {  
@@ -21,13 +21,10 @@ allprojects {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }   
         maven { url "https://jitpack.io" }  
     }  
-}  
+}
 
-# 2.DemoServe   
-java的服务，可以直接部署到tomcat。用于提供服务给客户端，比如提供protobuf的服务。
-# 3.DemoDependent    
-第三方项目的工程。维护protobuf契约文件的工程。
+# 后台项目暂未搭建 
 
-# 4.各个Demo的详细功能详见
-<a href="https://github.com/aa5279aa/android_all_demo/wiki/Demo%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D">Demo功能介绍</a>
+# 4.DemoClient详细功能详见
+<a href="https://github.com/aa5279aa/android_all_demo/tree/master/DemoClient#readme">DemoClient详细介绍</a>
 
