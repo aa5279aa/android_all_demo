@@ -1,0 +1,5156 @@
+{
+  "code": "000000",
+  "description": "SUCCESS",
+  "data": {
+    "total": 5,
+    "list": [
+      {
+        "id": null,
+        "scenarioCode": "jQJYylD",
+        "scenarioSkillCode": null,
+        "scenarioName": "彩蛋EC24/ES13的副本",
+        "audienceType": "2",
+        "validateType": 0,
+        "validityStartDate": null,
+        "validityEndDate": null,
+        "executeLimitDto": {
+          "dailyLimit": null,
+          "weeklyLimit": null,
+          "monthlyLimit": null,
+          "yearLimit": null,
+          "bootLimit": 1,
+          "loginLimit": null,
+          "totalLimit": null
+        },
+        "executionSource": 0,
+        "category": 0,
+        "source": 0,
+        "scenarioPrice": 0.0,
+        "scenarioLevel": null,
+        "scenarioPValue": null,
+        "coolDownTime": null,
+        "lifeTime": null,
+        "state": 1,
+        "updateTime": "2022-08-04 15:51:35",
+        "grayType": 1,
+        "hasUserGroup": null,
+        "userBind": false,
+        "groups": [
+          {
+            "executeLimitDto": null,
+            "nextId": "19297,19294,19293",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "19292",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_SERVICE_STATUS",
+                "triggerName": "TRIG_SERVICE_STATUS",
+                "expression": "SETrigger.setupServiceStatusChanged(\"2\",\"0\")",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "cbbc8aeeb3eb488eb7cb1adacde98a1f"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 33951,
+                    "expression": "SEAction.pause(\"10\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "19292",
+            "forestGroup": "0",
+            "groupId": "19293",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SEAccountCondition.isAccountBirthday())",
+                "exclusive": null,
+                "extras": {},
+                "id": "fd8531c9dd3045ba914c44e73a615f5c",
+                "actions": [
+                  {
+                    "id": 33949,
+                    "expression": "SEAction.obtainActions(\"5\",\"\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": {
+                      "bizScript": "sOYcwPt"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "19295",
+            "previousId": "19292",
+            "forestGroup": "0",
+            "groupId": "19294",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(!(SEAccountCondition.isAccountBirthday()))",
+                "exclusive": null,
+                "extras": {},
+                "id": "567fc6749c744e4f867cb4aa3d3d5996",
+                "actions": [
+                  {
+                    "id": 33948,
+                    "expression": "SEAction.obtainActions(\"5\",\"\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": {
+                      "bizScript": "l8owT3j"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "19296",
+            "previousId": "19294",
+            "forestGroup": "0",
+            "groupId": "19295",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isYear(\"==\",\"2022\")&&SETimeCondition.isMonth(\"==\",\"6\")&&SETimeCondition.isDay(\"==\",\"3\"))||(SETimeCondition.isYear(\"==\",\"2023\")&&SETimeCondition.isMonth(\"==\",\"6\")&&SETimeCondition.isDay(\" ==\",\"22\"))||(SETimeCondition.isYear(\"==\",\"2024\")&&SETimeCondition.isMonth(\"==\",\"6\")&&SETimeCondition.isDay(\"==\",\"10\"))||(SETimeCondition.isYear(\"==\",\"2025\")&&SETimeCondition.isMonth(\"==\",\"5\")&&SETimeCondition.isDay(\"==\",\"31\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "92b2ed2a86114e2eaf6d3efd7f79d3cb",
+                "actions": [
+                  {
+                    "id": 33950,
+                    "expression": "SEAction.pause(\"10\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "19295",
+            "forestGroup": "0",
+            "groupId": "19296",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 33947,
+                    "expression": "SEAction.playAudio(\"https://tsp-file-prd-1258960627.cos.ap-beijing.myqcloud.com/scenario-service1648186454311%E7%AB%AF%E5%8D%88%E6%9C%89%E4%BA%BA%E5%A3%B0%E6%B0%9B%E5%9B%B4%EF%BC%88%E4%BD%BF%E7%94%A8%EF%BC%89.wav\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "19292",
+            "forestGroup": "0",
+            "groupId": "19297",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(!(SEAccountCondition.isAccountBirthday()))",
+                "exclusive": null,
+                "extras": {},
+                "id": "c1156f5ea6a3475aad1e92282b46081b",
+                "actions": [
+                  {
+                    "id": 33946,
+                    "expression": "SEAction.obtainActions(\"5\",\"\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": {
+                      "bizScript": "nNvhjqJ"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": null,
+        "scenarioCode": "eb569fb",
+        "scenarioSkillCode": null,
+        "scenarioName": "「智能车控」通话时降低风量",
+        "audienceType": "2",
+        "validateType": 0,
+        "validityStartDate": null,
+        "validityEndDate": null,
+        "executeLimitDto": {
+          "dailyLimit": null,
+          "weeklyLimit": null,
+          "monthlyLimit": null,
+          "yearLimit": null,
+          "bootLimit": null,
+          "loginLimit": null,
+          "totalLimit": null
+        },
+        "executionSource": 0,
+        "category": 0,
+        "source": 0,
+        "scenarioPrice": null,
+        "scenarioLevel": 0,
+        "scenarioPValue": null,
+        "coolDownTime": null,
+        "lifeTime": null,
+        "state": 2,
+        "updateTime": "2021-03-18 19:19:46",
+        "grayType": null,
+        "hasUserGroup": null,
+        "userBind": false,
+        "groups": [
+          {
+            "executeLimitDto": null,
+            "nextId": "156,162",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "155",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_CHAT_af0d81d5def043dd92ba23bce7b74a3c",
+                "triggerName": "TRIG_CHAT_af0d81d5def043dd92ba23bce7b74a3c",
+                "expression": "SETrigger.setupCallOn()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "a00768cae18e4c7bad0d01a02f4674e3"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SEVehicleCondition.isAirPowerState(\"1\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "fa64b408dfc4481faf57e4f013974745",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "254,160",
+            "previousId": "155",
+            "forestGroup": "0",
+            "groupId": "156",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "S ETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "e6d664bc661944519f9440b65e248c76"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SEVehicleCondition.isVolume(\"<\",\"15\"))||(SEVehicleCondition.isVolume(\"==\",\"15\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "9f1fba516b684561b6156bbb76974680",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "254",
+            "forestGroup": "0",
+            "groupId": "158",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_CHAT_c87a48c9107b4439bfb30e7f43d6227f",
+                "triggerName": "TRIG_CHAT_c87a48c9107b4439bfb30e7f43d6227f",
+                "expression": "SETrigger.setupCallHangUp()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "812f35dc4e6c4e468b71065817bc5abe"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 268,
+                    "expression": "SEAction.adjustAirVolume(\"0\",\"2\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "165,254,160,163",
+            "forestGroup": "0",
+            "groupId": "159",
+            "triggers": [
+              {
+                "triggerCode": "AIR_FAN_SPEED",
+                "triggerName": "AIR_FAN_SPEED",
+                "expression": "SETrigger.setupAirConditionFanSpeed()",
+                "executionSource": 3,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "eeca540d724e479a8e709e8a13ef9a49"
+              },
+              {
+                "triggerCode": "WIN_OPEN_CAR_WINDOW",
+                "triggerName": "WIN_OPEN_CAR_WINDOW",
+                "expression": "SETrigger.setupOpenCarWindows(\"0\")",
+                "executionSource": 3,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "f1a311497df44d3d967adc8fb72c2bb7"
+              },
+              {
+                "triggerCode": "WIN_OPEN_CAR_WINDOW",
+                "triggerName": "WIN_OPEN_CAR_WINDOW",
+                "expression": "SETrigger.setupOpenCarWindows(\"1\")",
+                "executionSource": 3,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "e5f763d27d6e41469a7b937741f710f8"
+              },
+              {
+                "triggerCode": "WIN_OPEN_CAR_WINDOW",
+                "triggerName": "WIN_OPEN_CAR_WINDOW",
+                "expression": "SETrigger.setupOpenCarWindows(\"2\")",
+                "executionSource": 3,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "c333bf8000df4414ab61ed88e985883d"
+              },
+              {
+                "triggerCode": "WIN_OPEN_CAR_WINDOW",
+                "triggerName": "WIN_OPEN_CAR_WINDOW",
+                "expression": "SETrigger.setupOpenCarWindows(\"3\")",
+                "executionSource": 3,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "10234b11b8b44ba68429e474ba585d92"
+              },
+              {
+                "triggerCode": "TRIG_VOLUME_22dab32815fa424586efe47f961a1183",
+                "triggerName": "TRIG_VOLUME_22dab32815fa424586efe47f961a1183",
+                "expression": "SETrigger.setupVolumeAdjust(\"sys.settings.audio.phone_volume\")",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "6589fb898cda49d8914aa7de83be1c03"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 272,
+                    "expression": "SEAction.stopScene()",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "159,161",
+            "previousId": "156",
+            "forestGroup": "0",
+            "groupId": "160",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "e6d664bc661944519f 9440b65e248c76"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SEVehicleCondition.isAirVolumeLevel(\"==\",\"6\"))||(SEVehicleCondition.isAirVolumeLevel(\"==\",\"7\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "0e9fe002d8c4407b8657aadffb732765",
+                "actions": [
+                  {
+                    "id": 265,
+                    "expression": "SEAction.adjustAirVolume(\"1\",\"4\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "160",
+            "forestGroup": "0",
+            "groupId": "161",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_CHAT_c87a48c9107b4439bfb30e7f43d6227f",
+                "triggerName": "TRIG_CHAT_c87a48c9107b4439bfb30e7f43d6227f",
+                "expression": "SETrigger.setupCallHangUp()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "8cfdf72a532b475f81727b6d9c6874d9"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 269,
+                    "expression": "SEAction.adjustAirVolume(\"0\",\"4\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "165,163",
+            "previousId": "155",
+            "forestGroup": "0",
+            "groupId": "162",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "e6d664bc661944519f9440b65e248c76"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SEVehicleCondition.isVolume(\">\",\"15\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "443fca5b75604aeaaa9d3dd17068d36b",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "159,164",
+            "previousId": "162",
+            "forestGroup": "0",
+            "groupId": "163",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "e6d664bc661944519f9440b65e248c76"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SEVehicleCondition.isAirVolumeLevel(\"==\",\"4\"))||(SEVehicleCondition.isAirVolumeLevel(\"==\",\"5\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "17f04134d2664b2d9b8d5b10a3ed77b7",
+                "actions": [
+                  {
+                    "id": 266,
+                    "expression": "SEAction.adjustAirVolume(\"1\",\"1\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "163",
+            "forestGroup": "0",
+            "groupId": "164",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_CHAT_c87a48c9107b4439bfb30e7f43d6227f",
+                "triggerName": "TRIG_CHAT_c87a48c9107b4439bfb30e7f43d6227f",
+                "expression": "SETrigger.setupCallHangUp()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "44631659a4bc41c780b3aac366c253b2"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 270,
+                    "expression": "SEAction.adjustAirVolume(\"0\",\"1\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "166,159",
+            "previousId": "162",
+            "forestGroup": "0",
+            "groupId": "165",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "e6d664bc661944519f9440b65e248c76"
+              }
+            ],
+            "composingRules": [
+              {
+                "co nditionName": null,
+                "expression": "(SEVehicleCondition.isAirVolumeLevel(\"==\",\"6\"))||(SEVehicleCondition.isAirVolumeLevel(\"==\",\"7\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "20cff1abd4bd4259a608f74cb12e254d",
+                "actions": [
+                  {
+                    "id": 267,
+                    "expression": "SEAction.adjustAirVolume(\"1\",\"2\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "165",
+            "forestGroup": "0",
+            "groupId": "166",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_CHAT_c87a48c9107b4439bfb30e7f43d6227f",
+                "triggerName": "TRIG_CHAT_c87a48c9107b4439bfb30e7f43d6227f",
+                "expression": "SETrigger.setupCallHangUp()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "9bcbfb926a53490a90400ea156e3aa41"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 271,
+                    "expression": "SEAction.adjustAirVolume(\"0\",\"2\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "158,159",
+            "previousId": "156",
+            "forestGroup": "0",
+            "groupId": "254",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "e6d664bc661944519f9440b65e248c76"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SEVehicleCondition.isAirVolumeLevel(\"==\",\"4\"))||(SEVehicleCondition.isAirVolumeLevel(\"==\",\"5\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "9420037e1f89454d9c49c951dc61b668",
+                "actions": [
+                  {
+                    "id": 450,
+                    "expression": "SEAction.adjustAirVolume(\"1\",\"2\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": null,
+        "scenarioCode": "dVIfLS7",
+        "scenarioSkillCode": null,
+        "scenarioName": "开机欢迎语ES13\\3S24\\EC24（下午剧本）（20220825修改版）",
+        "audienceType": null,
+        "validateType": 0,
+        "validityStartDate": null,
+        "validityEndDate": null,
+        "executeLimitDto": {
+          "dailyLimit": 1,
+          "weeklyLimit": null,
+          "monthlyLimit": null,
+          "yearLimit": null,
+          "bootLimit": 1,
+          "loginLimit": null,
+          "totalLimit": null
+        },
+        "executionSource": 0,
+        "category": 0,
+        "source": 0,
+        "scenarioPrice": 0.0,
+        "scenarioLevel": 0,
+        "scenarioPValue": null,
+        "coolDownTime": 10,
+        "lifeTime": 3,
+        "state": 2,
+        "updateTime": "2022-09-16 18:27:43",
+        "grayType": null,
+        "hasUserGroup": null,
+        "userBind": true,
+        "groups": [
+          {
+            "executeLimitDto": null,
+            "nextId": "21717,21715,21713,21711",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21710",
+            "triggers": [
+              {
+                "triggerCode": "CAR_VEHICLE_ON",
+                "triggerName": "CAR_VEHICLE_ON",
+                "expression": "SETrigger.setupHuBoot()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "d1a03e818b8c4c0f9e6e9592d7f7060d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isWeek(\"==\",\"4\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "65a099ca91c140198b9f15780d66c962",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21712",
+            "previousId": "21710",
+            "forestGroup": "0",
+            "groupId": "21711",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCon dition.isHour(\"==\",\"15\"))||(SETimeCondition.isHour(\"==\",\"16\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "bbddc1a3515b41729ebc3f0bc6adaad0",
+                "actions": [
+                  {
+                    "id": 38915,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21711",
+            "forestGroup": "0",
+            "groupId": "21712",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38916,
+                    "expression": "SEAction.playTTS(\"0\",\"想吐槽吗？我准备好了呢！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21714",
+            "previousId": "21710",
+            "forestGroup": "0",
+            "groupId": "21713",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"17\"))||(SETimeCondition.isHour(\"==\",\"18\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "5469df13bc234c81bf35f9f1c7bc0214",
+                "actions": [
+                  {
+                    "id": 38921,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21713",
+            "forestGroup": "0",
+            "groupId": "21714",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38910,
+                    "expression": "SEAction.playTTS(\"0\",\"辛苦啦！人生那么长，我会陪你一起扛！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21716",
+            "previousId": "21710",
+            "forestGroup": "0",
+            "groupId": "21715",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"13\"))||(SETimeCondition.isHour(\"==\",\"14\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "9bf1a54d71864d4ca052c3e3a587c180",
+                "actions": [
+                  {
+                    "id": 38912,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21715",
+            "forestGroup": "0",
+            "groupId": "21716",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38905,
+                    "expression": "S EAction.playTTS(\"0\",\"今天干得漂亮极了，不愧是你！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21718",
+            "previousId": "21710",
+            "forestGroup": "0",
+            "groupId": "21717",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"12\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "dbb4a08b2a894799958b2c270314a7f8",
+                "actions": [
+                  {
+                    "id": 38929,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21717",
+            "forestGroup": "0",
+            "groupId": "21718",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38911,
+                    "expression": "SEAction.playTTS(\"0\",\"咋样，今天没人惹你吧，谁敢我去收拾他。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21720,21726,21724,21722",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21719",
+            "triggers": [
+              {
+                "triggerCode": "CAR_VEHICLE_ON",
+                "triggerName": "CAR_VEHICLE_ON",
+                "expression": "SETrigger.setupHuBoot()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "d1a03e818b8c4c0f9e6e9592d7f7060d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isWeek(\"==\",\"2\"))||(SETimeCondition.isWeek(\"==\",\"3\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "fdca02da5d3949aeb2dbb93df00f0215",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21721",
+            "previousId": "21719",
+            "forestGroup": "0",
+            "groupId": "21720",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"14\"))||(SETimeCondition.isHour(\"==\",\"15\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "fec96f127e884e7d8499445b2210803e",
+                "actions": [
+                  {
+                    "id": 38902,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21720",
+            "forestGroup": "0",
+            "groupId": "21721",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38930,
+                    "expression": "SEAction.playTTS(\"0\",\"夕阳还未夕下，我来为你护驾。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21723",
+            "previousId": "21719",
+            "forestGroup": "0",
+            "groupId": "21722",
+            "triggers": [
+              {
+                "tr iggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"18\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "0ba746d8e8504793b3ddca2b03a80fde",
+                "actions": [
+                  {
+                    "id": 38917,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21722",
+            "forestGroup": "0",
+            "groupId": "21723",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38928,
+                    "expression": "SEAction.playTTS(\"0\",\"侬工作伐要太吃力了，当心身体。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21725",
+            "previousId": "21719",
+            "forestGroup": "0",
+            "groupId": "21724",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"16\"))||(SETimeCondition.isHour(\"==\",\"17\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "7c193e6779fe43f385238cd5c92ebf2e",
+                "actions": [
+                  {
+                    "id": 38919,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21724",
+            "forestGroup": "0",
+            "groupId": "21725",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38909,
+                    "expression": "SEAction.playTTS(\"0\",\"今儿也太俊了，走着！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21727",
+            "previousId": "21719",
+            "forestGroup": "0",
+            "groupId": "21726",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"12\"))||(SETimeCondition.isHour(\"==\",\"13\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "48b8734480ab4a7bbaa96f291eb10c49",
+                "actions": [
+                  {
+                    "id": 38933,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21726",
+            "forestGroup": "0",
+            "groupId": "21727",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38935,
+                    "expression": "SEAction.playTTS(\"0\",\"走吧！把明天的烦恼留给明天，今天要快乐！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21731,21729,21735,21733",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21728",
+            "triggers": [
+              {
+                "triggerCode": "CAR_VEHICLE_ON",
+                "triggerName": "CAR_VEHICLE_ON",
+                "expression": "SETrigger.setupHuBoot()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "d1a03e818b8c4c0f9e6e9592d7f7060d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isWeek(\"==\",\"5\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "8d9558227b16426990b149b7a0530ba0",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21730",
+            "previousId": "21728",
+            "forestGroup": "0",
+            "groupId": "21729",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"12\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "9e24e74f0bae4679bb97dc48e990c797",
+                "actions": [
+                  {
+                    "id": 38925,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21729",
+            "forestGroup": "0",
+            "groupId": "21730",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38922,
+                    "expression": "SEAction.playTTS(\"0\",\"走喽，可算是放假咯！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21732",
+            "previousId": "21728",
+            "forestGroup": "0",
+            "groupId": "21731",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"13\"))||(SETimeCondition.isHour(\"==\",\"14\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "bfc1b8adb2694bac8b4364c49dbf71f7",
+                "actions": [
+                  {
+                    "id": 38923,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21731",
+            "forestGroup": "0",
+            "groupId": "21732",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38914,
+                    "expression": "SEAction.playTTS(\"0\" ,\"下班啦，把烦恼都抛诸脑后吧！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21734",
+            "previousId": "21728",
+            "forestGroup": "0",
+            "groupId": "21733",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"15\"))||(SETimeCondition.isHour(\"==\",\"16\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "67f838e947d94c95b78b28c56d0d8d78",
+                "actions": [
+                  {
+                    "id": 38908,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21733",
+            "forestGroup": "0",
+            "groupId": "21734",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38920,
+                    "expression": "SEAction.playTTS(\"0\",\"come on ！我们回家吧！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21736",
+            "previousId": "21728",
+            "forestGroup": "0",
+            "groupId": "21735",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"17\"))||(SETimeCondition.isHour(\"==\",\"18\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "7d6bf33117ea46818723e7a5dad3175f",
+                "actions": [
+                  {
+                    "id": 38927,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21735",
+            "forestGroup": "0",
+            "groupId": "21736",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38934,
+                    "expression": "SEAction.playTTS(\"0\",\"辛苦啦，一周已经结束咯。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21742,21740,21738",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21737",
+            "triggers": [
+              {
+                "triggerCode": "CAR_VEHICLE_ON",
+                "triggerName": "CAR_VEHICLE_ON",
+                "expression": "SETrigger.setupHuBoot()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "d1a03e818b8c4c0f9e6e9592d7f7060d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isWeek(\"==\",\"6\"))||(SETimeCondition.isWeek(\"==\",\"7\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "dfc68eefd70244569e1732925c822ddf",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21739",
+            "previousId": "21737",
+            "forestGroup": "0",
+            "groupId": "21738",
+            "trigger s": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"14\"))||(SETimeCondition.isHour(\"==\",\"15\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "7f87e6d7f97344d797b490cb6a7d03f0",
+                "actions": [
+                  {
+                    "id": 38903,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21738",
+            "forestGroup": "0",
+            "groupId": "21739",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38906,
+                    "expression": "SEAction.playTTS(\"0\",\"周末啦，yes！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21741",
+            "previousId": "21737",
+            "forestGroup": "0",
+            "groupId": "21740",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"12\"))||(SETimeCondition.isHour(\"==\",\"13\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "1ed0eb4e64d04996b9ed0a1671161509",
+                "actions": [
+                  {
+                    "id": 38918,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21740",
+            "forestGroup": "0",
+            "groupId": "21741",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38931,
+                    "expression": "SEAction.playTTS(\"0\",\"好友友，一起走。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21743",
+            "previousId": "21737",
+            "forestGroup": "0",
+            "groupId": "21742",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"16\"))||(SETimeCondition.isHour(\"==\",\"17\"))||(SETimeCondition.isHour(\"==\",\"18\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "14c2363be7e24f3a8e20a91e7664af03",
+                "actions": [
+                  {
+                    "id": 38924,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21742",
+            "forestGroup": "0",
+            "groupId": "21743",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SE Trigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38932,
+                    "expression": "SEAction.playTTS(\"0\",\"今儿可随了您的性儿了，想干嘛干嘛去！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21747,21745",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21744",
+            "triggers": [
+              {
+                "triggerCode": "CAR_VEHICLE_ON",
+                "triggerName": "CAR_VEHICLE_ON",
+                "expression": "SETrigger.setupHuBoot()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "d1a03e818b8c4c0f9e6e9592d7f7060d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isWeek(\"==\",\"1\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "f6e9e20e2cc84041bf041e13511c0ddb",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21746",
+            "previousId": "21744",
+            "forestGroup": "0",
+            "groupId": "21745",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"15\"))||(SETimeCondition.isHour(\"==\",\"16\"))||(SETimeCondition.isHour(\"==\",\"17\"))||(SETimeCondition.isHour(\"==\",\"18\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "43bcd317beb54ba1bb075e5c8ae19b68",
+                "actions": [
+                  {
+                    "id": 38913,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21745",
+            "forestGroup": "0",
+            "groupId": "21746",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38904,
+                    "expression": "SEAction.playTTS(\"0\",\"收获满满吧？别偷着乐，笑出声吧！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21748",
+            "previousId": "21744",
+            "forestGroup": "0",
+            "groupId": "21747",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"12\"))||(SETimeCondition.isHour(\"==\",\"13\"))||(SETimeCondition.isHour(\"==\",\"14\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "5e30f1c7185e4f93b05c6535da8669f2",
+                "actions": [
+                  {
+                    "id": 38926,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21747",
+            "forestGroup": "0",
+            "groupId": "21748",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "865fee1bbbe148e897a1ef59b0e21f91"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38907,
+                    "expression": "SEAction.playTTS(\"0\",\"小主，在下恭候多时了，起驾回宫！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": null,
+        "scenarioCode": "KhCWZNX",
+        "scenarioSkillCode": null,
+        "scenarioName": "ES13/EC24/ES24隧道大灯",
+        "audienceType": null,
+        "validateType": 0,
+        "validityStartDate": null,
+        "validityEndDate": null,
+        "executeLimitDto": {
+          "dailyLimit": null,
+          "weeklyLimit": null,
+          "monthlyLimit": null,
+          "yearLimit": null,
+          "bootLimit": null,
+          "loginLimit": null,
+          "totalLimit": null
+        },
+        "executionSource": 0,
+        "category": 0,
+        "source": 0,
+        "scenarioPrice": 0.0,
+        "scenarioLevel": 0,
+        "scenarioPValue": null,
+        "coolDownTime": 10,
+        "lifeTime": 3,
+        "state": 2,
+        "updateTime": "2022-09-16 18:29:00",
+        "grayType": null,
+        "hasUserGroup": null,
+        "userBind": true,
+        "groups": [
+          {
+            "executeLimitDto": null,
+            "nextId": "21760",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21759",
+            "triggers": [
+              {
+                "triggerCode": "POSITION_ENTER_TUNNEL",
+                "triggerName": "POSITION_ENTER_TUNNEL",
+                "expression": "SETrigger.setupEnterTunnel()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "58051520e697495693994cdd7d1d303b"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SEVehicleCondition.isExistVirtualLight())",
+                "exclusive": null,
+                "extras": {},
+                "id": "0cb0895f08dd4b5eb582fb6b525f4e55",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21762,21761",
+            "previousId": "21759",
+            "forestGroup": "0",
+            "groupId": "21760",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(!(SEVehicleCondition.isVirtualLightStatus(\"2\"))&&!(SEVehicleCondition.isVirtualLightStatus(\"3\")))",
+                "exclusive": null,
+                "extras": {},
+                "id": "f911681b7ffe4a79b8c56118c764599e",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21760",
+            "forestGroup": "0",
+            "groupId": "21761",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SEVehicleCondition.isCycleMode(\"1\")&&SEVehicleCondition.isWindowOpeningState(\"-1\",\"0\")&&SEVehicleCondition.isSkyWindowOpeningState(\"==\",\"0\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "e1d0f4bee94241e495648c19735ae274",
+                "actions": [
+                  {
+                    "id": 38947,
+                    "expression": "SEAction.cycle(\"0\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  },
+                  {
+                    "id": 38948,
+                    "expression": "SEAction.adjustVirtualLight(\"3\")",
+                    "seq": 1,
+                    "exclusive": 0,
+                    "extras": null
+                  },
+                  {
+                    "id": 38949,
+                    "expression": "SEAction.startNoneNotification(\"进入隧道，已为您开启车内空气保护及车灯\",\"1\",\"\")",
+                    "seq": 2,
+                    "exclusive": 0,
+                    "extras": null
+                  },
+                  {
+                    "id": 38950,
+                    "expression": "SEAction.playTTS(\"0\",\"进入隧道，已为您打开车灯\")",
+                    "seq": 3,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21760",
+            "forestGroup": "0",
+            "groupId": "21762",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(!(SEVehicleCondition.isCycleMode(\"1\")))||(!(SEVehicleCondition.isWindowOpeningState(\"-1\",\"0\")))||(!(SEVehicleCondition.isSkyWindowOpeningState(\"==\",\"0\")))",
+                "exclusive": null,
+                "extras": {},
+                "id": "25d5d6ca16c046a3ab5930667ca795af",
+                "actions": [
+                  {
+                    "id": 38951,
+                    "expression": "SEAction.adjustVirtualLight(\"3\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  },
+                  {
+                    "id": 38952,
+                    "expression": "SEAction.startNoneNotification(\"进入隧道，已为您打开车灯\",\"1\",\"\")",
+                    "seq": 1,
+                    "exclusive": 0,
+                    "extras": null
+                  },
+                  {
+                    "id": 38953,
+                    "expression": "SEAction.playTTS(\"0\",\"进入隧道，已为您打开车灯\")",
+                    "seq": 2,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21764",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21763",
+            "triggers": [
+              {
+                "triggerCode": "POSITION_ENTER_TUNNEL",
+                "triggerName": "POSITION_ENTER_TUNNEL",
+                "expression": "SETrigger.setupEnterTunnel()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "58051520e697495693994cdd7d1d303b"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(!(SEVehicleCondition.isExistVirtualLight()))||(SEVehicleCondition.isVirtualLightStatus(\"2\"))||(SEVehicleCondition.isVirtualLightStatus(\"3\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "5a74a27a69714dac92923915081f4a6f",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21763",
+            "forestGroup": "0",
+            "groupId": "21764",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SEVehicleCondition.isCycleMode(\"1\")&&SEVehicleCondition.isWindowOpeningState(\"-1\",\"0\")&&SEVehicleCondition.isSkyWindowOpeningState(\"==\",\"0\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "6ac552d6180c4b39826a7d40aeae26a9",
+                "actions": [
+                  {
+                    "id": 38945,
+                    "expression": "SEAction.cycle(\"0\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  },
+                  {
+                    "id": 38946,
+                    "expression": "SEAction.startNoneNotification(\"进入隧道，已为您开启车内空气保护\",\"1\",\"\")",
+                    "seq": 1,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": null,
+        "scenarioCode": "hSiiRCk",
+        "scenarioSkillCode": null,
+        "scenarioName": "开机欢迎语ES13\\ES24\\EC24（上午剧本）（20220825修改版）",
+        "audienceType": null,
+        "validateType": 0,
+        "validityStartDate": null,
+        "validityEndDate": null,
+        "executeLimitDto": {
+          "dailyLimit": 1,
+          "weeklyLimit": null,
+          "monthlyLimit": null,
+          "yearLimit": null,
+          "bootLimit": 1,
+          "loginLimit": null,
+          "totalLimit": null
+        },
+        "executionSource": 0,
+        "category": 0,
+        "source": 0,
+        "scenarioPrice": 0.0,
+        "scenarioLevel": 0,
+        "scenarioPValue": null,
+        "coolDownTime": 10,
+        "lifeTime": 3,
+        "state": 2,
+        "updateTime": "2022-09-16 18:28:28",
+        "grayType": null,
+        "hasUserGroup": null,
+        "userBind": true,
+        "groups": [
+          {
+            "executeLimitDto": null,
+            "nextId": "21643,21641,21639,21649,21647,21645",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21638",
+            "triggers": [
+              {
+                "triggerCode": "CAR_VEHICLE_ON",
+                "triggerName": "CAR_VEHICLE_ON",
+                "expression": "SETrigger.setupHuBoot()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "e9755c4169f34fee8051a257b6ff1ab7"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isWeek(\"==\",\"3\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "e2629e095edf4b34b03c3aba1058ea27",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21640",
+            "previousId": "21638",
+            "forestGroup": "0",
+            "groupId": "21639",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"6\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "f0bad6665c5f4faca2c8a0ca2e3f9389",
+                "actions": [
+                  {
+                    "id": 38886,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21639",
+            "forestGroup": "0",
+            "groupId": "21640",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38896,
+                    "expression": "SEAction.playTTS(\"0\",\"今天好乖呦。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21642",
+            "previousId": "21638",
+            "forestGroup": "0",
+            "groupId": "21641",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"8\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "0987df52d56742c8862a863a7d9ccfa5",
+                "actions": [
+                  {
+                    "id": 38838,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21641",
+            "forestGroup": "0",
+            "groupId": "21642",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38862,
+                    "expression": "SEAction.playTTS(\"0\",\"来吧，和我来一场美丽的邂逅吧！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21644",
+            "previousId": "21638",
+            "forestGroup": "0",
+            "groupId": "21643",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"11\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "e4e26d852ec6444b92 d9b4c89013e048",
+                "actions": [
+                  {
+                    "id": 38845,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21643",
+            "forestGroup": "0",
+            "groupId": "21644",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38882,
+                    "expression": "SEAction.playTTS(\"0\",\"准备好开启活力一天了吗？\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21646",
+            "previousId": "21638",
+            "forestGroup": "0",
+            "groupId": "21645",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"10\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "d37a6b123f214952b75ab8ce1f891ead",
+                "actions": [
+                  {
+                    "id": 38883,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21645",
+            "forestGroup": "0",
+            "groupId": "21646",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38894,
+                    "expression": "SEAction.playTTS(\"0\",\"再次见到你，还是很开心。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21648",
+            "previousId": "21638",
+            "forestGroup": "0",
+            "groupId": "21647",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"7\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "2e7dfd3368d34672b4e9f186db91faf3",
+                "actions": [
+                  {
+                    "id": 38875,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21647",
+            "forestGroup": "0",
+            "groupId": "21648",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38891,
+                    "expression": "SEAction.playTTS(\"0\",\"早安，你在我眼中就是最棒的！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21650",
+            "previousId": "21638",
+            "forestGroup": "0",
+            "groupId": "21649",
+            "triggers": [
+              {
+                "triggerCode": "TRIG _AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"9\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "bc164ee4261141d386cbc4877ac251bd",
+                "actions": [
+                  {
+                    "id": 38857,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21649",
+            "forestGroup": "0",
+            "groupId": "21650",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38887,
+                    "expression": "SEAction.playTTS(\"0\",\"突然发现今天的你颜值再度爆表。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21654,21652,21662,21660,21658,21656",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21651",
+            "triggers": [
+              {
+                "triggerCode": "CAR_VEHICLE_ON",
+                "triggerName": "CAR_VEHICLE_ON",
+                "expression": "SETrigger.setupHuBoot()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "e9755c4169f34fee8051a257b6ff1ab7"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isWeek(\"==\",\"1\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "b2db1f30d6d8447ea26d45828b391114",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21653",
+            "previousId": "21651",
+            "forestGroup": "0",
+            "groupId": "21652",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"6\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "ed6f87665d80488aa49952a37ab8c5ec",
+                "actions": [
+                  {
+                    "id": 38879,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21652",
+            "forestGroup": "0",
+            "groupId": "21653",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38869,
+                    "expression": "SEAction.playTTS(\"0\",\"早上好，准备好开始全新一周了吗？\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21655",
+            "previousId": "21651",
+            "forestGroup": "0",
+            "groupId": "21654",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\", \"8\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "4e017b9bffc74d3dad3ed21c164d12e5",
+                "actions": [
+                  {
+                    "id": 38876,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21654",
+            "forestGroup": "0",
+            "groupId": "21655",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38873,
+                    "expression": "SEAction.playTTS(\"0\",\"来啦？你可让我好等。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21657",
+            "previousId": "21651",
+            "forestGroup": "0",
+            "groupId": "21656",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"10\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "f60f4d08cfc64247b895e9f0b79ade9f",
+                "actions": [
+                  {
+                    "id": 38846,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21656",
+            "forestGroup": "0",
+            "groupId": "21657",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38865,
+                    "expression": "SEAction.playTTS(\"0\",\"来啦？你可让我好等。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21659",
+            "previousId": "21651",
+            "forestGroup": "0",
+            "groupId": "21658",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"11\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "cd88edc95e41426995315e87df740e8d",
+                "actions": [
+                  {
+                    "id": 38853,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21658",
+            "forestGroup": "0",
+            "groupId": "21659",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38847,
+                    "expression": "SEAction.playTTS(\"0\",\"美好的一周开始啦！let's go！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21661",
+            "previousId": "21651",
+            "fore stGroup": "0",
+            "groupId": "21660",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"9\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "67bf9235406b4a408fc966d8859edbbc",
+                "actions": [
+                  {
+                    "id": 38861,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21660",
+            "forestGroup": "0",
+            "groupId": "21661",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38889,
+                    "expression": "SEAction.playTTS(\"0\",\"呦，老板来了。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21663",
+            "previousId": "21651",
+            "forestGroup": "0",
+            "groupId": "21662",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"7\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "bbcc2ca1facc459ab79d7de0f94a7f0d",
+                "actions": [
+                  {
+                    "id": 38885,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21662",
+            "forestGroup": "0",
+            "groupId": "21663",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38888,
+                    "expression": "SEAction.playTTS(\"0\",\"Ready  go！今天我来护你周全！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21665,21675,21673,21671,21669,21667",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21664",
+            "triggers": [
+              {
+                "triggerCode": "CAR_VEHICLE_ON",
+                "triggerName": "CAR_VEHICLE_ON",
+                "expression": "SETrigger.setupHuBoot()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "e9755c4169f34fee8051a257b6ff1ab7"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isWeek(\"==\",\"4\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "cf9a13f291c34b35b0a5d8216c9b7249",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21666",
+            "previousId": "21664",
+            "forestGroup": "0",
+            "groupId": "21665",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditi onName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"6\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "83398cec28be4646b599060e5453e421",
+                "actions": [
+                  {
+                    "id": 38851,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21665",
+            "forestGroup": "0",
+            "groupId": "21666",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38871,
+                    "expression": "SEAction.playTTS(\"0\",\"再疲倦的生活，总要有些温柔的梦，加油！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21668",
+            "previousId": "21664",
+            "forestGroup": "0",
+            "groupId": "21667",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"9\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "cacee03b4c864b02aef437bb67d4827c",
+                "actions": [
+                  {
+                    "id": 38843,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21667",
+            "forestGroup": "0",
+            "groupId": "21668",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38898,
+                    "expression": "SEAction.playTTS(\"0\",\"早安，再忙也不要忘记吃早饭哦！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21670",
+            "previousId": "21664",
+            "forestGroup": "0",
+            "groupId": "21669",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"8\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "c617c5fe3458482a9f38446d5078beff",
+                "actions": [
+                  {
+                    "id": 38858,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21669",
+            "forestGroup": "0",
+            "groupId": "21670",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38867,
+                    "expression": "SEAction.playTTS(\"0\",\"吃饱了吗？早饭很重要哦！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "e xecuteLimitDto": null,
+            "nextId": "21672",
+            "previousId": "21664",
+            "forestGroup": "0",
+            "groupId": "21671",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"10\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "6eab5c25e9e949e6a7255c755221afa8",
+                "actions": [
+                  {
+                    "id": 38868,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21671",
+            "forestGroup": "0",
+            "groupId": "21672",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38899,
+                    "expression": "SEAction.playTTS(\"0\",\"恭喜你，离财富自由又近了一步。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21674",
+            "previousId": "21664",
+            "forestGroup": "0",
+            "groupId": "21673",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"7\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "69b0ea037202495f9647afd98c54d699",
+                "actions": [
+                  {
+                    "id": 38850,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21673",
+            "forestGroup": "0",
+            "groupId": "21674",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38839,
+                    "expression": "SEAction.playTTS(\"0\",\"面包？我们当然是自己挣呀！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21676",
+            "previousId": "21664",
+            "forestGroup": "0",
+            "groupId": "21675",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"11\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "2f7a19faa571492db3bb60ab469954d7",
+                "actions": [
+                  {
+                    "id": 38849,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21675",
+            "forestGroup": "0",
+            "groupId": "21676",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38852,
+                    "expression": "SEAction.playTTS(\"0\",\"坚持下就周末啦！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21688,21686,21684,21682,21680,21678",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21677",
+            "triggers": [
+              {
+                "triggerCode": "CAR_VEHICLE_ON",
+                "triggerName": "CAR_VEHICLE_ON",
+                "expression": "SETrigger.setupHuBoot()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "e9755c4169f34fee8051a257b6ff1ab7"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isWeek(\"==\",\"5\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "89720363b42d4f02924c712394a5274d",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21679",
+            "previousId": "21677",
+            "forestGroup": "0",
+            "groupId": "21678",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"9\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "624d8c11b5e04c1091296e162a5f779c",
+                "actions": [
+                  {
+                    "id": 38864,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21678",
+            "forestGroup": "0",
+            "groupId": "21679",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38856,
+                    "expression": "SEAction.playTTS(\"0\",\"辛苦了，坚信每一份付出都会有回报。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21681",
+            "previousId": "21677",
+            "forestGroup": "0",
+            "groupId": "21680",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"6\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "17abe5256dd647be9ffaec4e066d4e66",
+                "actions": [
+                  {
+                    "id": 38870,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21680",
+            "forestGroup": "0",
+            "groupId": "21681",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38840,
+                    "expression": "SEAction.playTTS(\"0\",\"周五 已经来了，假期还会远吗？\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21683",
+            "previousId": "21677",
+            "forestGroup": "0",
+            "groupId": "21682",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"8\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "78610fde3bf540208ef1aecc4d3807cd",
+                "actions": [
+                  {
+                    "id": 38848,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21682",
+            "forestGroup": "0",
+            "groupId": "21683",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38900,
+                    "expression": "SEAction.playTTS(\"0\",\"阳光总在风雨后，今天也是艳阳天！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21685",
+            "previousId": "21677",
+            "forestGroup": "0",
+            "groupId": "21684",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"11\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "a4d59aea2b1f4f6292075d56d358ff2d",
+                "actions": [
+                  {
+                    "id": 38860,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21684",
+            "forestGroup": "0",
+            "groupId": "21685",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38874,
+                    "expression": "SEAction.playTTS(\"0\",\"坚持一下，马上就周末啦！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21687",
+            "previousId": "21677",
+            "forestGroup": "0",
+            "groupId": "21686",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"10\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "1b55c97b73034b3990bbbd18a3dc96ae",
+                "actions": [
+                  {
+                    "id": 38884,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21686",
+            "forestGroup": "0",
+            "groupId": "21687",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expr ession": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38901,
+                    "expression": "SEAction.playTTS(\"0\",\"Everyday is a better day.Morning!\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21689",
+            "previousId": "21677",
+            "forestGroup": "0",
+            "groupId": "21688",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"7\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "e0f69589c4ce462a9995ffb3b19f1b9a",
+                "actions": [
+                  {
+                    "id": 38842,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21688",
+            "forestGroup": "0",
+            "groupId": "21689",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38877,
+                    "expression": "SEAction.playTTS(\"0\",\"整装出发！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21695,21693,21691",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21690",
+            "triggers": [
+              {
+                "triggerCode": "CAR_VEHICLE_ON",
+                "triggerName": "CAR_VEHICLE_ON",
+                "expression": "SETrigger.setupHuBoot()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "e9755c4169f34fee8051a257b6ff1ab7"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isWeek(\"==\",\"6\"))||(SETimeCondition.isWeek(\"==\",\"7\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "999e0eed3da642e8a85a8a385a04e986",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21692",
+            "previousId": "21690",
+            "forestGroup": "0",
+            "groupId": "21691",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"10\"))||(SETimeCondition.isHour(\"==\",\"11\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "421e5ed2894e4ce3b8c7cb81b036b719",
+                "actions": [
+                  {
+                    "id": 38872,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21691",
+            "forestGroup": "0",
+            "groupId": "21692",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expres sion": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38836,
+                    "expression": "SEAction.playTTS(\"0\",\"来开启一天好心情吧！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21694",
+            "previousId": "21690",
+            "forestGroup": "0",
+            "groupId": "21693",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"6\"))||(SETimeCondition.isHour(\"==\",\"7\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "6c303db340b446f5a8623fbfc7807220",
+                "actions": [
+                  {
+                    "id": 38844,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21693",
+            "forestGroup": "0",
+            "groupId": "21694",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38866,
+                    "expression": "SEAction.playTTS(\"0\",\"请出门前看好天气预报，因为今天我要和你玩耍一整天！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21696",
+            "previousId": "21690",
+            "forestGroup": "0",
+            "groupId": "21695",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"8\"))||(SETimeCondition.isHour(\"==\",\"9\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "e42081710d6c4713a4074ea2d2bbc618",
+                "actions": [
+                  {
+                    "id": 38859,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21695",
+            "forestGroup": "0",
+            "groupId": "21696",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38878,
+                    "expression": "SEAction.playTTS(\"0\",\"上车！出门耍！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21698,21708,21706,21704,21702,21700",
+            "previousId": null,
+            "forestGroup": "0",
+            "groupId": "21697",
+            "triggers": [
+              {
+                "triggerCode": "CAR_VEHICLE_ON",
+                "triggerName": "CAR_VEHICLE_ON",
+                "expression": "SETrigger.setupHuBoot()",
+                "executionSource": 0,
+                "exclusive": null,
+                "repeatable": 0,
+                "extras": null,
+                "id": "e9755c4169f34fee8051a257b6ff1ab7"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isWeek(\"==\",\"2\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "c5ec37da4045458ab822cefc29275cf0",
+                "actions": []
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21699",
+            "previousId": "21697",
+            "forestGroup": "0",
+            "groupId": "21698",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"6\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "c9d1ab6d764d4dcbb7e977e9d8655bfc",
+                "actions": [
+                  {
+                    "id": 38854,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21698",
+            "forestGroup": "0",
+            "groupId": "21699",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38880,
+                    "expression": "SEAction.playTTS(\"0\",\"今天也是元气满满的一天！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21701",
+            "previousId": "21697",
+            "forestGroup": "0",
+            "groupId": "21700",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"7\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "36c6de9cfe4d43f8ad013b68f236592a",
+                "actions": [
+                  {
+                    "id": 38837,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21700",
+            "forestGroup": "0",
+            "groupId": "21701",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38890,
+                    "expression": "SEAction.playTTS(\"0\",\"今天的你看上去有点怪，怪靓哦！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21703",
+            "previousId": "21697",
+            "forestGroup": "0",
+            "groupId": "21702",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"10\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "6e40d9d39d294e16ab2b15d44db1ca6c",
+                "actions": [
+                  {
+                    "id": 38863,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21702",
+            "forestGroup": "0",
+            "groupId": "21703",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": n
+                ull,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38893,
+                    "expression": "SEAction.playTTS(\"0\",\"幸福就是一起兜风！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21705",
+            "previousId": "21697",
+            "forestGroup": "0",
+            "groupId": "21704",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"9\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "aad58c7c0c6f4eca857e60319bc3d928",
+                "actions": [
+                  {
+                    "id": 38841,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21704",
+            "forestGroup": "0",
+            "groupId": "21705",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38892,
+                    "expression": "SEAction.playTTS(\"0\",\"面包？我们当然是自己挣呀！\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21707",
+            "previousId": "21697",
+            "forestGroup": "0",
+            "groupId": "21706",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"11\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "2acd76a832dc4132a2da21dfe6075723",
+                "actions": [
+                  {
+                    "id": 38855,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21706",
+            "forestGroup": "0",
+            "groupId": "21707",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38895,
+                    "expression": "SEAction.playTTS(\"0\",\"嘿，不上班行不行啊。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": "21709",
+            "previousId": "21697",
+            "forestGroup": "0",
+            "groupId": "21708",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "(SETimeCondition.isHour(\"==\",\"8\"))",
+                "exclusive": null,
+                "extras": {},
+                "id": "347296ce26b04b1c87895b5f218d5b33",
+                "actions": [
+                  {
+                    "id": 38881,
+                    "expression": "SEAction.pause(\"5\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "executeLimitDto": null,
+            "nextId": null,
+            "previousId": "21708",
+            "forestGroup": "0",
+            "groupId": "21709",
+            "triggers": [
+              {
+                "triggerCode": "TRIG_AUTO",
+                "triggerName": "自动触发",
+                "expression": "SETrigger.setupAutoTrigger()",
+                "executionSource": null,
+                "exclusive": null,
+                "repeatable": null,
+                "extras": null,
+                "id": "181afc64f97f49c9bd8c3e744b5d5d2d"
+              }
+            ],
+            "composingRules": [
+              {
+                "conditionName": null,
+                "expression": "SECondition.alwaysTrue()",
+                "exclusive": null,
+                "extras": null,
+                "id": null,
+                "actions": [
+                  {
+                    "id": 38897,
+                    "expression": "SEAction.playTTS(\"0\",\"今天好乖呦。\")",
+                    "seq": 0,
+                    "exclusive": 0,
+                    "extras": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "pageNum": 1,
+    "pageSize": 5,
+    "size": 5,
+    "startRow": 0,
+    "endRow": 4,
+    "pages": 1,
+    "prePage": 0,
+    "nextPage": 0,
+    "isFirstPage": true,
+    "isLastPage": true,
+    "hasPreviousPage": false,
+    "hasNextPage": false,
+    "navigatePages": 8,
+    "navigatepageNums": [
+      1
+    ],
+    "navigateFirstPage": 1,
+    "navigateLastPage": 1
+  },
+  "traceId": "Ignored_Trace"
+}

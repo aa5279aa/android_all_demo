@@ -31,6 +31,5 @@ public class RouterHandle {
             throw new Exception("RouterBase is unregistered.");
         }
         routerInter.handleAction(proxyInter, actionName, args);
-
     }
 }

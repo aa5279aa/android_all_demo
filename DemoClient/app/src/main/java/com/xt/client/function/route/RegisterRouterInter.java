@@ -8,8 +8,8 @@ public abstract class RegisterRouterInter {
 
     public abstract void init();
 
-    public void handleAction(RouterProxyInter routerBase, String actionName, Object args) {
-        routerBase.handleAction(actionName, args);
+    public void handleAction(RouterProxyInter routerProxy, String actionName, Object args) {
+        routerProxy.handleAction(actionName, args);
     }
 
     public Map<String, RouterProxyInter> getRouteMap() {
