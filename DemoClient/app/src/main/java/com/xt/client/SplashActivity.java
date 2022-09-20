@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -24,7 +25,11 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.core.animation.Animator;
+import androidx.core.animation.AnimatorListenerAdapter;
+import androidx.core.animation.AnticipateInterpolator;
+import androidx.core.animation.ObjectAnimator;
+import androidx.core.splashscreen.SplashScreen;
 
 public class SplashActivity extends Activity {
 
@@ -41,6 +46,7 @@ public class SplashActivity extends Activity {
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
         Log.d(TAG, "SplashActivity onCreate");
 //        WindowManager.LayoutParams lp = getWindow().getAttributes();
@@ -54,6 +60,44 @@ public class SplashActivity extends Activity {
         imgIv = findViewById(R.id.img_iv);
         checkPermission();
         initData();
+//        final View content = findViewById(android.R.id.content);
+//        content.getViewTreeObserver().addOnPreDrawListener(
+//                new ViewTreeObserver.OnPreDrawListener() {
+//                    @Override
+//                    public boolean onPreDraw() {
+//                        // Check if the initial data is ready.
+//                        if (false) {
+//                            // The content is ready; start drawing.
+//                            content.getViewTreeObserver().removeOnPreDrawListener(this);
+//                            return true;
+//                        } else {
+//                            // The content is not ready; suspend.
+//                            return false;
+//                        }
+//                    }
+//                });
+        splashScreen.setOnExitAnimationListener(splashScreenView -> {
+            final ObjectAnimator slideUp = ObjectAnimator.ofFloat(
+                    splashScreenView,
+                    String.valueOf(View.TRANSLATION_Y),
+                    0f,
+                    0f
+            );
+            slideUp.setInterpolator(new AnticipateInterpolator());
+            slideUp.setDuration(1000L);
+
+            // Call SplashScreenView.remove at the end of your custom animation.
+            slideUp.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    splashScreenView.remove();
+                }
+            });
+
+            // Run your animation.
+            slideUp.start();
+        });
+
     }
 
 
@@ -137,14 +181,20 @@ public class SplashActivity extends Activity {
         List<String> checkPermission = new ArrayList<>();
 //        checkPermission.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         checkPermission.add(Manifest.permission.ACCESS_FINE_LOCATION);//
-        checkPermission.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);//启动
+        if (Build.VERSION.SDK_INT >= 33) {
+            checkPermission.add(Manifest.permission.READ_MEDIA_AUDIO);
+            checkPermission.add(Manifest.permission.READ_MEDIA_IMAGES);
+            checkPermission.add(Manifest.permission.READ_MEDIA_VIDEO);
+        } else {
+            checkPermission.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);//启动
+        }
         checkPermission.add(Manifest.permission.INTERNET);//启动
         checkPermission.add(Manifest.permission.ACCESS_NETWORK_STATE);//启动
         checkPermission.add(Manifest.permission.READ_PHONE_STATE);//启动
         checkPermission.add(Manifest.permission.ACCESS_WIFI_STATE);//启动
 
         requestPermission.clear();
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
+        if (Build.VERSION.SDK_INT >= 23) {
             for (String permission : checkPermission) {
                 if (this.checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
                     requestPermission.add(permission);

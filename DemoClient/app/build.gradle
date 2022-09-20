@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
     defaultConfig {
         applicationId 'com.xt.client'
         minSdkVersion 26
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 1
         versionName '1.0'
         vectorDrawables.useSupportLibrary = true
@@ -102,7 +102,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
 
 
-
     implementation "androidx.window:window:1.0.0"
 
     implementation "com.alibaba:fastjson:1.2.34"
@@ -123,10 +122,19 @@ dependencies {
     }
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1'
+    implementation 'androidx.core:core-animation:1.0.0-alpha02'
     annotationProcessor project(':router_processor')
     implementation project(':annotationLibrary')
 
     implementation 'com.tencent:mmkv:1.2.13'
+
+    implementation "com.kuaishou.koom:koom-native-leak:${VERSION_NAME}"
+    implementation "com.kuaishou.koom:koom-monitor-base:${VERSION_NAME}"
+    implementation "com.kuaishou.koom:koom-java-leak:${VERSION_NAME}"
+    implementation "com.kuaishou.koom:koom-thread-leak:${VERSION_NAME}"
+
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+
 //    implementation project(':applibrary')
 //    implementation 'com.github.bumptech.glide:glide:4.9.0'
 //    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.3'

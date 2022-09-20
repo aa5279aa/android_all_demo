@@ -8,6 +8,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Observer
 import com.alibaba.fastjson.JSON
 import com.google.gson.Gson
 import com.xt.client.model.UserModel
@@ -193,7 +196,7 @@ class TestFragment : Base2Fragment() {
             outputStream.flush()
             return
         }
-        if(position == 6){
+        if (position == 6) {
 //            WorkManager保活
 //            val requestC = PeriodicWorkRequest.Builder(TestWorker::class.java, Duration.ZERO)
 //                .build()
@@ -257,6 +260,11 @@ class TestFragment : Base2Fragment() {
     }
 
     private fun test3() {
+        val v = MediatorLiveData<String>()
+        v.observe(this, Observer {
+
+        })
+        v.postValue("1")
 
 //        val first = System.currentTimeMillis()
 //        val end = System.currentTimeMillis() - first

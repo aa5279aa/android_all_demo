@@ -32,6 +32,10 @@ buildscript {
     }
 }
 
+ext{
+    VERSION_NAME = '2.2.0'
+}
+
 subprojects {
     repositories {
         google()

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
 
+import com.kwai.koom.base.DefaultInitTask;
 import com.xt.client.function.route.RouterHandle;
 import com.xt.client.function.serviceprovider.AServiceProviderImpl;
 import com.xt.client.function.serviceprovider.BServiceProviderImpl;
@@ -41,7 +42,8 @@ public class DemoApplication extends Application {
         instance = this;
         aptLaunch();
 //        normalLaunch();
-
+        //快手KOOM初始化
+        DefaultInitTask.INSTANCE.init(this);
     }
 
     private void aptLaunch() {

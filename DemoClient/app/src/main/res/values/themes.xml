@@ -24,5 +24,24 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <!-- Set the splash screen background, animated icon, and animation duration. -->
+        <item name="android:windowSplashScreenBackground">@color/color_blue</item>
+        <!-- Use windowSplashScreenAnimatedIcon to add either a drawable or an
+             animated drawable. One of these is required. -->
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher2</item>
+        <!-- Required for animated icons -->
+        <item name="android:windowSplashScreenAnimationDuration">800</item>
+
+        <!-- Set the theme of the Activity that directly follows your splash screen. -->
+        <!-- Required -->
+        <item name="postSplashScreenTheme">@style/AppFullTheme</item>
+    </style>
+
 
 </resources>
