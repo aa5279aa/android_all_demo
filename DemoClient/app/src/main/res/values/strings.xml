@@ -25,6 +25,8 @@
     <string name="retrofit">Retrofit</string>
     <string name="mmkv">MMKV</string>
     <string name="koom">KOOM</string>
+    <string name="kotlin">kotlin</string>
+    <string name="router">路由</string>
 
 
 </resources>

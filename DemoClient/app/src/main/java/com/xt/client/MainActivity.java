@@ -2,22 +2,19 @@ package com.xt.client;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.usage.UsageStatsManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-import android.os.IBinder;
-import android.os.Looper;
 import android.os.Message;
-import android.os.RemoteException;
 import android.provider.Settings;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -30,8 +27,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.xt.client.activitys.JNIActivity;
 import com.xt.client.activitys.PerformanceActivity;
 import com.xt.client.activitys.PerformanceCaseActivity;
@@ -44,26 +39,26 @@ import com.xt.client.fragment.AidlFragment;
 import com.xt.client.fragment.BaseFragment;
 import com.xt.client.fragment.DynamicFragment;
 import com.xt.client.fragment.KOOMFragment;
+import com.xt.client.fragment.KotlinFragment;
 import com.xt.client.fragment.MMKVFragment;
 import com.xt.client.fragment.ProtobuffFragment;
 import com.xt.client.fragment.RetrofitFragment;
+import com.xt.client.fragment.RouteFragment;
 import com.xt.client.fragment.TestFragment;
 import com.xt.client.fragment.TryCrashFragment;
 import com.xt.client.inter.RecyclerItemClickListener;
-import com.xt.client.service.Other3ProcessService;
 import com.xt.client.util.ToastUtil;
 import com.xt.router_api.BindSelfView;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -71,8 +66,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import dalvik.system.DexFile;
 
 /**
  * @author xiatian
@@ -89,22 +82,12 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         setContentView(R.layout.main_page);
         mRecycler = findViewById(R.id.recycler);
         manager = getSupportFragmentManager();
         initData();
-        sendBroadcast(new Intent());
-        TextView text = findViewById(R.id.test);
-        text.onPreDraw();
-        int lineCount = text.getLineCount();
-        Log.i("lxltest", "lineCount1:" + lineCount);
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                int lineCount = text.getLineCount();
-                Log.i("lxltest", "lineCount2:" + lineCount);
-            }
-        });
+//        sendBroadcast(new Intent());
 
 
     }
@@ -117,7 +100,6 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.i("lxltest", "MainActivity_onResume");
     }
 
     @Override
@@ -136,28 +118,31 @@ public class MainActivity extends FragmentActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i("lxltest", "MainActivity_onDestroy");
+        System.exit(0);
     }
 
     private void initData() {
-        dataList.add(new ItemState(getString(R.string.test), "ing"));
-        dataList.add(new ItemState(getString(R.string.testtest), "ing"));
-        dataList.add(new ItemState(getString(R.string.protobuff), "done"));
-        dataList.add(new ItemState(getString(R.string.instrumentation), "no start"));
-        dataList.add(new ItemState(getString(R.string.jni_use), "done"));
-        dataList.add(new ItemState(getString(R.string.performance_check), "done"));
-        dataList.add(new ItemState(getString(R.string.catch_crash), "done"));
-        dataList.add(new ItemState(getString(R.string.get_last_activity), "done"));
-        dataList.add(new ItemState(getString(R.string.flutter), "notstart"));
-        dataList.add(new ItemState(getString(R.string.use_aidl), "done"));
-        dataList.add(new ItemState(getString(R.string.prepareloadview), "ing"));
-        dataList.add(new ItemState(getString(R.string.wcdb), "ing"));
-        dataList.add(new ItemState(getString(R.string.threadrefresh), "done"));
-        dataList.add(new ItemState(getString(R.string.dynamicload), "ing"));
-        dataList.add(new ItemState(getString(R.string.permission), "done"));
-        dataList.add(new ItemState(getString(R.string.performance_optimization), "done"));
-        dataList.add(new ItemState(getString(R.string.retrofit), "done"));
-        dataList.add(new ItemState(getString(R.string.mmkv), "done"));
-        dataList.add(new ItemState(getString(R.string.mmkv), "ing"));
+        dataList.add(new ItemState(getString(R.string.test), "ing", null));
+        dataList.add(new ItemState(getString(R.string.testtest), "ing", null));
+        dataList.add(new ItemState(getString(R.string.protobuff), "done", ProtobuffFragment.class));
+        dataList.add(new ItemState(getString(R.string.instrumentation), "no start", null));
+        dataList.add(new ItemState(getString(R.string.jni_use), "done", JNIActivity.class));
+        dataList.add(new ItemState(getString(R.string.performance_check), "done", PerformanceActivity.class));
+        dataList.add(new ItemState(getString(R.string.catch_crash), "done", TryCrashFragment.class));
+        dataList.add(new ItemState(getString(R.string.get_last_activity), "done", SaveLastActivity.class));
+        dataList.add(new ItemState(getString(R.string.flutter), "notstart", null));
+        dataList.add(new ItemState(getString(R.string.use_aidl), "done", AidlFragment.class));
+        dataList.add(new ItemState(getString(R.string.prepareloadview), "ing", PrepareActivity.class));
+        dataList.add(new ItemState(getString(R.string.wcdb), "ing", WCDBActivity.class));
+        dataList.add(new ItemState(getString(R.string.threadrefresh), "done", ThreadRefreshActivity.class));
+        dataList.add(new ItemState(getString(R.string.dynamicload), "ing", DynamicFragment.class));
+        dataList.add(new ItemState(getString(R.string.permission), "done", null));
+        dataList.add(new ItemState(getString(R.string.performance_optimization), "done", PerformanceCaseActivity.class));
+        dataList.add(new ItemState(getString(R.string.retrofit), "done", RetrofitFragment.class));
+        dataList.add(new ItemState(getString(R.string.mmkv), "done", MMKVFragment.class));
+        dataList.add(new ItemState(getString(R.string.kotlin), "ing", KotlinFragment.class));
+        dataList.add(new ItemState(getString(R.string.koom), "ing", KOOMFragment.class));
+        dataList.add(new ItemState(getString(R.string.router), "done", RouteFragment.class));
 
 
         GridLayoutManager layout = new GridLayoutManager(this, 2);
@@ -179,7 +164,11 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onItemClick(View view, int position) {
                 ItemState itemState = dataList.get(position);
-                doAction(itemState.name);
+                if (itemState.c == null) {
+                    doActionWithoutClass(itemState.name);
+                } else {
+                    doActionWithClass(itemState);
+                }
             }
         }));
     }
@@ -192,15 +181,53 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    private void doAction(String title) {
+    private void doActionWithClass(ItemState itemState) {
+        Class c = itemState.c;
+        String name = c.getName();
+        String title = itemState.name;
+        if (name.endsWith("Activity")) {
+            Intent intent = new Intent();
+            intent.setClass(MainActivity.this, c);
+            startActivity(intent);
+            return;
+        }
+        if (name.endsWith("Fragment")) {
+            try {
+                Fragment fragment = (Fragment) c.newInstance();
+                Bundle bundle = new Bundle();
+                bundle.putString(BaseFragment.TITLE, title);
+                fragment.setArguments(bundle);
+                FragmentTransaction fragmentTransaction = manager.beginTransaction();
+                fragmentTransaction.add(android.R.id.content, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commitAllowingStateLoss();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+        doActionWithoutClass(title);
+    }
+
+    private void test() {
+
+    }
+
+    private void doActionWithoutClass(String title) {
         if (getString(R.string.test).equalsIgnoreCase(title)) {
             //A线程
-
+            ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+            boolean backgroundRestricted = activityManager.isBackgroundRestricted();
+            Toast.makeText(mContext, "hello everyone:" + backgroundRestricted, Toast.LENGTH_SHORT).show();
             return;
         }
         if (getString(R.string.test_crash).equalsIgnoreCase(title)) {
             String str = null;
             System.out.println(str.length());
+            return;
+        }
+        if (getString(R.string.permission).equalsIgnoreCase(title)) {
+            managerPermission();
             return;
         }
         Fragment fragment = null;
@@ -222,8 +249,12 @@ public class MainActivity extends FragmentActivity {
             fragment = new RetrofitFragment();
         } else if (getString(R.string.mmkv).equalsIgnoreCase(title)) {
             fragment = new MMKVFragment();
-        }else if (getString(R.string.koom).equalsIgnoreCase(title)) {
+        } else if (getString(R.string.koom).equalsIgnoreCase(title)) {
             fragment = new KOOMFragment();
+        } else if (getString(R.string.kotlin).equalsIgnoreCase(title)) {
+            fragment = new KotlinFragment();
+        } else if (getString(R.string.router).equalsIgnoreCase(title)) {
+            fragment = new RouteFragment();
         }
 
         if (fragment != null) {
@@ -350,10 +381,17 @@ public class MainActivity extends FragmentActivity {
     static class ItemState {
         String name = "";
         String state = "";
+        Class c;
 
-        ItemState(String name, String state) {
+//        ItemState(String name, String state) {
+//            this.name = name;
+//            this.state = state;
+//        }
+
+        ItemState(String name, String state, Class c) {
             this.name = name;
             this.state = state;
+            this.c = c;
         }
     }
 
@@ -502,32 +540,7 @@ public class MainActivity extends FragmentActivity {
         return result;
     }
 
-    private void test() {
-        Handler oldHandler = null;//反射拿到的原来的handler
-        Handler mHandler = new Handler(oldHandler.getLooper(), null) {
-            @Override
-            public void handleMessage(Message msg) {
-                switch (msg.what) {
-                    case 0: {
-                        oldHandler.obtainMessage(0, msg.obj).sendToTarget();
-                        break;
-                    }
-                    case 1: {
-                        try {
-                            //反射调用handleHide();方法
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        //反射把mNextView = null;
-                        break;
-                    }
-                    case 2: {
-                        //和1的流程类似
-                    }
-                }
-            }
-        };
-    }
+
 }
 
 

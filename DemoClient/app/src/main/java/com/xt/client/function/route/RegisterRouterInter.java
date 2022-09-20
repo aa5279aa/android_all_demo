@@ -4,11 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class RegisterRouterInter {
-    protected Map<String, RouterBase> map = new HashMap<>();
+    protected Map<String, RouterProxyInter> map = new HashMap<>();
 
     public abstract void init();
 
-    public Map<String, RouterBase> getRouteMap() {
+    public void handleAction(RouterProxyInter routerBase, String actionName, Object args) {
+        routerBase.handleAction(actionName, args);
+    }
+
+    public Map<String, RouterProxyInter> getRouteMap() {
         return map;
     }
 }

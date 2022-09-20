@@ -10,7 +10,8 @@
         android:id="@+id/desc_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_gravity="center"
+        android:gravity="center" />
 
     <LinearLayout
         android:id="@+id/line1"
