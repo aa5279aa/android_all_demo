@@ -35,7 +35,7 @@
 * repo:
 * router_processor：APT技术的使用。编译过程中对注解进行处理。
 * routerapi
-* jvmti:一个虚拟机监控框架 /READMELIST/README_JVMTI.md
+* jvmti:一个虚拟机监控框架 <a href="https://github.com/aa5279aa/android_all_demo/tree/master/DemoClient/READMELIST#README_JVMTI">JVMTI详细介绍</a>
 
 ## 目录
 
