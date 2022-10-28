@@ -24,15 +24,17 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.READ_HOME_APP_SEARCH_DATA" />
 
 
     <application
         android:name=".application.DemoApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher"
         android:label="@string/app_name"
+        android:localeConfig="@xml/locales_config"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppFullTheme"
         tools:ignore="GoogleAppIndexingWarning">
@@ -101,6 +103,29 @@
 
         <activity android:name="com.xt.client.function.koom.test.LeakedActivity" />
         <activity android:name="com.xt.client.function.koom.test.ActivityLeakMaker$LeakedActivity" />
+
+        <service
+            android:name="com.xt.client.service.QuickSettingService"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@drawable/battery"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="true" />
+        </service>
+
+        <receiver
+            android:name="com.xt.client.broadcast.MyBroadcast"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="my_self2" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

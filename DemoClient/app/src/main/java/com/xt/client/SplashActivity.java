@@ -2,6 +2,8 @@ package com.xt.client;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -115,6 +117,7 @@ public class SplashActivity extends Activity {
         window.setNavigationBarColor(Color.WHITE);
     }
 
+
     private void initData() {
         Log.d(TAG, "SplashActivity initData");
         loadADs();
@@ -179,9 +182,8 @@ public class SplashActivity extends Activity {
 
     public void checkPermission() {
         List<String> checkPermission = new ArrayList<>();
-//        checkPermission.add(Manifest.permission.ACCESS_COARSE_LOCATION);
         checkPermission.add(Manifest.permission.ACCESS_FINE_LOCATION);//
-        if (Build.VERSION.SDK_INT >= 33) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             checkPermission.add(Manifest.permission.READ_MEDIA_AUDIO);
             checkPermission.add(Manifest.permission.READ_MEDIA_IMAGES);
             checkPermission.add(Manifest.permission.READ_MEDIA_VIDEO);
