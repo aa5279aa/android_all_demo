@@ -35,7 +35,6 @@
 * repo:
 * router_processor：APT技术的使用。编译过程中对注解进行处理。
 * routerapi
-* jvmti:一个虚拟机监控框架 <a href="https://github.com/aa5279aa/android_all_demo/tree/master/DemoClient/READMELIST#README_JVMTI">JVMTI详细介绍</a>
 
 ## 目录
 
@@ -55,6 +54,8 @@
 * MMKV原理探究
 * 绘制性能监控
 * APT技术:APT生成配置文件，然后利用ServiceLoader，启动时加载实现某个接口的所有类。
+* <a href="https://github.com/aa5279aa/android_all_demo/tree/master/DemoClient/READMELIST#README_QUICKENTER">菜单栏快捷入口申请</a>
+* jvmti:一个JVM虚拟机监控框架，利用其可以安卓的各种性能指标 <a href="https://github.com/aa5279aa/android_all_demo/tree/master/DemoClient/READMELIST#README_JVMTI">JVMTI详细介绍</a>
 
 
 ## 备注

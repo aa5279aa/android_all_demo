@@ -1,19 +1,15 @@
-# JVMTI介绍
+# QUICKENTER
 
 ## 功能介绍
-JVMTI是一个java提供的注入框架，功能很强大，可以面向切面观察虚拟机的各种操作，比如申请/释放内存，线程生成，方法执行等等。在安卓平台上被改成了ARTTI，但是本质没变。
-字节的内存监控框架kenzo，基于的就是这个原理，介绍文章如下：https://blog.csdn.net/ByteDanceTech/article/details/111503373
-所以我们可以利用这个框架做很多切面上的监控，比如
-1.记录内存对象申请记录，从而推断内存是否存在泄漏，以及内存对象申请是否过于频繁。
-2.记录方法执行和调用的线程，从而来推断是否存在主线程耗时的情况。
-3.记录线程创建时的信息，从来判断是否存在线程过多的场景。（线程创建过多也会导致OOM）
-JVMTI能够实现的功能还有很多，这里就不一一列举了。
+实现菜单栏快捷入口功能
+如下图所示，实现快速APP的快捷入口。
+![image](picture/QUICKENTER.png)
 
 ## DEMO介绍
-本demo主要实现三个功能，
-1.记录对象的申请和释放，根据记录通过计算出泄漏的对象。
-2.记录主线程耗时的方法，根据记录通过计算找出具体耗时的方法。
-3.记录线程创建时的信息，统计创建线程的父线程及代码位置。
+本demo主要实现三个流程来实现的：
+1.注册一个QuickSettingService类，继承自TileService，具体参照<a href="https://github.com/aa5279aa/android_all_demo/tree/master/DemoClient/READMELIST#README_JVMTI">QuickSettingService</a>
+2.Mainfest中进行注册，具体参照<a href="https://github.com/aa5279aa/android_all_demo/tree/master/DemoClient/READMELIST#README_JVMTI">QuickSettingService</a>
+3.安装APP。安装了之后，只是APP进行了申请，支持快捷栏入口，具体快捷栏是否展示，还是要通过手机快捷栏进行配置的。
 
 
 ## 备注

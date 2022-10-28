@@ -15,7 +15,7 @@ public class Plugin3Activity extends Activity {
         super.onCreate(savedInstanceState);
         Resources resources = getResources();
         setContentView(R.layout.layout_plugin3);
-        String string = resources.getString(R.string.plugin_str1);
+        String string = resources.getString(R.string.plugin_str3);
         ((TextView) findViewById(R.id.text2)).setText(string);
     }
 }

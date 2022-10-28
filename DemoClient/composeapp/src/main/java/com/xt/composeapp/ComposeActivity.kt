@@ -3,7 +3,9 @@ package com.xt.composeapp
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -29,12 +31,23 @@ class ComposeActivity : ComponentActivity() {
     private fun jumpActivity(c: Class<out Activity?>) {
         val intent = Intent(this, c)
         startActivity(intent)
+
+
     }
+
+    @Composable
+    private fun test2(){
+//        rememberLauncherForActivityResult(contract = PickVisualMedia(), onResult = onResult)
+    }
+
 
     @Composable
     fun MainContent() {
         Column(Modifier.padding(10.dp)) {
             Button(onClick = {
+
+
+
                 jumpActivity(ComposeDataBindingActivity::class.java)
             }) {
                 Text(text = "Compose_DataBinding")

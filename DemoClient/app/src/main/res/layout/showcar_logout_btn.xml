@@ -29,7 +29,7 @@
             android:layout_width="@dimen/dp_72"
             android:layout_height="@dimen/dp_72"
             android:layout_marginLeft="@dimen/dp_20"
-            android:background="@mipmap/show_list_btn_normal" />
+            android:background="@mipmap/icon_drak" />
     </com.xt.client.widget.MyLinearLayout>
 
 

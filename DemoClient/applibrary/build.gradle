@@ -26,8 +26,8 @@ android {
 }
 
 //configurations.maybeCreate("default")
-//artifacts.add("default", files("test22.aar","test.aar"))
-//artifacts.add("default", file("test.aar"))
+artifacts.add("default", files("test22.aar","test.aar"))
+artifacts.add("default", file("test.aar"))
 //println("add aar")
 
 dependencies {
