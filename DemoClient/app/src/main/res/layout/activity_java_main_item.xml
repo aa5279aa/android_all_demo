@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/text"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_gravity="center"
+    android:background="@drawable/item_bg"
+    android:gravity="center"
+    tools:context="com.xt.client.ProtoActivity"
+    tools:showIn="@layout/activity_main">
+
+</TextView>

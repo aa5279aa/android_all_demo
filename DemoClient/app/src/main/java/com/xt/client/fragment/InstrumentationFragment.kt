@@ -1,24 +1,9 @@
 package com.xt.client.fragment
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import com.xt.client.R
-import com.xt.client.serialize.ProtoSerialize
-import com.xt.client.util.DemoUtils
-import com.xt.client.util.IOHelper
-import com.xt.client.viewmodel.DemoRequest
-import com.xt.client.viewmodel.DemoResponse
-import java.net.HttpURLConnection
-import java.net.URL
-import java.net.URLConnection
-import java.util.concurrent.Executors
+import com.xt.client.fragment.base.BaseFragment
 
 /**
  * 字节码插桩

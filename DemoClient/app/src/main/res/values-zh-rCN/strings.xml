@@ -2,7 +2,9 @@
     <string name="app_name">AllDemo</string>
     <string name="action_settings">Settings</string>
 
-    <string name="test">测试</string>
+    <string name="test_button">测试按钮</string>
+    <string name="test_activity">测试界面</string>
+    <string name="test_java_Activity">测试java界面</string>
     <string name="protobuff">protobuf序列化</string>
     <string name="instrumentation">字节码插桩</string>
     <string name="catch_crash">崩溃捕获</string>
@@ -11,7 +13,6 @@
     <string name="use_aidl">aidl使用</string>
     <string name="performance_check">性能检测</string>
     <string name="prepareloadview">界面预加载</string>
-    <string name="testtest">测试界面</string>
     <string name="test_crash">触发crash</string>
     <string name="breakpoint_download">断点续传</string>
     <string name="wcdb">wcdb数据库</string>

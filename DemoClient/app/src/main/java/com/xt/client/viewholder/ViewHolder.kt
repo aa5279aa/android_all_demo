@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.xt.client.R
 
 
-class ViewHolder(view: View, listener: View.OnClickListener) {
+open class ViewHolder(view: View, listener: View.OnClickListener) {
 
     var descText: TextView? = null
     var line1: View? = null

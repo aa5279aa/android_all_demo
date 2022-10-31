@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.xt.client.R
+import com.xt.client.fragment.base.BaseFragment
 import com.xt.client.serialize.ProtoSerialize
 import com.xt.client.util.IOHelper
 import com.xt.client.viewmodel.DemoRequest

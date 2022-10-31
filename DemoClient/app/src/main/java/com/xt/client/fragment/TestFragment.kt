@@ -1,20 +1,16 @@
 package com.xt.client.fragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.net.LocalSocket
 import android.net.LocalSocketAddress
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
-import com.alibaba.fastjson.JSON
 import com.google.gson.Gson
+import com.xt.client.fragment.base.Base2Fragment
 import com.xt.client.model.UserModel
-import com.xt.client.service.ThreadService
 import com.xt.client.util.IOHelper
 import com.xt.client.util.LogUtil
 import kotlinx.coroutines.*

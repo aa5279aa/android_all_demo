@@ -12,6 +12,7 @@ import android.view.View
 import com.xt.client.R
 import com.xt.client.aidl.IClientCallBack
 import com.xt.client.aidl.ProcessAidlInter
+import com.xt.client.fragment.base.BaseFragment
 import com.xt.client.service.Other2ProcessService
 
 class AidlFragment : BaseFragment() {

@@ -6,7 +6,7 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import com.xt.client.R
-import com.xt.client.util.DemoUtils
+import com.xt.client.fragment.base.BaseFragment
 
 class TryCrashFragment : BaseFragment() {
 

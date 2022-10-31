@@ -1,29 +1,14 @@
 package com.xt.client.fragment
 
-import android.app.Service
-import android.content.ComponentName
 import android.content.Context.MODE_PRIVATE
-import android.content.Intent
-import android.content.ServiceConnection
-import android.content.SharedPreferences
-import android.nfc.Tag
 import android.os.Bundle
-import android.os.IBinder
-import android.os.RemoteException
 import android.util.Log
 import android.view.View
 import com.tencent.mmkv.MMKV
-import com.xt.client.R
-import com.xt.client.aidl.IClientCallBack
-import com.xt.client.aidl.ProcessAidlInter
+import com.xt.client.fragment.base.Base2Fragment
 import com.xt.client.function.retrofit.Api
-import com.xt.client.service.Other2ProcessService
-import okhttp3.Cache
 import okhttp3.OkHttpClient
-import java.io.File
-import java.util.*
 import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 import kotlin.random.Random
 
 class MMKVFragment : Base2Fragment() {

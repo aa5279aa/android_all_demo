@@ -29,8 +29,10 @@ import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.xt.client.activitys.*
 import com.xt.client.application.DemoApplication
 import com.xt.client.fragment.*
+import com.xt.client.fragment.base.BaseFragment
 import com.xt.client.inter.RecyclerItemClickListener
 import com.xt.client.util.ToastUtil
+import com.xt.client.widget.tool.decoration.MyItemDecoration
 import com.xt.router_api.BindSelfView
 import java.io.File
 import java.io.IOException
@@ -85,8 +87,15 @@ class MainActivity : FragmentActivity() {
     }
 
     private fun initData() {
-        dataList.add(ItemState(getString(R.string.test), "ing", null))
-        dataList.add(ItemState(getString(R.string.testtest), "ing", TestActivity::class.java))
+        dataList.add(ItemState(getString(R.string.test_button), "ing", null))
+        dataList.add(ItemState(getString(R.string.test_activity), "done", TestActivity::class.java))
+        dataList.add(
+            ItemState(
+                getString(R.string.test_java_Activity),
+                "done",
+                TestJavaActivity::class.java
+            )
+        )
         dataList.add(
             ItemState(
                 getString(R.string.protobuff),
@@ -148,27 +157,14 @@ class MainActivity : FragmentActivity() {
         dataList.add(ItemState(getString(R.string.kotlin), "ing", KotlinFragment::class.java))
         dataList.add(ItemState(getString(R.string.koom), "ing", KOOMFragment::class.java))
         dataList.add(ItemState(getString(R.string.router), "done", RouteFragment::class.java))
-        dataList.add(ItemState(getString(R.string.jvmti), "done", RouteFragment::class.java))
+        dataList.add(ItemState(getString(R.string.jvmti), "done", JVMTIFragment::class.java))
 
 
         val layout = GridLayoutManager(this, 2)
         mRecycler!!.layoutManager = layout
         val adapter = MyAdapter()
         mRecycler!!.adapter = adapter
-        mRecycler!!.addItemDecoration(object : ItemDecoration() {
-            override fun getItemOffsets(
-                outRect: Rect,
-                view: View,
-                parent: RecyclerView,
-                state: RecyclerView.State
-            ) {
-                outRect.left = 10
-                outRect.bottom = 10
-                if (parent.getChildLayoutPosition(view) % 2 == 0) {
-                    outRect.left = 0
-                }
-            }
-        })
+        mRecycler!!.addItemDecoration(MyItemDecoration())
         adapter.notifyDataSetChanged()
         mRecycler!!.addOnItemTouchListener(RecyclerItemClickListener(this) { view, position ->
             val itemState = dataList[position]
@@ -197,7 +193,7 @@ class MainActivity : FragmentActivity() {
 
     var list: List<ByteArray> = ArrayList()
     private fun doActionWithoutClass(title: String) {
-        if (getString(R.string.test).equals(title, ignoreCase = true)) {
+        if (getString(R.string.test_button).equals(title, ignoreCase = true)) {
 //            val intent = Intent("my_self",Uri.fromFile( File("")))
 //            sendBroadcast(intent)
 
@@ -282,8 +278,6 @@ class MainActivity : FragmentActivity() {
             (holder.itemView.findViewById<View>(R.id.text_name) as TextView).text =
                 itemState.name
             (holder.itemView.findViewById<View>(R.id.text_state) as TextView).text = itemState.state
-            val locl: Lock = ReentrantLock()
-            locl.lock()
         }
 
         override fun getItemCount(): Int {

@@ -8,11 +8,21 @@ android {
     defaultConfig {
         applicationId 'com.xt.client'
         minSdkVersion 26
-        targetSdkVersion 33
+        targetSdkVersion 30
         versionCode 1
         versionName '1.0'
-        vectorDrawables.useSupportLibrary = true
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+//        vectorDrawables.useSupportLibrary = true
+        externalNativeBuild {
+            cmake {
+                cppFlags '-std=c++11'
+                abiFilters "x86", "arm64-v8a", "armeabi-v7a"
+            }
+        }
+        ndk {
+            //找了个Android5.1的armeabi-v7a架构的平板运行时发现启动不了，搜索了一下
+            //在这里加上NDK的CPU架构后才能运行
+            abiFilters "x86", "arm64-v8a", "armeabi-v7a"
+        }
     }
 
     signingConfigs {
@@ -79,7 +89,7 @@ android {
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
-//            version "3.10.2"
+            version '3.18.1'
         }
     }
 }

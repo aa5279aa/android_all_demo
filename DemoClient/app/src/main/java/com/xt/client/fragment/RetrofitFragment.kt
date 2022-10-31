@@ -2,9 +2,9 @@ package com.xt.client.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.Message
 import android.util.Log
 import android.view.View
+import com.xt.client.fragment.base.Base2Fragment
 import com.xt.client.function.retrofit.Api
 import com.xt.client.function.retrofit.RetrofitManager
 import com.xt.client.util.IOHelper
@@ -12,7 +12,6 @@ import kotlinx.coroutines.*
 import okhttp3.*
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.Retrofit
 import java.io.*
 import java.lang.StringBuilder
 import java.net.Socket

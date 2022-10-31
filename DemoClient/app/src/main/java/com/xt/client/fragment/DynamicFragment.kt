@@ -11,6 +11,7 @@ import android.view.View
 import com.xt.client.HostActivity
 import com.xt.client.R
 import com.xt.client.cache.ObjectCache
+import com.xt.client.fragment.base.Base2Fragment
 import com.xt.client.function.dynamic.hook.MyInstrumentation
 import com.xt.client.function.dynamic.hook.MyResources
 import com.xt.client.function.dynamic.manager.DynamicResourceManager

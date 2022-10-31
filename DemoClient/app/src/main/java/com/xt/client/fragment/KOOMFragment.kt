@@ -9,6 +9,7 @@ import android.view.View
 import com.kwai.koom.javaoom.hprof.ForkStripHeapDumper
 import com.kwai.koom.javaoom.monitor.OOMMonitor
 import com.xt.client.application.DemoApplication
+import com.xt.client.fragment.base.Base2Fragment
 import com.xt.client.function.koom.OOMMonitorInitTask
 import com.xt.client.function.koom.test.LeakedActivity
 import java.io.File

@@ -21,6 +21,7 @@ class TestActivity : BaseActivity() {
         window.requestFeature(Window.FEATURE_OPTIONS_PANEL)
         super.onCreate(savedInstanceState)
         getLifecycle().addObserver(MyObserver())
+
     }
 
     class MyObserver : LifecycleObserver {

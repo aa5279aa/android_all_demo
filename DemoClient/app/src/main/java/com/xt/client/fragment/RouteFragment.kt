@@ -1,16 +1,10 @@
 package com.xt.client.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.lifecycle.lifecycleScope
 import com.xt.client.R
+import com.xt.client.fragment.base.BaseFragment
 import com.xt.client.function.route.RouterHandle
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.launch
 
 class RouteFragment : BaseFragment() {
     val routerHandle = RouterHandle()

@@ -31,6 +31,7 @@
     <application
         android:name=".application.DemoApplication"
         android:allowBackup="true"
+        android:extractNativeLibs="true"
         android:icon="@mipmap/launcher"
         android:label="@string/app_name"
         android:localeConfig="@xml/locales_config"
@@ -52,16 +53,36 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".ProtoActivity" />
-        <activity android:name=".Main4Activity" />
-        <activity android:name=".activitys.SaveLastActivity" />
-        <activity android:name=".activitys.WCDBActivity" />
-        <activity android:name=".activitys.JNIActivity" />
-        <activity android:name=".activitys.PerformanceActivity" />
-        <activity android:name=".activitys.PrepareActivity" />
-        <activity android:name=".activitys.prepare.PrepareMiddleActivity" />
-        <activity android:name=".activitys.ShowActivity" />
-        <activity android:name=".activitys.ThreadRefreshActivity" />
-        <activity android:name=".activitys.PerformanceCaseActivity" />
+        <activity
+            android:name=".activitys.TestJavaActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activitys.SaveLastActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
+        <activity
+            android:name=".activitys.WCDBActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
+        <activity
+            android:name=".activitys.JNIActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
+        <activity
+            android:name=".activitys.PerformanceActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
+        <activity
+            android:name=".activitys.PrepareActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
+        <activity
+            android:name=".activitys.prepare.PrepareMiddleActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
+        <activity
+            android:name=".activitys.ShowActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
+        <activity
+            android:name=".activitys.ThreadRefreshActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
+        <activity
+            android:name=".activitys.PerformanceCaseActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
 
         <activity
             android:name=".activitys.AnnotationActivity"

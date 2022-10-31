@@ -1,4 +1,4 @@
-package com.xt.client.fragment
+package com.xt.client.fragment.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
