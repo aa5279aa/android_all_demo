@@ -38,6 +38,7 @@ public class BlueToothActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.leftmenu_btreceiver);
         initPairingInfo();
+
     }
 
     /**

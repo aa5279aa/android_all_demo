@@ -7,6 +7,11 @@ public class JavaModel {
     public int age;
     public String moblie;
 
+
+    public JavaModel(String name) {
+        this.name = name;
+    }
+
     public void printJavaLog() {
         Log.i("lxltest", "java log");
     }

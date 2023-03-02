@@ -5,11 +5,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.FrameMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xt.client.R;
-import com.xt.client.performance.ANRMonitor;
+import com.xt.client.function.performance.ANRMonitor;
 import com.xt.client.util.IOHelper;
 
 import java.io.IOException;

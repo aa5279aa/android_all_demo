@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>定时请求网址</title>
+    <script>
+			window.onload = function() {
+        var count = 0;
+        var textBox = document.getElementById("text-box");
+        setInterval(function() {
+            const xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://www.baidu.com/', true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+xhr.onreadystatechange = function() {
+	if (this.readyState === 4) {
+		if (this.status === 200) {
+			// 请求成功
+			console.log('Success: ' + this.status);
+			count++;
+			textBox.value = "success" + count;
+		} else {
+			// 请求失败
+			console.error('Error: ' + xhr.status);
+			console.error('Error: ' + xhr.statusText);
+			count++;
+			textBox.value = "fail" + count;
+		}
+	}
+};
+xhr.send();
+        }, 5000);
+      };
+    </script>
+</head>
+<body>
+<input type="text" id="text-box" style="font-size: 46px;">
+</body>
+</html>

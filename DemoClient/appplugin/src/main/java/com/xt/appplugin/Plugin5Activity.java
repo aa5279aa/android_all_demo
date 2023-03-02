@@ -1,6 +1,7 @@
 package com.xt.appplugin;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,8 @@ public class Plugin5Activity extends Activity {
         setContentView(R.layout.layout_plugin5);
         TextView text1 = findViewById(R.id.button1);
         text1.setOnClickListener(v -> {
-            Toast.makeText(Plugin5Activity.this, "button1", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Plugin5Activity.this, PluginMainActivity.class);
+            startActivity(intent);
 
         });
         findViewById(R.id.button2).setOnClickListener(v -> {

@@ -8,7 +8,7 @@ android {
     defaultConfig {
         applicationId 'com.xt.client'
         minSdkVersion 26
-        targetSdkVersion 30
+        targetSdkVersion 22
         versionCode 1
         versionName '1.0'
 //        vectorDrawables.useSupportLibrary = true
@@ -19,19 +19,18 @@ android {
             }
         }
         ndk {
-            //找了个Android5.1的armeabi-v7a架构的平板运行时发现启动不了，搜索了一下
-            //在这里加上NDK的CPU架构后才能运行
             abiFilters "x86", "arm64-v8a", "armeabi-v7a"
         }
     }
-
     signingConfigs {
-        // We use a bundled debug keystore, to allow debug builds from CI to be upgradable
         debug {
-//            storeFile rootProject.file('debug.keystore')
-//            storePassword 'android'
-//            keyAlias 'androiddebugkey'
-//            keyPassword 'android'
+
+        }
+        release {
+            storeFile rootProject.file("keystore/keystore")
+            storePassword '111111'
+            keyAlias 'key0'
+            keyPassword '111111'
         }
     }
 
@@ -41,7 +40,9 @@ android {
         }
 
         release {
+//            debuggable true
             minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
@@ -144,6 +145,8 @@ dependencies {
     implementation "com.kuaishou.koom:koom-thread-leak:${VERSION_NAME}"
 
     implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+
+    implementation 'com.tencent.bugly:crashreport:latest.release'
 
 //    implementation project(':applibrary')
 //    implementation 'com.github.bumptech.glide:glide:4.9.0'

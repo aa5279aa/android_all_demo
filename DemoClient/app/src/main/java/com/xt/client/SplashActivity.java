@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +19,16 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.xt.client.util.DemoUtils;
 import com.xt.client.util.StatusBarUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -62,22 +68,10 @@ public class SplashActivity extends Activity {
         imgIv = findViewById(R.id.img_iv);
         checkPermission();
         initData();
-//        final View content = findViewById(android.R.id.content);
-//        content.getViewTreeObserver().addOnPreDrawListener(
-//                new ViewTreeObserver.OnPreDrawListener() {
-//                    @Override
-//                    public boolean onPreDraw() {
-//                        // Check if the initial data is ready.
-//                        if (false) {
-//                            // The content is ready; start drawing.
-//                            content.getViewTreeObserver().removeOnPreDrawListener(this);
-//                            return true;
-//                        } else {
-//                            // The content is not ready; suspend.
-//                            return false;
-//                        }
-//                    }
-//                });
+
+        test();
+
+
         splashScreen.setOnExitAnimationListener(splashScreenView -> {
             final ObjectAnimator slideUp = ObjectAnimator.ofFloat(
                     splashScreenView,
@@ -99,6 +93,22 @@ public class SplashActivity extends Activity {
             // Run your animation.
             slideUp.start();
         });
+
+    }
+
+    private void test() {
+        Map<String, Object> map = new HashMap<>();
+        JsonArray array = new JsonArray();
+        array.add("b1");
+        array.add("b2");
+
+        map.put("a", "aaa");
+        map.put("b", array);
+        //{"a":"aaa","b":["b1","b2"]}
+
+        //{"a":"aaa","b":"["b1","b2"]"}
+        String s = new Gson().toJson(map);
+        Log.i("lxltest", s);
 
     }
 
@@ -176,8 +186,12 @@ public class SplashActivity extends Activity {
         if (!isHaveAllPermission) {
             return;
         }
-        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-        finish();
+        new Handler(getMainLooper()).post(() -> {
+//            startActivityForResult(new Intent(SplashActivity.this, MainActivity.class),1);
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
+        });
+
     }
 
     public void checkPermission() {
@@ -225,5 +239,6 @@ public class SplashActivity extends Activity {
     protected void onResume() {
         super.onResume();
         Log.i("lxltest", "SplashActivity_onResume");
+
     }
 }

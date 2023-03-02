@@ -1,4 +1,4 @@
-package com.xt.client.viewholder
+package com.xt.client.widget.viewholder
 
 import android.view.View
 import android.view.View.OnClickListener

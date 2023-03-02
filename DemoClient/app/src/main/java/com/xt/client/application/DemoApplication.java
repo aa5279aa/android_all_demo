@@ -3,10 +3,12 @@ package com.xt.client.application;
 import android.app.Application;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 
 import com.kwai.koom.base.DefaultInitTask;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.xt.client.function.route.RouterHandle;
 import com.xt.client.function.serviceprovider.AServiceProviderImpl;
 import com.xt.client.function.serviceprovider.BServiceProviderImpl;
@@ -44,6 +46,8 @@ public class DemoApplication extends Application {
 //        normalLaunch();
         //快手KOOM初始化
         DefaultInitTask.INSTANCE.init(this);
+
+        CrashReport.initCrashReport(getApplicationContext(), "4590a52547", true);
     }
 
     private void aptLaunch() {

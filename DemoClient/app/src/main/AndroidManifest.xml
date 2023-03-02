@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:attr="http://schemas.android.com/apk/distribution"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.xt.client">
 
@@ -26,7 +27,6 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_HOME_APP_SEARCH_DATA" />
-
 
     <application
         android:name=".application.DemoApplication"
@@ -85,6 +85,10 @@
             android:theme="@style/Theme.AppCompat.DayNight" />
 
         <activity
+            android:name=".activitys.LeakActivity"
+            android:theme="@style/Theme.AppCompat.DayNight" />
+
+        <activity
             android:name=".activitys.AnnotationActivity"
             android:launchMode="singleTask" />
         <activity
@@ -112,18 +116,25 @@
 
         <provider
             android:name=".provider.StartupProvider"
-            android:authorities="${applicationId}.android_startup.multiple"
-            android:exported="false">
-            <meta-data
-                android:name="com.rousetime.sample.startup.SampleStartupProviderConfig"
-                android:value="android.startup.provider.config" />
-            <meta-data
-                android:name="com.rousetime.sample.startup.multiple.SampleMultipleSecondStartup"
-                android:value="android.startup" />
-        </provider>
+            android:authorities="com.xt.client.android_startup.multiple"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider" />
 
-        <activity android:name="com.xt.client.function.koom.test.LeakedActivity" />
+        <activity
+            android:name="com.xt.client.function.koom.test.LeakedActivity"
+            android:launchMode="standard" />
+
         <activity android:name="com.xt.client.function.koom.test.ActivityLeakMaker$LeakedActivity" />
+
+        <activity
+            android:name="com.xt.client.activitys.test.Test1Activity"
+            android:launchMode="singleInstancePerTask" />
+        <activity android:name="com.xt.client.activitys.test.Test2Activity"
+
+            />
+        <activity
+            android:name="com.xt.client.activitys.test.Test3Activity"
+            android:launchMode="singleInstancePerTask" />
 
         <service
             android:name="com.xt.client.service.QuickSettingService"

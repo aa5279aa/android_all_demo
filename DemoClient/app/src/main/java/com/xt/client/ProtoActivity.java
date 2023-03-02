@@ -3,17 +3,14 @@ package com.xt.client;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 
-import com.xt.client.serialize.ProtoSerialize;
-import com.xt.client.util.AnnotateUtils;
+import com.xt.client.function.serialize.ProtoSerialize;
 import com.xt.client.util.IOHelper;
 import com.xt.client.viewmodel.DemoRequest;
 import com.xt.client.viewmodel.DemoResponse;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;

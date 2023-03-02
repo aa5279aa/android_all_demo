@@ -259,10 +259,8 @@ public final class StringUtil {
     /**
      * 匹配字符串中符合正则的字符串列表
      *
-     * @param text
-     *            原字符串
-     * @param patternStr
-     *            正则表达式
+     * @param text       原字符串
+     * @param patternStr 正则表达式
      * @return
      */
     public static List<String> match(String text, String patternStr) {
@@ -562,8 +560,7 @@ public final class StringUtil {
     /**
      * Transform binary format.
      *
-     * @param num
-     *            num.
+     * @param num num.
      * @return temp result of method.
      */
     public static String transBinary(int num) {
@@ -719,10 +716,8 @@ public final class StringUtil {
     }
 
     /**
-     * @param sourceStr
-     *            源字符串
-     * @param rgex
-     *            正则表达式
+     * @param sourceStr 源字符串
+     * @param rgex      正则表达式
      * @return
      */
     public static List<String> getSubStrings(String sourceStr, String rgex) {
@@ -738,10 +733,8 @@ public final class StringUtil {
     }
 
     /**
-     * @param sourceStr
-     *            源字符串
-     * @param rgex
-     *            正则表达式
+     * @param sourceStr 源字符串
+     * @param rgex      正则表达式
      * @return
      */
     public static String getSubString(String sourceStr, String rgex) {
@@ -795,17 +788,17 @@ public final class StringUtil {
         return isNum.matches();
     }
 
-    public static int searchByIndexOf(String cmd , String replace){
+    public static int searchByIndexOf(String cmd, String replace) {
         int leng = cmd.length();
         cmd = cmd.replace(replace, "");
         int len = cmd.length();
         return (leng - len) / replace.length();
     }
 
-    public static String calLength(String lentotal){
+    public static String calLength(String lentotal) {
         int tl = lentotal.length();
-        for (int i= tl ;i<4;i++) {
-            lentotal = "0"+ lentotal;
+        for (int i = tl; i < 4; i++) {
+            lentotal = "0" + lentotal;
         }
         lentotal = lentotal.substring(2, 4) + lentotal.substring(0, 2);
         return lentotal;
@@ -814,18 +807,17 @@ public final class StringUtil {
     /**
      * 要进行高低位转换的字符串
      *
-     * @param section
-     *            16进制字符串
+     * @param section 16进制字符串
      * @return
      */
     public static String changePosition(String section) {
-        if (section==null){
+        if (section == null) {
             return "";
         }
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < section.length() / 2; i++) {
-            String data=section.substring(i*2,(i+1)*2);
-            sb.insert(0,data);
+            String data = section.substring(i * 2, (i + 1) * 2);
+            sb.insert(0, data);
         }
         return sb.toString();
     }
@@ -849,15 +841,15 @@ public final class StringUtil {
                 }
                 sb.append((char) Long.parseLong(s, 16));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("转ASCII失败");
         }
         return sb.toString();
     }
 
-    public static String getProtocol(String systemId){
-        switch (systemId){
+    public static String getProtocol(String systemId) {
+        switch (systemId) {
             case "SYSTEM_001456":
                 return "cummins";
             case "SYSTEM_001717":
@@ -866,6 +858,10 @@ public final class StringUtil {
                 return "";
 
         }
+    }
+
+    public static String toHH() {
+        return "aa";
     }
 
 

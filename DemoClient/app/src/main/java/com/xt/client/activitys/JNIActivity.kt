@@ -48,10 +48,9 @@ class JNIActivity : Base2Activity() {
         if (position == 2) {
             try {
                 var calculationJNITest = CalculationJNITest()
-                val javaModel = JavaModel()
+                val javaModel = JavaModel("lxl")
                 javaModel.age = 10
                 javaModel.moblie = "17863333333"
-                javaModel.name = "lxl"
                 val calculationSum = calculationJNITest.updateObjectValue(javaModel)
                 mResult.text = javaModel.moblie
             } catch (e: Exception) {
@@ -62,7 +61,7 @@ class JNIActivity : Base2Activity() {
         if (position == 3) {
             //动态注册
             var dynamicRegister = DynamicRegister()
-            val result = dynamicRegister.spliceString("Hello","World")
+            val result = dynamicRegister.spliceString("Hello", "World")
             mResult.text = "$result"
             return
         }
@@ -96,7 +95,8 @@ class JNIActivity : Base2Activity() {
             return
         }
         if (position == 7) {
-            val superClassName = dynamicRegister.getSuperClassName("com/xt/client/viewmodel/DemoRequest")
+            val superClassName =
+                dynamicRegister.getSuperClassName("com/xt/client/viewmodel/DemoRequest")
             (superClassName as? Class)?.let {
                 LogUtil.logI(it.name)
             }

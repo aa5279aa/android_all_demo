@@ -1,9 +1,13 @@
 package com.xt.client.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import com.xt.client.activitys.LeakActivity
 import com.xt.client.fragment.base.BaseMultiFragment
-import com.xt.client.function.jvmti.AnalysisThread
+import com.xt.client.function.jvmti.analysis.AnalysisThread
+import com.xt.client.function.jvmti.bean.JVMTITestObjectBean
+import com.xt.client.function.jvmti.bean.JVMTITestObjectBean2
 import com.xt.client.jni.JVMTIMonitor
 import com.xt.client.model.UserModel
 import com.xt.client.util.ToastUtil
@@ -30,9 +34,11 @@ class JVMTIFragment : BaseMultiFragment() {
             this.add("开始性能监控")
             this.add("关闭性能监控")
             this.add("申请一个对象")
-            this.add("占坑不用")
+            this.add("申请一个1024b对象")
             this.add("创建一个线程")
             this.add("查看日志中线程创建")
+            this.add("泄漏一个Activity")
+            this.add("查看日志中发现泄漏")
         }
     }
 
@@ -50,8 +56,13 @@ class JVMTIFragment : BaseMultiFragment() {
             return
         }
         if (postion == 2) {
-            ToastUtil.showCenterToast("new Object:UserModel")
-            val userModel = UserModel()
+            ToastUtil.showCenterToast("new Object:JVMTITestObjectBean")
+            val userModel = JVMTITestObjectBean()
+            return
+        }
+        if (postion == 3) {
+            ToastUtil.showCenterToast("new Object:JVMTITestObjectBean,size:1024")
+            val userModel = JVMTITestObjectBean2()
             return
         }
         if (postion == 4) {
@@ -61,6 +72,16 @@ class JVMTIFragment : BaseMultiFragment() {
         }
         if (postion == 5) {
             //分析日志，确定哪个线程和堆栈创建的线程
+            AnalysisThread().analysis(monitor.mPath)
+            return
+        }
+        if (postion == 6) {
+            ToastUtil.showCenterToast("leak Activity")
+            startActivity(Intent(requireContext(), LeakActivity::class.java))
+            return
+        }
+        if (postion == 7) {
+            //分析日志，查看有没有泄漏
             AnalysisThread().analysis(monitor.mPath)
             return
         }

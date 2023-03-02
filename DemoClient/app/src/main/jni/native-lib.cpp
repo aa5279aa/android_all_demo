@@ -21,6 +21,14 @@ jlong tag = 0;
 
 std::string mPackageName;
 
+const char *getClassName(JNIEnv *env, jclass input_class) {
+    _jclass *aClass = env->GetObjectClass(input_class);
+    _jmethodID *getName = env->GetMethodID(aClass, "getName", "()Ljava/lang/String;");
+    jstring className = static_cast<jstring>(env->CallObjectMethod(input_class, getName));
+    const char *string = env->GetStringUTFChars(className, JNI_FALSE);
+    return string;
+}
+
 char *getCharFromMethodID(jvmtiEnv *jvmti_env, jmethodID method) {
     char *signature;
     jclass clazz;
@@ -30,23 +38,28 @@ char *getCharFromMethodID(jvmtiEnv *jvmti_env, jmethodID method) {
     return signature;
 }
 
+
 //查找过滤
-jboolean findFilterObjectAlloc(const char *name) {
-    std::string tmpstr = name;
-    int idx;
-    //先判断甩没有Error，有Error直接输出
-    idx = tmpstr.find("OutOfMemory");
-    if (idx != std::string::npos) {
+jboolean findFilterObjectAlloc(JNIEnv *env, jobject obejct, jclass clazz) {
+    const char *name = getClassName(env, clazz);
+    std::string clazzName = name;
+    int idx = clazzName.find("com.xt.client");
+    if (idx != 0) {
+        return JNI_FALSE;
+    }
+    jclass instanceClass = env->FindClass("android/app/Activity");
+    if (env->IsInstanceOf(obejct, instanceClass)) {
         return JNI_TRUE;
     }
-    idx = tmpstr.find("client");
-    if (idx != std::string::npos) {
+    instanceClass = env->FindClass("android/app/Service");
+    if (env->IsInstanceOf(obejct, instanceClass)) {
         return JNI_TRUE;
     }
-    idx = tmpstr.find("Thread");
-    if (idx != std::string::npos) {
-        return JNI_TRUE;
-    }
+//
+//    instanceClass = env->FindClass("androidx/fragment/app/Fragment");
+//    if (env->IsInstanceOf(obejct, instanceClass)) {
+//        return JNI_TRUE;
+//    }
     return JNI_FALSE;
 }
 
@@ -101,39 +114,48 @@ std::string GetCurrentSystemTime() {
 }
 
 
-void JNICALL allocFree(jvmtiEnv *jvmti_env, JNIEnv *jni_env, jthread thread,
+void JNICALL allocFree(jvmtiEnv *jvmti_env, JNIEnv *env, jthread thread,
                        jobject object, jclass object_klass, jlong size) {
+
+    jlong readTag;
+    jvmti_env->GetTag(object, &readTag);
+    ALOGI("allocFree");
+    if (findFilterObjectAlloc(env, object_klass, object_klass)) {
+        if (readTag == 0) {
+            ALOGI("allocFree_readTag:%lld", readTag);
+            return;
+        }
+        char *classSignature;
+        jvmti_env->GetClassSignature(object_klass, &classSignature, nullptr);
+        jvmti_env->SetTag(object, tag++);
+        char str[500];
+        const char *format = "allocFree;%s;class:{%s};size:{%lld};tag:{%lld} \r\n";
+        const std::string &timsStr = GetCurrentSystemTime();
+        ALOGI(format, timsStr.c_str(), classSignature, size, tag);
+        sprintf(str, format, timsStr.c_str(), classSignature, size,
+                tag);
+        MemoryFile::Write(str, sizeof(char) * strlen(str));
+        jvmti_env->Deallocate((unsigned char *) classSignature);
+    }
+
 
 }
 
-void JNICALL objectAlloc(jvmtiEnv *jvmti_env, JNIEnv *jni_env, jthread thread,
+void JNICALL objectAlloc(jvmtiEnv *jvmti_env, JNIEnv *env, jthread thread,
                          jobject object, jclass object_klass, jlong size) {
-//给对象打tag，后续在objectFree()内可以通过该tag来判断是否成对出现释放
-    tag += 1;
-    jvmti_env->SetTag(object, tag);
-//    ALOGI("objectAlloc");
-//获取线程信息
-    jvmtiThreadInfo threadInfo;
-    jvmti_env->GetThreadInfo(thread, &threadInfo);
-
-//获得 创建的对象的类签名
-    char *classSignature;
-    jvmti_env->GetClassSignature(object_klass, &classSignature, nullptr);
-
-
-//    if (findFilterObjectAlloc(classSignature)) {
-//写入日志文件
-    char str[500];
-    const char *format = "%s: object alloc {Thread:%s Class:%s Size:%lld Tag:%lld} \r\n";
-    ALOGI(format, GetCurrentSystemTime().c_str(), threadInfo.name, classSignature, size, tag);
-    sprintf(str, format, GetCurrentSystemTime().c_str(), threadInfo.name, classSignature, size,
-            tag);
-//ALOGI("file:%s", MemoryFile::m_path.c_str());
-
-    MemoryFile::Write(str, sizeof(char) * strlen(str));
-//}
-    jvmti_env->Deallocate((unsigned char *) classSignature);
-//    }
+    if (findFilterObjectAlloc(env, object, object_klass)) {
+        char *classSignature;
+        jvmti_env->GetClassSignature(object_klass, &classSignature, nullptr);
+        jvmti_env->SetTag(object, tag++);
+        char str[500];
+        const char *format = "objectAlloc;%s;class:{%s};size:{%lld};tag:{%lld} \r\n";
+        const std::string &timsStr = GetCurrentSystemTime();
+        ALOGI(format, timsStr.c_str(), classSignature, size, tag);
+        sprintf(str, format, timsStr.c_str(), classSignature, size,
+                tag);
+        MemoryFile::Write(str, sizeof(char) * strlen(str));
+        jvmti_env->Deallocate((unsigned char *) classSignature);
+    }
 }
 
 jstring getMethodResult(JNIEnv *env, jobject object, jstring methodName) {
@@ -146,18 +168,18 @@ jstring getMethodResult(JNIEnv *env, jobject object, jstring methodName) {
     return string;
 }
 
-void JNICALL threadStart(jvmtiEnv *jvmti_env, JNIEnv *jni_env, jthread thread) {
+void JNICALL threadStart(jvmtiEnv *jvmti_env, JNIEnv *env, jthread thread) {
 //    char *threadName;
 //    char *methodName;
     ALOGI("threadStart before");
-    jstring name = getMethodResult(jni_env, thread, jni_env->NewStringUTF("getName"));
+    jstring name = getMethodResult(env, thread, env->NewStringUTF("getName"));
     ALOGI("threadStart after");
     jvmtiThreadInfo threadInfo;
     jvmti_env->GetThreadInfo(thread, &threadInfo);
 //写日志文件
 //    char str[500];
     char *format = "%s: threadStart threadName:{ %s },parentName:{ %s }\r\n";
-    ALOGI(format, GetCurrentSystemTime().c_str(), jni_env->GetStringUTFChars(name, JNI_FALSE),
+    ALOGI(format, GetCurrentSystemTime().c_str(), env->GetStringUTFChars(name, JNI_FALSE),
           threadInfo.name);
 //    sprintf(str, format, GetCurrentSystemTime().c_str(), threadInfo.name, threadInfo.thread_group);
 //    MemoryFile::Write(str, sizeof(char) * strlen(str));
@@ -165,7 +187,7 @@ void JNICALL threadStart(jvmtiEnv *jvmti_env, JNIEnv *jni_env, jthread thread) {
 }
 
 
-void JNICALL methodEntry(jvmtiEnv *jvmti_env, JNIEnv *jni_env, jthread thread, jmethodID method) {
+void JNICALL methodEntry(jvmtiEnv *jvmti_env, JNIEnv *env, jthread thread, jmethodID method) {
     jclass clazz;
     char *methodName;
     //获得方法对应的类
@@ -240,8 +262,8 @@ void init_jvmti(JNIEnv *env, jclass jclass, jstring _path) {
 //
     jvmtiEventCallbacks callbacks;
     memset(&callbacks, 0, sizeof(callbacks));
-//    callbacks.VMObjectAlloc = &objectAlloc;
-//    callbacks.ObjectFree = &allocFree;
+    callbacks.VMObjectAlloc = &objectAlloc;
+    callbacks.ObjectFree = &allocFree;
 //    callbacks.ThreadStart = &threadStart;
     callbacks.MethodEntry = &methodEntry;
 //
@@ -250,9 +272,9 @@ void init_jvmti(JNIEnv *env, jclass jclass, jstring _path) {
     mJvmtiEnv->SetEventCallbacks(&callbacks, sizeof(callbacks));
 //
     //对象申请
-//    mJvmtiEnv->SetEventNotificationMode(JVMTI_ENABLE, JVMTI_EVENT_VM_OBJECT_ALLOC, nullptr);
+    mJvmtiEnv->SetEventNotificationMode(JVMTI_ENABLE, JVMTI_EVENT_VM_OBJECT_ALLOC, nullptr);
 //    //释放内存
-//    mJvmtiEnv->SetEventNotificationMode(JVMTI_ENABLE, JVMTI_EVENT_OBJECT_FREE, nullptr);
+    mJvmtiEnv->SetEventNotificationMode(JVMTI_ENABLE, JVMTI_EVENT_OBJECT_FREE, nullptr);
 //    //开始线程
 //    mJvmtiEnv->SetEventNotificationMode(JVMTI_ENABLE, JVMTI_EVENT_THREAD_START, nullptr);
 //    //方法调用
@@ -265,15 +287,18 @@ void init_jvmti(JNIEnv *env, jclass jclass, jstring _path) {
 void release_jvmti(JNIEnv *env, jclass jclass) {
     ALOGI("release_jvmti");
     //对象申请
-//    mJvmtiEnv->SetEventNotificationMode(JVMTI_DISABLE, JVMTI_EVENT_VM_OBJECT_ALLOC, nullptr);
+    mJvmtiEnv->SetEventNotificationMode(JVMTI_DISABLE, JVMTI_EVENT_VM_OBJECT_ALLOC, nullptr);
 //    //释放内存
-//    mJvmtiEnv->SetEventNotificationMode(JVMTI_DISABLE, JVMTI_EVENT_OBJECT_FREE, nullptr);
+    mJvmtiEnv->SetEventNotificationMode(JVMTI_DISABLE, JVMTI_EVENT_OBJECT_FREE, nullptr);
 //    //开始线程
 //    mJvmtiEnv->SetEventNotificationMode(JVMTI_DISABLE, JVMTI_EVENT_THREAD_START, nullptr);
 //    //方法调用
     mJvmtiEnv->SetEventNotificationMode(JVMTI_DISABLE, JVMTI_EVENT_METHOD_ENTRY, nullptr);
 }
 
+void set_jdwpAllowed(JNIEnv *env, jclass jclass) {
+    ALOGI("set_jdwpallowed");
+}
 /**
  * 所谓的动态注册 是指，动态注册JAVA的Native方法，使得c/c++里面方法名 可以和 java 的Native方法名可以不同，
  * 动态注册是将将二者方法名关联起来，以后在修改Native方法名时，只需修改动态注册关联的方法名称即可
@@ -287,8 +312,10 @@ static JNINativeMethod method_table[] = {
         // 第一个参数a 是java native方法名，
         // 第二个参数 是native方法参数,括号里面是传入参的类型，外边的是返回值类型，
         // 第三个参数 是c/c++方法参数,括号里面是返回值类型，
-        {"native_init",    "(Ljava/lang/String;)V", (jstring *) init_jvmti},
-        {"native_release", "()V",                   (jstring *) release_jvmti},
+        {"native_init",     "(Ljava/lang/String;)V", (jstring *) init_jvmti},
+        {"native_release",  "()V",                   (jstring *) release_jvmti},
+        {"set_jdwpAllowed", "()V",                   (jstring *) set_jdwpAllowed},
+
 };
 
 static int registerMethods(JNIEnv *env, const char *className,

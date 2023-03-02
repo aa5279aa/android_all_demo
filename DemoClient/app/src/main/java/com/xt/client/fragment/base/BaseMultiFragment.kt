@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.xt.client.R
-import com.xt.client.viewholder.ViewHolder
+import com.xt.client.widget.viewholder.ViewHolder
 import com.xt.client.widget.tool.decoration.MyItemDecoration
 
 abstract class BaseMultiFragment : BaseFragment(), ItemClickListener {

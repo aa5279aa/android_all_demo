@@ -2,13 +2,10 @@ package com.xt.client
 
 import android.Manifest
 import android.app.Activity
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.graphics.PixelFormat
-import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -23,21 +20,37 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ItemDecoration
+import com.google.gson.Gson
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import com.xt.client.activitys.*
+import com.xt.client.activitys.test.Test1Activity
+import com.xt.client.activitys.test.Test2Activity
 import com.xt.client.application.DemoApplication
 import com.xt.client.fragment.*
 import com.xt.client.fragment.base.BaseFragment
 import com.xt.client.inter.RecyclerItemClickListener
+import com.xt.client.service.ThreadService
+import com.xt.client.util.IOHelper
 import com.xt.client.util.ToastUtil
 import com.xt.client.widget.tool.decoration.MyItemDecoration
 import com.xt.router_api.BindSelfView
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.IOException
-import java.util.concurrent.locks.Lock
-import java.util.concurrent.locks.ReentrantLock
+import java.util.*
+import java.util.stream.Collectors
+import java.util.stream.StreamSupport
+import kotlin.collections.HashMap
+import kotlin.coroutines.coroutineContext
+
 
 /**
  * @author xiatian
@@ -51,7 +64,6 @@ class MainActivity : FragmentActivity() {
     var `object` = Any()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mContext = this
         setContentView(R.layout.main_page)
         mRecycler = findViewById(R.id.recycler)
         manager = supportFragmentManager
@@ -60,6 +72,30 @@ class MainActivity : FragmentActivity() {
         val applicationContext = applicationContext
         val application = application
         Log.i("lxltest", "$baseContext,$application")
+    }
+
+
+    val flowA = MutableStateFlow(1)
+    val flowB = MutableStateFlow(2)
+    val flowC = flowA.combine(flowB) { a, b -> a + b }
+
+    fun dotest() {
+//        lifecycleScope.launch {
+//            flowC.collect {
+//                Log.i("lxltest", "result:${it}")
+//            }
+//        }
+//        lifecycleScope.launch {
+//            delay(2000)
+//            flowA.emit(5)
+//            flowB.emit(6)
+//        }
+        val intent = Intent(this,Test1Activity::class.java)
+//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+//        val s = Environment.getExternalStorageDirectory().absolutePath + File.separator + "a.txt"
+//        val createNewFile = File(s).createNewFile()
+
     }
 
     override fun onStart() {
@@ -194,38 +230,8 @@ class MainActivity : FragmentActivity() {
     var list: List<ByteArray> = ArrayList()
     private fun doActionWithoutClass(title: String) {
         if (getString(R.string.test_button).equals(title, ignoreCase = true)) {
-//            val intent = Intent("my_self",Uri.fromFile( File("")))
-//            sendBroadcast(intent)
-
-            val intentFilter = IntentFilter("my_self")
-//            intentFilter.priority = 3
-//            registerReceiver(object : BroadcastReceiver() {
-//                override fun onReceive(context: Context?, intent: Intent?) {
-//                    Log.i("lxltest", "TestActivity_onReceive1_start")
-//                    Thread.sleep(1_000)
-//                    Log.i("lxltest", "TestActivity_onReceive1_end")
-//                }
-//            }, intentFilter)
-
-//            Handler().postDelayed(Runnable {
-//                Thread.sleep(70_000)
-//            }, 5000)
-
-
-            val intentFilter2 = IntentFilter("my_self")
-            intentFilter2.priority = 5
-            registerReceiver(object : BroadcastReceiver() {
-                override fun onReceive(context: Context?, intent: Intent?) {
-                    Log.i("lxltest", "TestActivity_onReceive2_start")
-                    Thread.sleep(10_000)
-                    Log.i("lxltest", "TestActivity_onReceive2_end")
-                }
-            }, intentFilter2)
-//            Handler().postDelayed({
-//                Log.i("lxltest", "sleep 50000")
-//                Thread.sleep(80_000)
-//            }, 5000)
-
+            dotest()
+//            startActivityForResult(Intent(this, Test1Activity::class.java),0)
             return
         }
         if (getString(R.string.test_crash).equals(title, ignoreCase = true)) {
@@ -240,16 +246,18 @@ class MainActivity : FragmentActivity() {
     }
 
     private fun doActionWithClass(itemState: ItemState) {
-        val c = itemState.c
-        val name = c!!.name
+        if (itemState.c == null) {
+            return
+        }
+        val c = itemState.c!!
         val title = itemState.name
-        if (name.endsWith("Activity")) {
+        if (Activity::class.java.isAssignableFrom(c)) {
             val intent = Intent()
             intent.setClass(this@MainActivity, c)
             startActivity(intent)
             return
         }
-        if (name.endsWith("Fragment")) {
+        if (Fragment::class.java.isAssignableFrom(c)) {
             try {
                 val fragment = c.newInstance() as Fragment
                 val bundle = Bundle()
@@ -364,54 +372,6 @@ class MainActivity : FragmentActivity() {
             this.c = c
         }
     }
-
-    private lateinit var mContext: Context;
-    var mShowLogoutManager: WindowManager? = null
-    fun dotest() {
-        mContext = DemoApplication.getInstance()
-        logoutBtn = LayoutInflater.from(mContext).inflate(R.layout.showcar_logout_btn, null)
-        val touchView = logoutBtn.findViewById<View>(R.id.showcar_logout_container)
-        mShowVideoList = logoutBtn.findViewById(R.id.bt_video)
-        mShowLogout = logoutBtn.findViewById(R.id.showcar_logout)
-        mShowVideoList.setOnClickListener(View.OnClickListener { ToastUtil.showCenterToast("图标") })
-        mShowLogout.setOnClickListener(View.OnClickListener { ToastUtil.showCenterToast("退出") })
-        mShowLogoutManager = mContext.getSystemService(WINDOW_SERVICE) as WindowManager
-        mShowLogoutLayoutParams = WindowManager.LayoutParams()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            mShowLogoutLayoutParams!!.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-        }
-        mShowLogoutLayoutParams!!.width = 332
-        mShowLogoutLayoutParams!!.height = 72
-        mShowLogoutLayoutParams!!.x = 30
-        //        mShowLogoutLayoutParams.x = (int) ServiceApplication.getContext().getResources().getDimension(R.dimen.logout_btn_margin_left);
-//        mShowLogoutLayoutParams.y = 15;
-        mShowLogoutLayoutParams!!.y = 200
-        mShowLogoutLayoutParams!!.flags =
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
-        //设置背景透明
-//        mShowLogoutLayoutParams.format = PixelFormat.TRANSLUCENT;
-        mShowLogoutLayoutParams!!.format = PixelFormat.RGBA_8888
-        mShowLogoutLayoutParams!!.gravity = Gravity.END or Gravity.BOTTOM
-        //        mShowVideoList.setVisibility(View.INVISIBLE);
-        try {
-            setViewTouchGrag(
-                touchView,
-                logoutBtn,
-                mShowLogoutLayoutParams,
-                mShowLogoutManager,
-                true
-            )
-            mShowLogoutManager!!.addView(logoutBtn, mShowLogoutLayoutParams)
-            //            logoutBtn.setAccessibilityPaneTitle(getContext().getResources().getString(R.string.logout_showcar_btn));
-//            BeanAccessibilityManager.getInstance().registerListener(logoutBtn);
-//            logoutBtnIsShowing = true;
-        } catch (e: Exception) {
-            Log.e(TAG, "showLogoutBtn: addview Error", e)
-        }
-        tt(MainActivity::class.java)
-    }
-
-    private fun tt(a: Class<out Activity?>) {}
 
     companion object {
         const val TAG = "lxltest"

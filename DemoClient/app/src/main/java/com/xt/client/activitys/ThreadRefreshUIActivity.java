@@ -1,4 +1,4 @@
-package com.xt.client;
+package com.xt.client.activitys;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.xt.client.R;
 import com.xt.client.util.ReflectUtil;
 
 

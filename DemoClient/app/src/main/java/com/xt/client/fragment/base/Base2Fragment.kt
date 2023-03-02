@@ -17,6 +17,7 @@ abstract class Base2Fragment : Fragment() {
     }
 
     lateinit var mContent: RecyclerView;
+    lateinit var mTitle: TextView;
     lateinit var mResult: TextView;
     private var mAdapter = GridAdapter()
 
@@ -25,16 +26,20 @@ abstract class Base2Fragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.jni_layout, container, false);
+        return inflater.inflate(R.layout.fragment_base2_layout, container, false);
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mTitle = view.findViewById(R.id.title_text)
         mContent = view.findViewById(R.id.content)
         mResult = view.findViewById(R.id.result_text)
         mContent.layoutManager =
             GridLayoutManager(view.context, 2, GridLayoutManager.VERTICAL, false)
         mContent.adapter = mAdapter
+        arguments?.let {
+            mTitle.text = it.getString(BaseFragment.TITLE, "title")
+        }
         mAdapter.dataList = getShowData()
     }
 
@@ -42,7 +47,7 @@ abstract class Base2Fragment : Fragment() {
 
     abstract fun getShowData(): List<String>
 
-    fun showResult(str:String){
+    fun showResult(str: String) {
         mResult.text = str
     }
 

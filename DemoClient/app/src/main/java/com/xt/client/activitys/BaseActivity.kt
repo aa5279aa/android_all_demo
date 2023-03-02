@@ -1,12 +1,11 @@
 package com.xt.client.activitys
 
-import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import androidx.fragment.app.FragmentActivity
 import com.xt.client.R
-import com.xt.client.viewholder.ViewHolder
+import com.xt.client.widget.viewholder.ViewHolder
 
 abstract class BaseActivity : FragmentActivity(), View.OnClickListener {
 

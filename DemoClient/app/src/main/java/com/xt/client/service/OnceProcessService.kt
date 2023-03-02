@@ -9,17 +9,15 @@ import android.util.Log
 class OnceProcessService : IntentService("OnceProcessService") {
 
     override fun onHandleIntent(intent: Intent?) {
-        Log.i("lxltest", "onBind start")
+        Log.i("lxltest", "OnceProcessService_onBind start")
         val currentThread = Thread.currentThread()
-        Log.i("lxltest", mainLooper.thread.toString())
-        Log.i("lxltest", currentThread.toString())
     }
 
     override fun onCreate() {
         super.onCreate()
-        Log.i("lxltest", "onCreate()")
+        Log.i("lxltest", "OnceProcessService_onCreate()")
+        Thread.sleep(30_000)
     }
-
 
     inner class MyBinder : Binder() {
         val service: OnceProcessService
@@ -29,19 +27,19 @@ class OnceProcessService : IntentService("OnceProcessService") {
     private val mBinder = MyBinder()
 
     override fun onBind(intent: Intent): IBinder? {
-        Log.i("test_out", "----->onBind")
+        Log.i("lxltest", "----->onBind")
         return mBinder
     }
 
     override fun onUnbind(intent: Intent): Boolean {
 
-        Log.i("test_out", "----->onUnbind")
+        Log.i("lxltest", "----->onUnbind")
         return true
     }
 
     override fun onRebind(intent: Intent) {
         super.onRebind(intent)
-        Log.i("test_out", "----->onRebind")
+        Log.i("lxltest", "----->onRebind")
     }
 
     fun getCount(): Int {

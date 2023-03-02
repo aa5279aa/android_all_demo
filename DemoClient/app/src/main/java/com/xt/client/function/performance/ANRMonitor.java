@@ -1,4 +1,4 @@
-package com.xt.client.performance;
+package com.xt.client.function.performance;
 
 import android.content.Context;
 import android.os.Handler;

@@ -1,12 +1,10 @@
-package com.xt.client.serialize;
+package com.xt.client.function.serialize;
 
 import com.xt.client.annotations.ProtoAnno;
 import com.xt.client.viewmodel.base.BasePBModel;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

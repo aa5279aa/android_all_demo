@@ -6,11 +6,31 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 public class ThreadService extends IntentService {
 
     public ThreadService() {
         super("ThreadService");
         Log.i("ThreadService", "ThreadService init");
+
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.i("ThreadService", "ThreadService onCreate");
+    }
+
+    @Override
+    public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
+        Log.i("ThreadService", "onStartCommand");
+        try {
+            Thread.sleep(60_000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.xt.client;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.xt.client.serialize.ProtoSerialize;
+import com.xt.client.function.serialize.ProtoSerialize;
 import com.xt.client.util.IOHelper;
 import com.xt.client.viewmodel.DemoRequest;
 import com.xt.client.viewmodel.DemoResponse;

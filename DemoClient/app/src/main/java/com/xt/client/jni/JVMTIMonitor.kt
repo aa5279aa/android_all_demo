@@ -70,7 +70,7 @@ class JVMTIMonitor {
         //加载SO库
         val agentPath = libSo.absolutePath
         System.load(agentPath)
-
+        set_jdwpAllowed();
         //开启JVMTI事件监听
         val logDir = File(context.filesDir, "log")
         if (!logDir.exists()) logDir.mkdir()
@@ -88,6 +88,14 @@ class JVMTIMonitor {
         }
         mIsLoaded = true;
     }
+
+    /**
+     * 修改debug开关
+     * SetJdwpAllowed
+     *
+     * @param path
+     */
+    external fun set_jdwpAllowed()
 
     /**
      * 开启JVMTI能力
