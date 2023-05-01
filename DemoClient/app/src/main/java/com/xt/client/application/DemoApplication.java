@@ -3,12 +3,12 @@ package com.xt.client.application;
 import android.app.Application;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.os.Build;
+import android.content.IntentFilter;
 import android.os.Handler;
 import android.util.Log;
 
 import com.kwai.koom.base.DefaultInitTask;
-import com.tencent.bugly.crashreport.CrashReport;
+import com.xt.client.broadcast.MyBroadcast;
 import com.xt.client.function.route.RouterHandle;
 import com.xt.client.function.serviceprovider.AServiceProviderImpl;
 import com.xt.client.function.serviceprovider.BServiceProviderImpl;
@@ -45,9 +45,16 @@ public class DemoApplication extends Application {
         aptLaunch();
 //        normalLaunch();
         //快手KOOM初始化
-        DefaultInitTask.INSTANCE.init(this);
+//        try {
+//            Thread.sleep(8_000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
-        CrashReport.initCrashReport(getApplicationContext(), "4590a52547", true);
+        DefaultInitTask.INSTANCE.init(this);
+        registerReceiver(new MyBroadcast(), new IntentFilter("crash"));
+
+//        CrashReport.initCrashReport(getApplicationContext(), "4590a52547", true);
     }
 
     private void aptLaunch() {

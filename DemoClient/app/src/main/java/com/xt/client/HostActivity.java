@@ -99,4 +99,8 @@ public class HostActivity extends Activity {
                     }
                 };
     }
+
+    private void test(){
+
+    }
 }

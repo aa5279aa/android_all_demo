@@ -11,6 +11,31 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        externalNativeBuild {
+            cmake {
+                cppFlags '-std=c++11'
+                abiFilters "x86", "arm64-v8a", "armeabi-v7a"
+            }
+        }
+        ndk {
+            abiFilters "x86", "arm64-v8a", "armeabi-v7a"
+//            moduleName "java2c"
+//            cppFlags "-std=c++11 -fexceptions"
+//            ldLibs "log"
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/cpp/libs']
+        }
     }
 
     buildTypes {
@@ -26,12 +51,12 @@ android {
 }
 
 //configurations.maybeCreate("default")
-artifacts.add("default", files("test22.aar","test.aar"))
-artifacts.add("default", file("test.aar"))
+//artifacts.add("default", files("test22.aar", "test.aar"))
+//artifacts.add("default", file("test.aar"))
 //println("add aar")
 
 dependencies {
-    implementation(project(':repo'))
+//    implementation project(':repo')
 //    compileOnly files("test.aar")
 //    compileOnly files("test22.aar")
     implementation 'androidx.appcompat:appcompat:1.3.0'

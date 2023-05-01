@@ -21,6 +21,21 @@ class Test3Activity : BaseActivity() {
     }
 
     override fun onClick(v: View?) {
-        startActivity(Intent(this, Test1Activity::class.java))
+        startActivity(Intent(this, Test2Activity::class.java))
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.e("launchMode", this::class.java.simpleName + ",onPause")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e("launchMode", this::class.java.simpleName + ",onResume")
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        Log.e("launchMode", this::class.java.simpleName + ",onNewIntent")
     }
 }

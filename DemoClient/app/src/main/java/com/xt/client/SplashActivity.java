@@ -19,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 
+import com.beantechs.h5container.activity.BeanH5Activity;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.xt.client.util.DemoUtils;

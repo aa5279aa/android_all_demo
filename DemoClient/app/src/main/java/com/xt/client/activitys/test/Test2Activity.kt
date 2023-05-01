@@ -17,10 +17,27 @@ class Test2Activity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewHolder.descText?.text = this.javaClass.simpleName
-        Log.e("launchMode",this::class.java.simpleName)
+        Log.e("launchMode", this::class.java.simpleName)
+        setResult(200)
     }
 
     override fun onClick(v: View?) {
-        startActivity(Intent(this, Test3Activity::class.java))
+        startActivity(Intent(this, Test1Activity::class.java))
     }
+
+    override fun onPause() {
+        super.onPause()
+        Log.e("launchMode", this::class.java.simpleName + ",onPause")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e("launchMode", this::class.java.simpleName + ",onResume")
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        Log.e("launchMode", this::class.java.simpleName + ",onNewIntent")
+    }
+
 }

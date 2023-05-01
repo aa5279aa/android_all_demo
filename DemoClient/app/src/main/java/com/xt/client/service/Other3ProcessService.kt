@@ -16,6 +16,13 @@ class Other3ProcessService : Service() {
     override fun onCreate() {
         super.onCreate()
         Log.i("lxltest", "Other3ProcessService_onCreate()")
+        Thread {
+            var i = 0;
+            while (true) {
+                Log.i("lxltest", "num:${i++}")
+                Thread.sleep(1000)
+            }
+        }.start()
     }
 
 

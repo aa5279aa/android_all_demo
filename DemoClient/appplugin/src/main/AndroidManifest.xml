@@ -32,17 +32,27 @@
             <!--            </intent-filter>-->
         </activity>
         <activity android:name=".Plugin4Activity" />
-        <activity android:name=".Plugin5Activity" />
+        <activity android:name=".Plugin5Activity"
+
+            />
         <activity
             android:name=".Plugin6Activity"
             android:exported="true"
             android:theme="@style/transparent.Theme" />
+
+        <service
+            android:name=".service.TestService"
+            android:exported="true"
+            android:process=":aaaa" />
 
 
     </application>
 
     <queries>
         <package android:name="com.xt.client" />
+        <intent>
+            <action android:name="com.xt.client.service.Other3ProcessService" />
+        </intent>
     </queries>
 
 </manifest>

@@ -6,7 +6,6 @@ import com.xt.client.jni.Java2CJNI
 import com.xt.client.model.JavaModel
 import com.xt.client.util.IOHelper
 import com.xt.client.util.LogUtil
-import com.xt.client.viewmodel.DemoRequest
 import java.io.File
 
 //改成recyclerView，一行两个。底部输出值
@@ -28,6 +27,7 @@ class JNIActivity : Base2Activity() {
     override fun clickItem(position: Int) {
         if (position == 0) {
             var java2CJNI = Java2CJNI()
+//            val result = java2CJNI.java2C2()
             val result = java2CJNI.java2C()
             mResult.text = result
             return

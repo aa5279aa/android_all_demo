@@ -8,7 +8,7 @@ android {
     defaultConfig {
         applicationId 'com.xt.client'
         minSdkVersion 26
-        targetSdkVersion 22
+        targetSdkVersion 26
         versionCode 1
         versionName '1.0'
 //        vectorDrawables.useSupportLibrary = true
@@ -146,7 +146,7 @@ dependencies {
 
     implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
 
-    implementation 'com.tencent.bugly:crashreport:latest.release'
+//    implementation 'com.tencent.bugly:crashreport:latest.release'
 
 //    implementation project(':applibrary')
 //    implementation 'com.github.bumptech.glide:glide:4.9.0'
@@ -159,6 +159,7 @@ dependencies {
 
 }
 
+//指定版本
 //configurations.all {
 //    resolutionStrategy {
 //        force 'com.squareup.okio:okio:2.1.0'//强制所有依赖库使用该版本

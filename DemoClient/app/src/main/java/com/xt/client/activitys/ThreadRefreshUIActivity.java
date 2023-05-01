@@ -47,4 +47,6 @@ public class ThreadRefreshUIActivity extends Activity {
             Toast.makeText(context, "设备不支持在桌面创建快捷图标！", Toast.LENGTH_LONG).show();
         }
     }
+
+
 }

@@ -2,13 +2,12 @@ package com.xt.client
 
 import android.Manifest
 import android.app.Activity
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.PixelFormat
-import android.os.Build
-import android.os.Bundle
-import android.os.Environment
+import android.os.*
 import android.provider.Settings
 import android.util.Log
 import android.view.*
@@ -71,7 +70,8 @@ class MainActivity : FragmentActivity() {
         val baseContext = baseContext
         val applicationContext = applicationContext
         val application = application
-        Log.i("lxltest", "$baseContext,$application")
+        Log.i("lxltest", "MainActivity,$baseContext,$application")
+        var i = 0;
     }
 
 
@@ -80,6 +80,11 @@ class MainActivity : FragmentActivity() {
     val flowC = flowA.combine(flowB) { a, b -> a + b }
 
     fun dotest() {
+//        val intent = Intent()
+//        val componentName = ComponentName("com.xt.client", "com.xt.client.service.ThreadService")
+//        intent.component = componentName
+//        startForegroundService(intent)
+//        startService(intent)
 //        lifecycleScope.launch {
 //            flowC.collect {
 //                Log.i("lxltest", "result:${it}")
@@ -90,12 +95,16 @@ class MainActivity : FragmentActivity() {
 //            flowA.emit(5)
 //            flowB.emit(6)
 //        }
-        val intent = Intent(this,Test1Activity::class.java)
+        val intent = Intent(this, Test1Activity::class.java)
 //        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
+        startActivityForResult(intent, 1)
 //        val s = Environment.getExternalStorageDirectory().absolutePath + File.separator + "a.txt"
 //        val createNewFile = File(s).createNewFile()
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        Log.i("lxltest", "requestCode${requestCode},resultCode:${resultCode}")
     }
 
     override fun onStart() {

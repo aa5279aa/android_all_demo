@@ -32,13 +32,15 @@ buildscript {
     }
 }
 
-ext{
+ext {
     VERSION_NAME = '2.2.0'
 }
 
 subprojects {
     repositories {
-        google()
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
         mavenCentral()
     }
 

@@ -32,7 +32,24 @@ android {
     }
 }
 
+//指定版本
+//configurations.all {
+//    resolutionStrategy {
+//        force 'org.apache.maven:maven-artifact:2.2.1'//强制所有依赖库使用该版本
+//    }
+//}
+
 dependencies {
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
+
+
+    androidTestImplementation('junit:junit:4.12') {
+        exclude group: 'org.apache.maven', module: 'maven-ant-tasks'
+    }
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation("org.robolectric:robolectric:3.3") {
+        exclude group: 'org.apache.maven', module: 'maven-ant-tasks'
+        exclude group: 'xmlpull', module: 'xmlpull'
+    }
 }

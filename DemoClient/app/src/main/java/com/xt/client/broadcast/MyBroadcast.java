@@ -14,5 +14,8 @@ public class MyBroadcast extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.i("lxltest", "MyBroadcast.onReceive");
+
+        int i = 5 / 0;
+
     }
 }

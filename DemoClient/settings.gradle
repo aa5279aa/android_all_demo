@@ -2,4 +2,4 @@ include ':app'
 include ':composeapp'
 
 rootProject.name = 'DemoClient'
-include ':appplugin', 'router_processor', 'annotationLibrary'
+include ':appplugin', 'router_processor', 'annotationLibrary', 'applibrary'

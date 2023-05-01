@@ -13,22 +13,13 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
-add_library( # Sets the name of the library.
-        memorymonitor
+
+add_library( # Sets the name of the library.  设置生成so文件名
+        Java2C
         # Sets the library as a shared library.
         SHARED
-        # Provides a relative path to your source file(s).
-        src/main/jni/native-lib.cpp src/main/jni/MemoryFile.cpp)
-
-add_library(
-        Calculation
-        SHARED
-        src/main/jni/CalculationNative.cpp)
-
-add_library(
-        DynamicRegister
-        SHARED
-        src/main/jni/DynamicNaitveRegister.cpp)
+        # Provides a relative path to your source file(s).  要编译的C/C++文件
+        src/main/jni/Java2C.cpp)
 
 #add_library(
 #        PluginJni
@@ -51,19 +42,9 @@ find_library( # Sets the name of the path variable.
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
-target_link_libraries( # Specifies the target library.
-        memorymonitor
 
-        # Links the target library to the log library
-        # included in the NDK.
-        ${log-lib})
 target_link_libraries( # Specifies the target library. 指定连接的目标库
-        Calculation
-        # Links the target library to the log library
-        # included in the NDK.
-        ${log-lib})
-target_link_libraries( # Specifies the target library. 指定连接的目标库
-        DynamicRegister
+        Java2C
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib})

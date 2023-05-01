@@ -13,7 +13,7 @@ class Test1Activity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewHolder.descText?.text = this.javaClass.simpleName
         Log.e("launchMode", this::class.java.simpleName)
-
+        setResult(1)
     }
 
 
@@ -30,8 +30,20 @@ class Test1Activity : BaseActivity() {
 
     override fun onClick(v: View?) {
         Log.e("launchMode", "onClick")
-        val intent = Intent(this, Test1Activity::class.java)
+        val intent = Intent(this, Test2Activity::class.java)
 //        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivity(intent)
+        startActivityForResult(intent, 100)
+//        finish()
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.e("launchMode", "onActivityResult,requestCode:${requestCode},resultCode:${resultCode}")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e("launchMode", "onResume")
+    }
+
 }

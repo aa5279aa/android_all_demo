@@ -7,6 +7,10 @@ public class Java2CJNI {
         System.loadLibrary("Java2C");
     }
 
+    public String java2C2() {
+        return "123";
+    }
+
     //native方法
     public native String java2C();
 

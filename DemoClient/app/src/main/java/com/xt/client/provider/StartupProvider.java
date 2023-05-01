@@ -3,8 +3,11 @@ package com.xt.client.provider;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -41,12 +44,20 @@ public class StartupProvider extends ContentProvider {
     @Override
     public Uri insert(Uri uri, ContentValues values) {
         Log.i("lxltest", "method_insert:" + Thread.currentThread().getName());
+        getContext().sendBroadcast(new Intent("crash"));
+//        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Log.i("lxltest", "crash");
+//                int i = 5 / 0;
+//            }
+//        }, 5000);
         try {
-            Thread.sleep(20_000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        ToastUtil.showCenterToast("insert");
+        Log.i("lxltest", "insert end");
         return null;
     }
 

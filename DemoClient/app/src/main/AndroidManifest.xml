@@ -51,10 +51,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
         <activity android:name=".ProtoActivity" />
         <activity
             android:name=".activitys.TestJavaActivity"
+            android:launchMode="standard"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activitys.SaveLastActivity"
@@ -108,16 +111,23 @@
             android:process="com.xt.xt2" />
         <service
             android:name=".service.Other3ProcessService"
-            android:process="com.xt.xt3" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.xt.client.service.Other3ProcessService" />
+            </intent-filter>
+        </service>
 
         <service android:name=".service.OnceProcessService" />
-        <service android:name="com.xt.client.service.ThreadService" />
+        <service
+            android:name="com.xt.client.service.ThreadService"
+            android:exported="true" />
         <service android:name="org.eclipse.paho.android.service.MqttService" />
 
         <provider
             android:name=".provider.StartupProvider"
             android:authorities="com.xt.client.android_startup.multiple"
             android:exported="true"
+            android:process="com.xt.xt3"
             tools:ignore="ExportedContentProvider" />
 
         <activity
@@ -128,13 +138,11 @@
 
         <activity
             android:name="com.xt.client.activitys.test.Test1Activity"
-            android:launchMode="singleInstancePerTask" />
-        <activity android:name="com.xt.client.activitys.test.Test2Activity"
-
-            />
+            android:launchMode="singleTask" />
         <activity
-            android:name="com.xt.client.activitys.test.Test3Activity"
-            android:launchMode="singleInstancePerTask" />
+            android:name="com.xt.client.activitys.test.Test2Activity"
+            android:launchMode="singleTask" />
+        <activity android:name="com.xt.client.activitys.test.Test3Activity" />
 
         <service
             android:name="com.xt.client.service.QuickSettingService"
@@ -158,6 +166,7 @@
                 <action android:name="my_self2" />
             </intent-filter>
         </receiver>
+
     </application>
 
 </manifest>
