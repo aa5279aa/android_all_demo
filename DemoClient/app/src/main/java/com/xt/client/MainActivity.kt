@@ -66,57 +66,14 @@ class MainActivity : FragmentActivity() {
     val flowB = MutableStateFlow(2)
     val flowC = flowA.combine(flowB) { a, b -> a + b }
 
-    fun dotest() {
-        Log.i("lxltest", "dotest")
-//        contentResolver.registerContentObserver(
-//            Uri.parse("content://com.beantechs.watchapp.WatchAppProvider"), true,
-//            object : ContentObserver(Handler()) {
-//
-//                override fun onChange(selfChange: Boolean, uri: Uri?) {
-//                    super.onChange(selfChange, uri)
-//                    Log.i("lxltest", "onChange,$selfChange,uri:${uri.toString()}")
-//                }
-//            })
-//        val uri = Uri.parse("content://com.beantechs.watchapp.WatchAppProvider");
-//        val method = "STATE";//STATE代表获取状态
-//        val arg = "com.beantechs.demo";//被观察者的包名
-//        baseContext.contentResolver.call(uri, method, arg, null)?.let {
-//            uri.host
-//            val packageName = it.getString("packageName")
-//            val state = it.getString("state")
-//            Log.i("apm", "packageName,${packageName},state:${state}")
-//        }
-//
-//        val bundle = Bundle()
-//        bundle.putString("a","1");
-//        val i = bundle.getInt("a")
-//        Log.i("apm",i.toString())
+    fun doTest() {
+        Log.i("lxltest", "doTest")
+//        PluginImpl()
+        Log.i("lxltest", "doTest")
+//        val forName = Class.forName("com.xt.producta.PluginImpl")
+//        val pluginInter = forName.newInstance() as PluginInter
+//        pluginInter.showFlavor()
 
-//1
-        val componentName = ComponentName("com.xt.client", "com.xt.client.service.ThreadService")
-        intent.component = componentName
-        startService(intent)
-
-//2A
-//        startService(intent)
-//        lifecycleScope.launch {
-//            flowC.collect {
-//                Log.i("lxltest", "result:${it}")
-//            }
-//        }
-//        lifecycleScope.launch {
-//            delay(2000)
-//            flowA.emit(5)
-//            flowB.emit(6)
-//        }
-        //3
-//        val componentName = ComponentName("com.xt.appplugin", "com.xt.appplugin.PluginMainActivity")
-//        intent.component = componentName;
-//        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-
-        //4
-//        intent.setClass(this, TestActivity::class.java)
-//        startActivity(intent)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -219,6 +176,7 @@ class MainActivity : FragmentActivity() {
         dataList.add(ItemState(getString(R.string.koom), "ing", KOOMFragment::class.java))
         dataList.add(ItemState(getString(R.string.router), "done", RouteFragment::class.java))
         dataList.add(ItemState(getString(R.string.jvmti), "done", JVMTIFragment::class.java))
+        dataList.add(ItemState(getString(R.string.jvmti), "done", ProviderFragment::class.java))
 
 
         val layout = GridLayoutManager(this, 2)
@@ -255,7 +213,7 @@ class MainActivity : FragmentActivity() {
     var list: List<ByteArray> = ArrayList()
     private fun doActionWithoutClass(title: String) {
         if (getString(R.string.test_button).equals(title, ignoreCase = true)) {
-            dotest()
+            doTest()
 //            startActivityForResult(Intent(this, Test1Activity::class.java),0)
             return
         }

@@ -9,6 +9,7 @@ import com.xt.client.R
 import com.xt.client.widget.viewholder.ViewHolder
 
 abstract class BaseFragment : Fragment(), View.OnClickListener {
+    val TAG: String = javaClass.simpleName
 
     companion object {
         const val TITLE = "title"
