@@ -52,7 +52,7 @@ public class DemoApplication extends Application {
 //        }
 
         DefaultInitTask.INSTANCE.init(this);
-        registerReceiver(new MyBroadcast(), new IntentFilter("crash"));
+//        registerReceiver(new MyBroadcast(), new IntentFilter("crash"));
 
 //        CrashReport.initCrashReport(getApplicationContext(), "4590a52547", true);
     }

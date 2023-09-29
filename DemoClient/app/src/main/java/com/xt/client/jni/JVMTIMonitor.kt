@@ -54,7 +54,7 @@ class JVMTIMonitor {
 
 //            val fileno = File(context.packageManager.getApplicationInfo("pers.vaccae.memorymonitor", 0).sourceDir)
 //            Log.i("jvmti", "fileno Path:$fileno")
-
+        //找到so库的位置，关联到系统上面
         val findLibrary =
             ClassLoader::class.java.getDeclaredMethod("findLibrary", String::class.java)
         val libFilePath = findLibrary.invoke(context.classLoader, "memorymonitor") as String

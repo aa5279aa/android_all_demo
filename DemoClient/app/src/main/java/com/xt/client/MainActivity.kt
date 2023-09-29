@@ -3,12 +3,13 @@ package com.xt.client
 import android.Manifest
 import android.app.Activity
 import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.PixelFormat
+import android.database.ContentObserver
+import android.net.Uri
 import android.os.*
 import android.provider.Settings
+import android.renderscript.RenderScript
 import android.util.Log
 import android.view.*
 import android.view.View.OnTouchListener
@@ -19,36 +20,23 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
-import com.google.gson.JsonElement
-import com.google.gson.JsonObject
 import com.xt.client.activitys.*
-import com.xt.client.activitys.test.Test1Activity
-import com.xt.client.activitys.test.Test2Activity
-import com.xt.client.application.DemoApplication
+import com.xt.client.broadcast.MyBroadcast
+import com.xt.client.broadcast.MyBroadcast2
+import com.xt.client.broadcast.MyBroadcast3
 import com.xt.client.fragment.*
 import com.xt.client.fragment.base.BaseFragment
 import com.xt.client.inter.RecyclerItemClickListener
-import com.xt.client.service.ThreadService
-import com.xt.client.util.IOHelper
 import com.xt.client.util.ToastUtil
 import com.xt.client.widget.tool.decoration.MyItemDecoration
 import com.xt.router_api.BindSelfView
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.launch
 import java.io.File
 import java.io.IOException
 import java.util.*
-import java.util.stream.Collectors
-import java.util.stream.StreamSupport
-import kotlin.collections.HashMap
-import kotlin.coroutines.coroutineContext
 
 
 /**
@@ -64,15 +52,19 @@ class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_page)
-        mRecycler = findViewById(R.id.recycler)
-        manager = supportFragmentManager
-        initData()
-        val baseContext = baseContext
-        val applicationContext = applicationContext
-        val application = application
-        Log.i("lxltest", "MainActivity,$baseContext,$application")
-        var i = 0;
+//        mRecycler = findViewById(R.id.recycler)
+//        manager = supportFragmentManager
+//        initData()
+//        val baseContext = baseContext
+//        val applicationContext = applicationContext
+//        val application = application
+//        Log.i("lxltest", "MainActivity,$baseContext,$application")
+//        var i = 0;
     }
+
+    val m1 = MyBroadcast()
+    val m2 = MyBroadcast2()
+    val m3 = MyBroadcast3()
 
 
     val flowA = MutableStateFlow(1)
@@ -80,10 +72,37 @@ class MainActivity : FragmentActivity() {
     val flowC = flowA.combine(flowB) { a, b -> a + b }
 
     fun dotest() {
-//        val intent = Intent()
-//        val componentName = ComponentName("com.xt.client", "com.xt.client.service.ThreadService")
-//        intent.component = componentName
-//        startForegroundService(intent)
+        Log.i("lxltest", "dotest")
+//        contentResolver.registerContentObserver(
+//            Uri.parse("content://com.beantechs.watchapp.WatchAppProvider"), true,
+//            object : ContentObserver(Handler()) {
+//
+//                override fun onChange(selfChange: Boolean, uri: Uri?) {
+//                    super.onChange(selfChange, uri)
+//                    Log.i("lxltest", "onChange,$selfChange,uri:${uri.toString()}")
+//                }
+//            })
+//        val uri = Uri.parse("content://com.beantechs.watchapp.WatchAppProvider");
+//        val method = "STATE";//STATE代表获取状态
+//        val arg = "com.beantechs.demo";//被观察者的包名
+//        baseContext.contentResolver.call(uri, method, arg, null)?.let {
+//            uri.host
+//            val packageName = it.getString("packageName")
+//            val state = it.getString("state")
+//            Log.i("apm", "packageName,${packageName},state:${state}")
+//        }
+//
+//        val bundle = Bundle()
+//        bundle.putString("a","1");
+//        val i = bundle.getInt("a")
+//        Log.i("apm",i.toString())
+
+//1
+        val componentName = ComponentName("com.xt.client", "com.xt.client.service.ThreadService")
+        intent.component = componentName
+        startService(intent)
+
+//2A
 //        startService(intent)
 //        lifecycleScope.launch {
 //            flowC.collect {
@@ -95,15 +114,18 @@ class MainActivity : FragmentActivity() {
 //            flowA.emit(5)
 //            flowB.emit(6)
 //        }
-        val intent = Intent(this, Test1Activity::class.java)
+        //3
+//        val componentName = ComponentName("com.xt.appplugin", "com.xt.appplugin.PluginMainActivity")
+//        intent.component = componentName;
 //        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-        startActivityForResult(intent, 1)
-//        val s = Environment.getExternalStorageDirectory().absolutePath + File.separator + "a.txt"
-//        val createNewFile = File(s).createNewFile()
 
+        //4
+//        intent.setClass(this, TestActivity::class.java)
+//        startActivity(intent)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         Log.i("lxltest", "requestCode${requestCode},resultCode:${resultCode}")
     }
 
@@ -128,7 +150,6 @@ class MainActivity : FragmentActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.i("lxltest", "MainActivity_onDestroy")
-        System.exit(0)
     }
 
     private fun initData() {

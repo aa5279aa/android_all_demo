@@ -63,6 +63,8 @@ android {
             java.srcDir sharedTestDir
         }
         main {
+            jniLibs.srcDirs = ['libs']
+//            java.srcDirs += ['libs']
             resources {
                 srcDirs 'src/main/resources'
             }
@@ -96,7 +98,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+//    implementation files('libs/framework.jar')
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
 

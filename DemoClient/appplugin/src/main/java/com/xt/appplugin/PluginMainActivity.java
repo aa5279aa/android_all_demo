@@ -19,6 +19,7 @@ public class PluginMainActivity extends PluginBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("lxltest", "PluginMainActivity onCreate");
         setContentView(R.layout.layout_main);
         findViewById(R.id.text1).setOnClickListener(v -> {
             Intent intent = new Intent();
@@ -62,17 +63,39 @@ public class PluginMainActivity extends PluginBaseActivity {
         });
 
         requestPermissions(new String[]{android.Manifest.permission.READ_MEDIA_AUDIO, "android.permission.REMOVE_TASKS"}, 0);
+
+        try {
+            Thread.sleep(20_000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        Log.i("lxltest", "onResume start");
+        super.onResume();
+        Log.i("lxltest", "onResume end");
+    }
+
+    @Override
+    protected void onStart() {
+        Log.i("lxltest", "onStart start");
+        super.onStart();
+        Log.i("lxltest", "onStart end");
+    }
+
+    @Override
+    protected void onStop() {
+        Log.i("lxltest", "onStop start");
+        super.onStop();
+        Log.i("lxltest", "onStop end");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         Log.i("lxltest", "onPause start");
-        try {
-            Thread.sleep(10_000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         Log.i("lxltest", "onPause end");
     }
 

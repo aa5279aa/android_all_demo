@@ -13,7 +13,7 @@ class Test1Activity : BaseActivity() {
         super.onCreate(savedInstanceState)
         viewHolder.descText?.text = this.javaClass.simpleName
         Log.e("launchMode", this::class.java.simpleName)
-        setResult(1)
+        Thread.sleep(30000)
     }
 
 

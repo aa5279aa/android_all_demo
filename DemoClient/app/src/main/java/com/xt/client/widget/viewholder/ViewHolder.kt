@@ -23,10 +23,7 @@ open class ViewHolder(view: View, listener: View.OnClickListener) {
     var resultText: TextView? = null
     var resultContainer: ViewGroup? = null
 
-    var listener: OnClickListener? = null
-
     init {
-
         line1 = view.findViewById(R.id.line1)
         line2 = view.findViewById(R.id.line2)
         line3 = view.findViewById(R.id.line3)

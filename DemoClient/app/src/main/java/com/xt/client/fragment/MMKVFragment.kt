@@ -80,6 +80,10 @@ class MMKVFragment : Base2Fragment() {
                     MMKV.defaultMMKV(0, "sp_string")
                 }
             }
+            for (key in kv.all) {
+
+            }
+
             val currentTimeMillis = System.currentTimeMillis()
             for (i in 0 until 1000) {
                 if (position == 1) {

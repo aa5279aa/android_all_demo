@@ -132,7 +132,7 @@ public class SplashActivity extends Activity {
     private void initData() {
         Log.d(TAG, "SplashActivity initData");
         loadADs();
-        loadFile();
+//        loadFile();
     }
 
     private void loadADs() {
@@ -165,7 +165,6 @@ public class SplashActivity extends Activity {
         if (requestCode != 102) {
             return;
         }
-        Log.i("lxltest", "permissions:" + permissions.length);
         Log.i("lxltest", "grantResults:" + grantResults.length);
         for (int i = 0; i < permissions.length; i++) {
             String permission = permissions[i];
