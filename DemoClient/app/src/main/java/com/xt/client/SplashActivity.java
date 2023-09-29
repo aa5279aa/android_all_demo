@@ -69,9 +69,7 @@ public class SplashActivity extends Activity {
         imgIv = findViewById(R.id.img_iv);
         checkPermission();
         initData();
-
-        test();
-
+        loadFile();
 
         splashScreen.setOnExitAnimationListener(splashScreenView -> {
             final ObjectAnimator slideUp = ObjectAnimator.ofFloat(

@@ -52,14 +52,9 @@ class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_page)
-//        mRecycler = findViewById(R.id.recycler)
-//        manager = supportFragmentManager
-//        initData()
-//        val baseContext = baseContext
-//        val applicationContext = applicationContext
-//        val application = application
-//        Log.i("lxltest", "MainActivity,$baseContext,$application")
-//        var i = 0;
+        mRecycler = findViewById(R.id.recycler)
+        manager = supportFragmentManager
+        initData()
     }
 
     val m1 = MyBroadcast()
